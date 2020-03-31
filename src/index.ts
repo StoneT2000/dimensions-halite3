@@ -1,10 +1,20 @@
 import { Design, Match, Command, MatchStatus, Agent } from 'dimensions-ai';
 import { constants } from './constants';
-import { GameMap } from './gameMap';
+
+import { Map } from './model/Map';
+import { Store } from './Store';
+import { Player } from './model/Player';
 
 type haliteState = {
   playerCount: number // should only be 2 or 4
-  gameMap: GameMap
+  game: {
+    map: Map
+    game_statistics?: any
+    replay?: any
+    logs?: any
+    store: Store,
+    turn_number: number
+  }
 }
 
 export default class Halite4Design extends Design {
@@ -23,25 +33,21 @@ export default class Halite4Design extends Design {
     let height = 32;
     let state: haliteState = {
       playerCount: match.agents.length,
-      gameMap: new GameMap(width, height)
+      game: {
+        map: new Map(width, height),
+        turn_number: 0,
+        store: new Store()
+      }
     }
-    match.agents.forEach((agent: Agent) => {
-      state.gameMap.players.push({
-        agent: agent,
-        id: agent.id,
-        shipyard: {
-          x: 2,
-          y: 2
-        }
-      })
-    })
-
-    match.state = state;
-
+    // TODO, store map width height and constants from map gen
+    // send the raw constants
     match.sendAll(JSON.stringify(constants));
     
+    state.game.store.players.forEach((player: Player) => {
+      
+    })
     match.agents.forEach((agent: Agent) => {
-      match.send(`${match.state.playerCount} ${agent.id}`, agent);
+      match.send(`${state.game.store.players.size} ${agent.id}`, agent);
     });
 
     match.state.gameMap.players.forEach((player) => {
@@ -56,6 +62,9 @@ export default class Halite4Design extends Design {
     match.state.gameMap.map.forEach((row) => {
       match.sendAll(row.join(' '));
     })
+
+
+    match.state = state;
   }
   async update(match: Match, commands: Array<Command>): Promise<MatchStatus> {
     /**

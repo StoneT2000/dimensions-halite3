@@ -11,7 +11,6 @@ export class Grid<Entry> {
   /** The internal data storage. */
   public grid: Array<Array<Entry>>;
   
-  constructor();
   /**
    * Create a Grid from dimensions.
    * @param width The width.

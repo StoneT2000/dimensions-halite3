@@ -8,8 +8,7 @@ export class Entity extends Enumerated<_Entity> {
 
   public was_captured: boolean = false;
   public is_inspired: boolean = false;
-  public energy: Energy;
-  constructor(id: class_id<_Entity>, public owner_class_id: PlayerID) {
+  constructor(id: class_id<_Entity>, public owner_class_id: PlayerID, public energy: Energy) {
     super(id);
   }
   to_json() {
@@ -18,5 +17,14 @@ export class Entity extends Enumerated<_Entity> {
       is_inspired: this.is_inspired,
       energy: this.energy
     });
+  }
+}
+
+// entity, player, etc. factories
+export class Factory<T> {
+  public last_id: number = 0;
+  make(...args): T {
+    //@ts-ignore
+    return new T(this.last_id++, ...args)
   }
 }
