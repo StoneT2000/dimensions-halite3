@@ -3,7 +3,7 @@ import { Grid } from "./Grid";
 import { Cell } from "./Cell";
 
 export class Map extends Grid<Cell> {
-  public factories: Array<Location>
+  public factories: Array<Location> = [];
   static NEIGHBOR_COUNT = 4;
   to_json() {
     return JSON.stringify({
@@ -76,6 +76,11 @@ export class Map extends Grid<Cell> {
    */
   constructor(width: number, height: number) {
     super(width, height);
+    for (let i = 0; i < width; i++) {
+      for (let j = 0; j < height; j++) {
+        this.grid[i][j] = new Cell();
+      }
+    }
   }
   // Map(dimension_type width, dimension_type height) : Grid(width, height) {}
 }

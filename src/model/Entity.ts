@@ -23,8 +23,15 @@ export class Entity extends Enumerated<_Entity> {
 // entity, player, etc. factories
 export class Factory<T> {
   public last_id: number = 0;
+  constructor(public type) {
+
+  }
   make(...args): T {
     //@ts-ignore
-    return new T(this.last_id++, ...args)
+    return new this.type(this.last_id++, ...args)
   }
+  make_with_id(id, ...args): T {
+    //@ts-ignore
+    return new this.type(id, ...args);
+  }l
 }

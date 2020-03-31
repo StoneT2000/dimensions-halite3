@@ -10,9 +10,13 @@ game.initialize().then(async () => {
     await game.ready('Console Bot');
 
     logging.info(`My Player ID is ${game.myId}.`);
-    for (let i = 0; i < game.gameMap._cells.length; i++) {
-        logging.info(`${game.gameMap._cells[i].map((c) => c.position)}`);
-    }
+    // for (let i = 0; i < game.gameMap._cells.length; i++) {
+    //     logging.info(`${game.gameMap._cells[i].map((c) => c.position)}`);
+    // }
+    game.players.forEach((player, id) => {
+        logging.info(`Player id: ${player.id}, halite: ${player.haliteAmount}`);
+        // console.error(player);
+    })
     while (true) {
         await game.updateFrame();
         

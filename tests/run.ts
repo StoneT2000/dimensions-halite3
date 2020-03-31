@@ -25,5 +25,5 @@ myDimension.createMatch(
     loggingLevel: Dimension.Logger.LEVEL.ALL
   }
 ).then((res) => {
-  console.log(res);
+  // console.log(res);
 })

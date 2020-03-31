@@ -14,9 +14,9 @@ export class Store {
   // Factory<Entity> entity_factory;   /**< The entity factory. */
   // Factory<Dropoff> dropoff_factory; /**< The dropoff factory. */
 
-  player_factory: Factory<Player>;
-  entity_factory: Factory<Entity>;
-  dropoff_factory: Factory<Dropoff>;
+  player_factory: Factory<Player> = new Factory<Player>(Player);
+  entity_factory: Factory<Entity> = new Factory<Entity>(Entity);
+  dropoff_factory: Factory<Dropoff> = new Factory<Dropoff>(Dropoff);
   // std::unordered_set<Location> changed_cells{}; /**< The cells changed on the last turn. */
   public changed_cells: Set<Location> = new Set();
 
@@ -28,7 +28,7 @@ export class Store {
    * @param id The entity ID.
    * @return The entity.
    */
-  get_player(id: PlayerID): Player {
+  get_player(id: PlayerID): Player | undefined {
     return this.players.get(id);
   }
   /**
@@ -37,7 +37,7 @@ export class Store {
    * @param id The entity ID.
    * @return The entity.
    */
-  get_entity(id: EntityID): Entity {
+  get_entity(id: EntityID): Entity | undefined {
     return this.entities.get(id);
   }
 
