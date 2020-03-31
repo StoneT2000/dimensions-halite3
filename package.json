@@ -1,0 +1,14 @@
+{
+  "name": "@dimensions-ai/designs-halite3",
+  "version": "1.0.0",
+  "description": "Halite 3 Design implemented using the Dimensions framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "StoneT2000",
+  "license": "ISC",
+  "dependencies": {
+    "dimensions-ai": "^1.0.11"
+  }
+}
