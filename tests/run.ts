@@ -14,13 +14,15 @@ for (let i = 0; i < 2; i++) {
 // let expectedScore = 5; 
 
 
-myDimension.runMatch(
+myDimension.createMatch(
   botSources,
   {
     name: 'test-halite-match',
     timeout: 1000,
     initializeConfig: {
-      
+      width: 32,
+      height: 32,
+      seed: 15912302
     },
     loggingLevel: Dimension.Logger.LEVEL.ALL
   }

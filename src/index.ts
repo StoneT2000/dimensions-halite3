@@ -88,8 +88,11 @@ export default class Halite3Design extends Design {
      *    then row by row the map with halite info
      */
     let numPlayers = match.agents.length;
-    let width = 32;
-    let height = 32;
+    let width = match.configs.initializeConfig.width;
+    let height = match.configs.initializeConfig.height;
+    if (match.configs.initializeConfig.game_seed) {
+      constants.game_seed = match.configs.initializeConfig.game_seed;
+    }
     let game = this.initializeGameState(match, width, height, numPlayers);
     let state: haliteState = {
       playerCount: match.agents.length,
@@ -121,92 +124,70 @@ export default class Halite3Design extends Design {
     match.state = state;
   }
   async update(match: Match, commands: Array<Command>): Promise<MatchStatus> {
-    /**
-     * 0. First message is bot name, handle that first
-     * make updates
-     */
-    
+ 
+    let game: Game = match.state.game;
+    match.log.info(`last status: ${MatchStatus[match.matchStatus]}`);
+    match.log.info(`time step: ${match.timeStep}`);
+
+    // essentially keep skipping the actual running of the match until we receive commands
+    if (game.turn_number == 0 && commands.length == 0) {
+      return MatchStatus.RUNNING;
+    }
 
     // see if players/agents are ready
-    let game: Game = match.state.game;
-
-    if (game.turn_number === 0) {
+    
+    match.log.info(`Starting turn ${game.turn_number}`);
+    if (game.turn_number == 0) {
       for (let i = 0; i < commands.length; i++) {
         match.log.info(`Player: ${commands[i].agentID} is ready | Name: ${commands[i].command}`);
       }
       match.log.info(`Player initialization complete`);
-      game.turn_number++;
-      return MatchStatus.RUNNING;
     }
-    /**
-     * 1.
-     * 2. 
+    
+    /** Updating stage
+     * 1. Process turn, update match state
+     * 2. Send new match state to agents
      * 3. 
      */
-    // proceed to update match state according to halite 3
-    else {
-      
-      match.log.info(`Starting turn ${game.turn_number}`);
-
+    // don't process turn 0 as it is anomaly as it is onyl turn when bot sends its name and not commands
+    if (game.turn_number != 0) {
+      match.log.info('Updating Frames');
       this.update_inspiration();
-
       this.processTurn(match, commands);
-      
-      // send turn number
-      match.sendAll(`${game.turn_number}`);
-      game.store.players.forEach((player: Player) => {
-        //send all player's each players data: player numShips numDropoffs halite 
-        match.sendAll(`${player.id} ${player.entities.size} ${player.dropoffs.length} ${player.energy}`);
-        // output list of entities
-        player.entities.forEach((location: Location, entity_id: EntityID) => {
-          // id location=( x y ) energy\n
-          match.sendAll(`${entity_id} ${location.x} ${location.y} ${game.store.entities.get(entity_id).energy}`);
-          
-        });
-        // output list of dropoffs
-        player.dropoffs.forEach((dropoff: Dropoff) => {
-          // id xPos yPos
-          match.sendAll(`${dropoff.id} ${dropoff.location.x} ${dropoff.location.y}`);
-        });
-      })
-      // send changed cells TODO
-      // send size of change first
-      match.sendAll(`${game.store.changed_cells.size}`);
-      game.store.changed_cells.forEach((location: Location)=> {
-        // send x y energy
-        match.sendAll(`${location.x} ${location.y} ${game.map.atLocation(location).energy}`);
-      })
-    //   for (const auto &[_, other_player] : game.store.players) {
-    //     message_stream << other_player;
-    //     // Output a list of entities.
-    //     for (const auto &[entity_id, location] : other_player.entities) {
-    //         const auto entity_iterator = game.store.entities.find(entity_id);
-    //         message_stream << entity_id
-    //                        << " " << location
-    //                        << " " << entity_iterator->second.energy
-    //                        << std::endl;
-    //     }
-    //     // Output a list of dropoffs.
-    //     for (const auto &dropoff : other_player.dropoffs) {
-    //         message_stream << dropoff << std::endl;
-    //     }
-    // }
-    // // Send the changed cells.
-    // message_stream << game.store.changed_cells.size() << std::endl;
-    // for (const auto &location : game.store.changed_cells) {
-    //     message_stream << location << " " << game.map.at(location).energy << std::endl;
-    // }
-
-      game.turn_number++;
-      if (this.gameEnded(match)) {
-        game.turn_number++;
-        return MatchStatus.FINISHED;
-      }
-
     }
+    game.turn_number++;
+    // send turn number
+    match.sendAll(`${game.turn_number}`);
+    game.store.players.forEach((player: Player) => {
+      //send all player's each players data: player numShips numDropoffs halite 
+      match.sendAll(`${player.id} ${player.entities.size} ${player.dropoffs.length} ${player.energy}`);
+      // output list of entities
+      player.entities.forEach((location: Location, entity_id: EntityID) => {
+        // id location=( x y ) energy\n
+        match.sendAll(`${entity_id} ${location.x} ${location.y} ${game.store.entities.get(entity_id).energy}`);
+        
+      });
+      // output list of dropoffs
+      player.dropoffs.forEach((dropoff: Dropoff) => {
+        // id xPos yPos
+        match.sendAll(`${dropoff.id} ${dropoff.location.x} ${dropoff.location.y}`);
+      });
+    })
+    // send changed cells TODO
+    // send size of change first
+    match.sendAll(`${game.store.changed_cells.size}`);
+    game.store.changed_cells.forEach((location: Location)=> {
+      // send x y energy
+      match.sendAll(`${location.x} ${location.y} ${game.map.atLocation(location).energy}`);
+    })
 
-
+    if (this.gameEnded(match)) {
+      game.turn_number++;
+      return MatchStatus.FINISHED;
+    }
     return MatchStatus.RUNNING;
+
+    
   }
   update_inspiration() {
     // TODO
@@ -227,12 +208,19 @@ export default class Halite3Design extends Design {
     // move: m {id} {dir}
     // construct: c {id}
     // spawn: g
+    let commandsMap: Map<PlayerID, Array<HCommand>> = this.getCommandsMap(match, commands);
+    console.log(commandsMap);
+
+  }
+  getCommandsMap(match: Match, commands: Array<Command>): Map<PlayerID, Array<HCommand>>  {
     let commandsMap: Map<PlayerID, Array<HCommand>> = new Map();
+    let game = match.state.game;
     game.store.players.forEach((player: Player) => {
       if (!player.terminated) {
         commandsMap.set(player.id, []);
       }
     });
+    console.log('commandsmap', commandsMap);
     loop:
     for (let i = 0; i < commands.length; i++) {
       let cmd = commands[i].command;
@@ -271,34 +259,35 @@ export default class Halite3Design extends Design {
               break;
               
           }
-          // if we haven't continued the loop
-          // proceed to process cmd as a new command
-          let newcmd;
-          switch(cmd) {
-            case CommandName.Construct:
-              newcmd = new ConstructCommand();
-              break;
-            case CommandName.Spawn:
-              newcmd = new SpawnCommand();
-              break;
-            case CommandName.Move:
-              newcmd = new MoveCommand();
-              break;
-            default:
-              // this agent should be terminated
-              match.throw(id, new MatchError(`Player - ${id} sent a erroneous command of ${cmd}. terminating player`));
-              game.store.players.get(id).terminate();
-              continue loop;
-          }
-          lastcmds.push(newcmd);
-          commandsMap.set(id, lastcmds);
         }
+        // if we haven't continued the loop
+        // proceed to process cmd as a new command
+        let newcmd;
+        switch(cmd) {
+          case CommandName.Construct:
+            newcmd = new ConstructCommand();
+            break;
+          case CommandName.Spawn:
+            newcmd = new SpawnCommand();
+            
+            break;
+          case CommandName.Move:
+            newcmd = new MoveCommand();
+            break;
+          default:
+            // this agent should be terminated
+            match.throw(id, new MatchError(`Player - ${id} sent a erroneous command of ${cmd}. terminating player`));
+            game.store.players.get(id).terminate();
+            continue loop;
+        }
+        lastcmds.push(newcmd);
+        commandsMap.set(id, lastcmds);
       }
       else {
         match.throw(id, new MatchError(`ID: ${id} is terminated and not existent anymore`));
       }
     }
-
+    return commandsMap;
   }
   // in addition to halite 3 implementation, add condition for turn number
   gameEnded(match: Match): boolean {

@@ -43,8 +43,8 @@ game.initialize().then(async () => {
             !gameMap.get(me.shipyard).isOccupied) {
             commandQueue.push(me.shipyard.spawn());
         }
-        console.error(commandQueue);
-        console.error(`Ships: ${me.getShips().length}`);
+        // console.error(commandQueue);
+        // console.error(`Ships: ${me.getShips().length}`);
         await game.endTurn(commandQueue);
     }
 });
