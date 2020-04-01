@@ -2,7 +2,9 @@ import * as Dimension from 'dimensions-ai';
 import Halite3Design from '../src/index';
 
 
-let halite = new Halite3Design('Domination');
+let halite = new Halite3Design('Domination', {
+  commandDelimiter: ' '
+});
 let myDimension = Dimension.create(halite, 'Domination', Dimension.Logger.LEVEL.ALL);
 
 let botSources = [];

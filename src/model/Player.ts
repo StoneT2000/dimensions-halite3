@@ -32,7 +32,8 @@ export class Player extends Enumerated<_Player>{
 
   constructor(id: PlayerID, factory: Location) {
     super(id)
-    this.factory = factory;
+    // don't store a ref, store the place
+    this.factory = new Location(JSON.parse(JSON.stringify(factory.x)), JSON.parse(JSON.stringify(factory.y)));
     
   }
   to_json() {

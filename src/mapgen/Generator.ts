@@ -23,8 +23,8 @@ export class Generator {
 
     // constant places
     for (let i = 0; i < numPlayers; i++) {
-      let player_factory_x = i * 2;
-      let player_factory_y = i * 2;
+      let player_factory_x = (i * 6) % map.width;
+      let player_factory_y = (i * 6) % map.height;
       map.factories.push(new Location(player_factory_x, player_factory_y));
     }
   }

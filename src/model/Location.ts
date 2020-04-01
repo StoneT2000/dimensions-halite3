@@ -33,4 +33,7 @@ export class Location {
       y: this.y
     });
   }
+  toString() {
+    return `(${this.x}, ${this.y})`
+  }
 }

@@ -8,6 +8,7 @@ import { Cell } from "../model/Cell";
 import { Energy } from "../model/Units";
 import { Dropoff } from "../model/Dropoff";
 import { Constants } from "../Constants";
+import { Match } from "dimensions-ai";
 
 export abstract class BaseTransaction {
   // commit the transaction / perform it and update state
@@ -34,7 +35,7 @@ abstract class Transaction<CommandType> extends BaseTransaction {
     l.push(command);
     this.commands.set(player.id, l);
   }
-  constructor(public store: Store, public map: GameMap) {
+  constructor(public store: Store, public map: GameMap, public match: Match) {
     super(store, map);
     this.store.players.forEach((player) => {
       this.commands.set(player.id, []);
@@ -49,8 +50,8 @@ abstract class Transaction<CommandType> extends BaseTransaction {
 
 }
 export class MoveTransaction extends Transaction<MoveCommand> {
-  constructor(store: Store, map: GameMap) {
-    super(store, map);
+  constructor(store: Store, map: GameMap, match: Match) {
+    super(store, map, match);
   }
   check() {
     let success = true;
@@ -60,6 +61,7 @@ export class MoveTransaction extends Transaction<MoveCommand> {
         // Entity is not valid
         if (!player.has_entity(command.entity)) {
           // error_generated<EntityNotFoundError<MoveCommand>>(player_id, command);
+          this.match.log.warn(`Player ${player_id} - Entity: ${command.entity} not found`);
           success = false;
         }
       });
@@ -80,7 +82,7 @@ export class MoveTransaction extends Transaction<MoveCommand> {
         if (command.direction == Direction.Still) {
           continue;
         }
-        let location = player.get_entity_location(command.entity);
+        const location = player.get_entity_location(command.entity); // note, for some reason this location is referencing the same memeory as player.factory
         let source = this.map.atLocation(location);
         let entity = this.store.get_entity(command.entity);
 
@@ -94,6 +96,7 @@ export class MoveTransaction extends Transaction<MoveCommand> {
           // Entity does not have enough energy, ignore command.
           // error_generated<InsufficientEnergyError<MoveCommand>>(player_id, command, entity.energy,
           //                                                       required, !Constants::get().STRICT_ERRORS);
+          this.match.log.warn(`Player ${player_id} - Entity: ${entity.id} does not have enough energy`);
           continue;
         }
         causes.set(command.entity, command);
@@ -101,11 +104,17 @@ export class MoveTransaction extends Transaction<MoveCommand> {
         entity.energy -= required;
         // Remove the entity from its source.
         source.entity = null;
-        this.map.move_location(location, command.direction);
+        // console.log(`removing entity ${command.entity} from `,location.x, location.y, 'factory at', player.factory.to_json());
+
+        // this.map.move_location(location, command.direction); instead we do
+        let destLoc = new Location(location.x, location.y);
+        this.map.move_location(destLoc, command.direction);
+        // console.log('entity moved to', destLoc.x, destLoc.y, 'factory at', player.factory.to_json());
         // Mark it as interested in the destination.
-        let arr = destinations.get(location);
+        let arr = [];
+        if (destinations.has(location)) {arr = destinations.get(destLoc);}
         arr.push(command.entity);
-        destinations.set(location, arr);
+        destinations.set(destLoc, arr);
         // Take it from its owner.
         // Do not mark the entity as removed in the game yet.
         this.store.get_player(entity.owner).remove_entity(command.entity);
@@ -135,12 +144,18 @@ export class MoveTransaction extends Transaction<MoveCommand> {
         entities.forEach((entity_id) => {
           let entity = this.store.get_entity(entity_id);
           collision_ids.push(entity_id);
-          let arr1 = self_collisions.get(entity.owner);
+
+          // self_collisions[entity.owner].emplace_back(entity_id);
+          let arr1 = [];
+          if (self_collisions.has(entity.owner)) {arr1 = self_collisions.get(entity.owner);}
           arr1.push(entity_id);
           self_collisions.set(entity.owner, arr1);
+
           if (causes.has(entity_id)) {
             let cause = causes.get(entity_id);
-            let arr2 = self_collision_commands.get(entity.owner);
+            // self_collision_commands[entity.owner].emplace_back(cause->second);
+            let arr2 = [];
+            if (self_collision_commands.has(entity.owner)) {arr2 = self_collision_commands.get(entity.owner);}
             arr2.push(cause);
             self_collision_commands.set(entity.owner, arr2);
           }
@@ -157,6 +172,7 @@ export class MoveTransaction extends Transaction<MoveCommand> {
             // error_generated<SelfCollisionError<MoveCommand>>(player_id, first, context, destination,
             //                                                   self_collision_entities,
             //                                                   !Constants::get().STRICT_ERRORS);
+            this.match.log.warn(`Player ${player_id} - Entities ${self_collision_entities} self collided at ${destination.toString()}`);
           }
         })
         // When generating the event, HaliteImpl will record
@@ -184,14 +200,14 @@ export class MoveTransaction extends Transaction<MoveCommand> {
   
 }
 export class SpawnTransaction extends Transaction<SpawnCommand> {
-  constructor(store: Store, map: GameMap) {
-    super(store, map);
+  constructor(store: Store, map: GameMap, match: Match) {
+    super(store, map, match);
   }
   check() {
     let success = true;
     // Only one spawn per turn
     let occurences: Set<PlayerID> = new Set();
-    // std::unordered_set<Player::id_type> occurrences;
+    // std::unordered_set<Player::id_type> occurrences; ^^^
     const MAX_SPAWNS_PER_TURN = 1;
     this.commands.forEach((spawns, player_id) => {
       if (spawns.length > MAX_SPAWNS_PER_TURN) {
@@ -208,6 +224,7 @@ export class SpawnTransaction extends Transaction<SpawnCommand> {
         //     context.push_back(spawn);
         // }
         // error_generated<ExcessiveSpawnsError>(player_id, illegal, context);
+        this.match.log.warn(`Player ${player_id} - Tried to spawn too many ships`);
       }
     });
     return success;
@@ -220,10 +237,12 @@ export class SpawnTransaction extends Transaction<SpawnCommand> {
         let player = this.store.get_player(player_id);
         player.energy -= cost;
         let cell = this.map.atLocation(player.factory);
+
         let entity = this.store.new_entity(0, player.id);
         player.add_entity(entity.id, player.factory);
         this.entity_updated(entity.id);
         // event_generated<SpawnEvent>(player.factory, 0, player.id, entity.id);
+
         if (cell.entity == null) {
           cell.entity = entity.id;
         } else {
@@ -232,11 +251,12 @@ export class SpawnTransaction extends Transaction<SpawnCommand> {
           let existing_player = this.store.get_player(existing_entity.owner);
           let owner = this.store.get_player(cell.owner);
 
-          // if (existing_entity.owner == cell.owner) {
-          //     error_generated<SelfCollisionError<SpawnCommand>>(player_id, spawn, ErrorContext(), player.factory,
-          //                                                       std::vector<Entity::id_type>{cell.entity, entity.id},
-          //                                                       !Constants::get().STRICT_ERRORS);
-          // }
+          if (existing_entity.owner == cell.owner) {
+              // error_generated<SelfCollisionError<SpawnCommand>>(player_id, spawn, ErrorContext(), player.factory,
+              //                                                   std::vector<Entity::id_type>{cell.entity, entity.id},
+              //                                                   !Constants::get().STRICT_ERRORS);
+              this.match.log.warn(`Player ${player_id} - Entities ${existing_entity.id} self collided with ${cell.entity} at player factory: (${player.factory.toString()})`);
+          }
           // event_generated<CollisionEvent>(owner.factory, std::vector<Entity::id_type>{cell.entity, entity.id});
 
           // Use dump_energy in case the collision was from a
@@ -253,8 +273,8 @@ export class SpawnTransaction extends Transaction<SpawnCommand> {
   }
 }
 export class ConstructTransaction extends Transaction<ConstructCommand> {
-  constructor(store: Store, map: GameMap) {
-    super(store, map);
+  constructor(store: Store, map: GameMap, match: Match) {
+    super(store, map, match);
   }
   check() {
     let success = true;
@@ -264,6 +284,7 @@ export class ConstructTransaction extends Transaction<ConstructCommand> {
         if (!player.has_entity(command.entity)) {
           // not valid entity, cant construct
           //error_generated<EntityNotFoundError<ConstructCommand>>(player_id, command);
+          this.match.log.warn(`Player ${player_id} - Can't construct with unowned/unkown entity ${command.entity}`);
           success = false;
         }
         else {
@@ -272,6 +293,7 @@ export class ConstructTransaction extends Transaction<ConstructCommand> {
           if (cell.owner != null) {
             // cell is already owned
             //error_generated<CellOwnedError<ConstructCommand>>(player_id, command, location, cell.owner);
+            this.match.log.warn(`Player ${player_id} - Can't construct on cell ${location.toString()} owned by ${cell.owner}`);
             success = false;
           }
         }
@@ -315,8 +337,8 @@ export class ConstructTransaction extends Transaction<ConstructCommand> {
   }
 }
 export class DumpTransaction extends Transaction<NoCommand> {
-  constructor(store: Store, map: GameMap) {
-    super(store, map);
+  constructor(store: Store, map: GameMap, match: Match) {
+    super(store, map, match);
   }
   check(): boolean {
     return true;

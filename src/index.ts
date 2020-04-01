@@ -214,7 +214,7 @@ export default class Halite3Design extends Design {
       game.store.changed_cells.clear();
       // from this commands map, create transactions of which we will check each players transactions
       // we will create a single CommandTransactions object compose of all player commands
-      let transaction = new CommandTransaction(game.store, game.map);
+      let transaction = new CommandTransaction(game.store, game.map, match);
       // std::unordered_set<Player::id_type> offenders;
       let offenders = new Set();
 
@@ -231,9 +231,9 @@ export default class Halite3Design extends Design {
 
       if (transaction.check()) {
         transaction.commit();
-        console.log(game.store.changed_entities);
-        console.log(game.store.changed_cells);
-        // console.log(game.store.players.get(0).entities);
+        console.log(' Changed entities', game.store.changed_entities);
+        console.log('changed cells', game.store.changed_cells);
+
         if (Constants.STRICT_ERRORS) {
           // if (!offenders.empty()) {
           //   std::ostringstream stream;
@@ -292,7 +292,7 @@ export default class Halite3Design extends Design {
               //@ts-ignore
               else if (lastcmd.direction == null) {
                 //@ts-ignore
-                lastcmd.direction = Direction[cmd];
+                lastcmd.direction = cmd;
                 continue loop;
               }
               break;
@@ -338,7 +338,6 @@ export default class Halite3Design extends Design {
         match.throw(id, new MatchError(`ID: ${id} is terminated and not existent anymore`));
       }
     }
-    console.log('commandsmap', commandsMap);
     return commandsMap;
   }
   // in addition to halite 3 implementation, add condition for turn number

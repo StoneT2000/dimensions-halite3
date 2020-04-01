@@ -6,6 +6,7 @@ import { DumpTransaction, ConstructTransaction, MoveTransaction, SpawnTransactio
 import { Command, MoveCommand, ConstructCommand, SpawnCommand } from "./Command";
 import { Energy } from "../model/Units";
 import { Constants } from "../Constants";
+import { Match } from "dimensions-ai";
 
 export enum CommandName {
   Move = 'm',
@@ -39,11 +40,11 @@ export class CommandTransaction {
   spawn_transaction: SpawnTransaction;         /**< The SpawnCommand transaction. */
 
   public all_transactions: Array<BaseTransaction> = [];
-  constructor(public store: Store, public map: GameMap) {
-    this.dump_transaction = new DumpTransaction(store, map);
-    this.construct_transaction = new ConstructTransaction(store, map);
-    this.move_transaction = new MoveTransaction(store, map);
-    this.spawn_transaction = new SpawnTransaction(store, map);
+  constructor(public store: Store, public map: GameMap, public match: Match) {
+    this.dump_transaction = new DumpTransaction(store, map, match);
+    this.construct_transaction = new ConstructTransaction(store, map, match);
+    this.move_transaction = new MoveTransaction(store, map, match);
+    this.spawn_transaction = new SpawnTransaction(store, map, match);
     // store refs to transactions kinds
     this.all_transactions.push(
       this.dump_transaction, 
@@ -121,17 +122,19 @@ export class CommandTransaction {
   addCommand(player: Player, command: Command): void {
     switch(command.name) {
       case 'move':
+        this.match.log.system(`Player: ${player.id} - Added move Command: Entity: ${(<MoveCommand>command).entity} moving ${(<MoveCommand>command).direction}`)
         if (this.check_ownership(player, (<MoveCommand>command).entity, command)) {
           this.add_occurrence((<MoveCommand>command).entity, command);
           this.move_transaction.add_command(player, (<MoveCommand>command));
         }
         break;
       case 'spawn':
+        this.match.log.system(`Player: ${player.id} - Added Spawn Command`);
         this.add_expense(player, (<SpawnCommand>command), Constants.NEW_ENTITY_ENERGY_COST);
-        console.log('Spawn transaction adding:' , command);
         this.spawn_transaction.add_command(player, (<SpawnCommand>command));
         break;
       case 'construct':
+        this.match.log.system(`Player: ${player.id} - Added Construct Command: From entity: ${(<ConstructCommand>command).entity}`);
         if (this.check_ownership(player, (<ConstructCommand>command).entity, command)) {
           this.add_occurrence((<ConstructCommand>command).entity, command);
           let cost = Constants.DROPOFF_COST;
@@ -155,6 +158,7 @@ export class CommandTransaction {
     }
   }
   check(): boolean {
+    this.match.log.system(`Checking all transactions`);
     let success = true;
     // Check that player didn't try to command enemy ships
     this.move_ownership_faulty.forEach((misowned, player_id) => {
@@ -197,6 +201,7 @@ export class CommandTransaction {
   }
   /** If the transaction may be committed, commit the transaction. */
   commit() {
+    this.match.log.system(`Committing all transactions`);
     this.all_transactions.forEach((transaction) => {
       transaction.commit();
     })

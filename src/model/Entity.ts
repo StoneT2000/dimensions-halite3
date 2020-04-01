@@ -20,6 +20,7 @@ export class Entity extends Enumerated<_Entity> {
   }
 }
 
+let last_id = 0;
 // entity, player, etc. factories
 export class Factory<T> {
   public last_id: number = 0;
@@ -28,9 +29,12 @@ export class Factory<T> {
   }
   make(...args): T {
     //@ts-ignore
-    return new this.type(this.last_id++, ...args)
+    return new this.type(last_id++, ...args)
   }
   make_with_id(id, ...args): T {
+    if (id > last_id) {
+      last_id = id + 1;
+    }
     //@ts-ignore
     return new this.type(id, ...args);
   }l
