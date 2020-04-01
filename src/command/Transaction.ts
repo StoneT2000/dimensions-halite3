@@ -8,7 +8,7 @@ import { Cell } from "../model/Cell";
 import { Energy } from "../model/Units";
 import { Dropoff } from "../model/Dropoff";
 import { Constants } from "../Constants";
-import { Match } from "dimensions-ai";
+import { Match, MatchError } from "dimensions-ai";
 
 export abstract class BaseTransaction {
   // commit the transaction / perform it and update state
@@ -96,7 +96,8 @@ export class MoveTransaction extends Transaction<MoveCommand> {
           // Entity does not have enough energy, ignore command.
           // error_generated<InsufficientEnergyError<MoveCommand>>(player_id, command, entity.energy,
           //                                                       required, !Constants::get().STRICT_ERRORS);
-          this.match.log.warn(`Player ${player_id} - Entity: ${entity.id} does not have enough energy`);
+          // this.match.log.warn(`Player ${player_id} - Entity: ${entity.id} does not have enough energy`);
+          this.match.throw(player_id, new MatchError(`Player ${player_id} - Entity: ${entity.id} does not have enough energy`));
           continue;
         }
         causes.set(command.entity, command);
@@ -172,7 +173,7 @@ export class MoveTransaction extends Transaction<MoveCommand> {
             // error_generated<SelfCollisionError<MoveCommand>>(player_id, first, context, destination,
             //                                                   self_collision_entities,
             //                                                   !Constants::get().STRICT_ERRORS);
-            this.match.log.warn(`Player ${player_id} - Entities ${self_collision_entities} self collided at ${destination.toString()}`);
+            this.match.throw(player_id, new MatchError(`Player ${player_id} - Entities ${self_collision_entities} self collided at ${destination.toString()}`));
           }
         })
         // When generating the event, HaliteImpl will record
@@ -224,7 +225,7 @@ export class SpawnTransaction extends Transaction<SpawnCommand> {
         //     context.push_back(spawn);
         // }
         // error_generated<ExcessiveSpawnsError>(player_id, illegal, context);
-        this.match.log.warn(`Player ${player_id} - Tried to spawn too many ships`);
+        this.match.throw(player_id, new MatchError(`Player ${player_id} - Tried to spawn too many ships`));
       }
     });
     return success;
@@ -255,7 +256,7 @@ export class SpawnTransaction extends Transaction<SpawnCommand> {
               // error_generated<SelfCollisionError<SpawnCommand>>(player_id, spawn, ErrorContext(), player.factory,
               //                                                   std::vector<Entity::id_type>{cell.entity, entity.id},
               //                                                   !Constants::get().STRICT_ERRORS);
-              this.match.log.warn(`Player ${player_id} - Entities ${existing_entity.id} self collided with ${cell.entity} at player factory: (${player.factory.toString()})`);
+              this.match.throw(player_id, new MatchError(`Player ${player_id} - Entities ${existing_entity.id} self collided with ${cell.entity} at player factory: (${player.factory.toString()})`));
           }
           // event_generated<CollisionEvent>(owner.factory, std::vector<Entity::id_type>{cell.entity, entity.id});
 
@@ -284,7 +285,7 @@ export class ConstructTransaction extends Transaction<ConstructCommand> {
         if (!player.has_entity(command.entity)) {
           // not valid entity, cant construct
           //error_generated<EntityNotFoundError<ConstructCommand>>(player_id, command);
-          this.match.log.warn(`Player ${player_id} - Can't construct with unowned/unkown entity ${command.entity}`);
+          this.match.throw(player_id, new MatchError(`Player ${player_id} - Can't construct with unowned/unkown entity ${command.entity}`));
           success = false;
         }
         else {
@@ -293,7 +294,7 @@ export class ConstructTransaction extends Transaction<ConstructCommand> {
           if (cell.owner != null) {
             // cell is already owned
             //error_generated<CellOwnedError<ConstructCommand>>(player_id, command, location, cell.owner);
-            this.match.log.warn(`Player ${player_id} - Can't construct on cell ${location.toString()} owned by ${cell.owner}`);
+            this.match.throw(player_id, new MatchError(`Player ${player_id} - Can't construct on cell ${location.toString()} owned by ${cell.owner}`));
             success = false;
           }
         }
