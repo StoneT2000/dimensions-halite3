@@ -3,11 +3,11 @@ import { Command, MoveCommand, SpawnCommand, ConstructCommand, NoCommand } from 
 import { Store } from "../Store";
 import { Map as GameMap } from "../model/Map";
 import { Entity, EntityID } from "../model/Entity";
-import { Location } from "../model/Location";
+import { Location, Direction } from "../model/Location";
 import { Cell } from "../model/Cell";
 import { Energy } from "../model/Units";
 import { Dropoff } from "../model/Dropoff";
-import { constants } from "../constants";
+import { Constants } from "../Constants";
 
 abstract class Transaction<CommandType> {
   // commit the transaction / perform it and update state
@@ -45,25 +45,134 @@ export class MoveTransaction extends Transaction<MoveCommand> {
   }
   check() {
     let success = true;
-    for (let i = 0; i < this.commands.length; i++) {
-      let command: MoveCommand = this.commands[i];
-
-    }
-    // for (const auto &[player_id, moves] : commands) {
-    //     auto &player = store.get_player(player_id);
-    //     for (const MoveCommand &command : moves) {
-    //         // Entity is not valid
-    //         if (!player.has_entity(command.entity)) {
-    //             error_generated<EntityNotFoundError<MoveCommand>>(player_id, command);
-    //             success = false;
-    //         }
-    //     }
-    // }
+    this.commands.forEach((moves, player_id) => {
+      let player = this.store.get_player(player_id);
+      moves.forEach((command) => {
+        // Entity is not valid
+        if (!player.has_entity(command.entity)) {
+          // error_generated<EntityNotFoundError<MoveCommand>>(player_id, command);
+          success = false;
+        }
+      });
+    });
     return success;
   }
   commit() {
+    // Map from destination location to all the entities that want to go there.
+    let destinations: Map<Location, Array<EntityID>> = new Map();
+    /** Map from entity to the command that caused it to move. */
+    let causes: Map<EntityID, MoveCommand> = new Map();
+    // Lift each entity that is moving from the grid.
+    this.commands.forEach((moves, player_id) => {
+      let player = this.store.get_player(player_id);
+      for (let i = 0; i < moves.length; i++) {
+        let command = moves[i];
+        // If entity remained still, treat it as a no-op command.
+        if (command.direction == Direction.Still) {
+          continue;
+        }
+        let location = player.get_entity_location(command.entity);
+        let source = this.map.atLocation(location);
+        let entity = this.store.get_entity(command.entity);
 
+        // Check if entity has enough energy
+        const cost = entity.is_inspired ?
+            Constants.INSPIRED_MOVE_COST_RATIO :
+            Constants.MOVE_COST_RATIO;
+        let required: Energy = Math.floor(source.energy / cost);
+
+        if (entity.energy < required) {
+          // Entity does not have enough energy, ignore command.
+          // error_generated<InsufficientEnergyError<MoveCommand>>(player_id, command, entity.energy,
+          //                                                       required, !Constants::get().STRICT_ERRORS);
+          continue;
+        }
+        causes.set(command.entity, command);
+        // Decrease the entity's energy.
+        entity.energy -= required;
+        // Remove the entity from its source.
+        source.entity = null;
+        this.map.move_location(location, command.direction);
+        // Mark it as interested in the destination.
+        let arr = destinations.get(location);
+        arr.push(command.entity);
+        destinations.set(location, arr);
+        // Take it from its owner.
+        // Do not mark the entity as removed in the game yet.
+        this.store.get_player(entity.owner).remove_entity(command.entity);
+      }
+    });
+    // If there are already unmoving entities at the destination, lift them off too.
+    destinations.forEach((_, destination) => {
+      let cell = this.map.atLocation(destination);
+      if (cell.entity != null) {
+        let arr = destinations.get(destination);
+        arr.push(cell.entity);
+        destinations.set(destination, arr);
+        this.store.get_player(this.store.get_entity(cell.entity).owner).remove_entity(cell.entity);
+        cell.entity = null;
+      }
+    });
+    // If only one entity is interested in a destination, place it there.
+    // Otherwise, destroy all interested entities.
+    const MAX_ENTITIES_PER_CELL = 1;
+    destinations.forEach((entities, destination) => {
+      let cell = this.map.atLocation(destination);
+      if (entities.length > MAX_ENTITIES_PER_CELL) {
+        // Destroy all interested entities and collect them in replay info
+        let collision_ids: Array<EntityID> = [];
+        let self_collisions: Map<PlayerID, Array<EntityID>> = new Map();
+        let self_collision_commands: Map<PlayerID, Array<MoveCommand>> = new Map();
+        entities.forEach((entity_id) => {
+          let entity = this.store.get_entity(entity_id);
+          collision_ids.push(entity_id);
+          let arr1 = self_collisions.get(entity.owner);
+          arr1.push(entity_id);
+          self_collisions.set(entity.owner, arr1);
+          if (causes.has(entity_id)) {
+            let cause = causes.get(entity_id);
+            let arr2 = self_collision_commands.get(entity.owner);
+            arr2.push(cause);
+            self_collision_commands.set(entity.owner, arr2);
+          }
+          // Don't delete entities/dump energy until after
+          // generating the event, so that HaliteImpl has a
+          // chance to collect statistics.
+          
+        });
+        self_collisions.forEach((self_collision_entities, player_id) => {
+          if (self_collision_entities.length > MAX_ENTITIES_PER_CELL) {
+            let commands = self_collision_commands.get(player_id);
+            let first = commands.shift();
+            // const ErrorContext context{commands.begin(), commands.end()};
+            // error_generated<SelfCollisionError<MoveCommand>>(player_id, first, context, destination,
+            //                                                   self_collision_entities,
+            //                                                   !Constants::get().STRICT_ERRORS);
+          }
+        })
+        // When generating the event, HaliteImpl will record
+        // statistics.
+        // event_generated<CollisionEvent>(destination, collision_ids);
+        // Now we can delete the entities.
+        collision_ids.forEach((entity_id) => {
+          let entity = this.store.get_entity(entity_id);
+          // Dump the energy.
+          dump_energy(this.store, entity, destination, cell, entity.energy);
+          this.store.delete_entity(entity_id);
+        })
+
+        this.cell_updated(destination);
+      } else {
+        let entity_id = entities[];
+        // Place it on the map.
+        cell.entity = entity_id;
+        // Give it back to the owner.
+        this.store.get_player(this.store.get_entity(entity_id).owner).add_entity(entity_id, destination);
+        this.entity_updated(entity_id);
+      }
+    });
   }
+  
 }
 export class SpawnTransaction extends Transaction<SpawnCommand> {
   constructor(store: Store, map: GameMap) {
@@ -104,17 +213,17 @@ export class ConstructTransaction extends Transaction<ConstructCommand> {
     return success;
   }
   commit() {
-    const cost = constants.DROPOFF_COST;
+    const cost = Constants.DROPOFF_COST;
     this.commands.forEach((constructs, player_id) => {
       let player = this.store.get_player(player_id);
       constructs.forEach((command) => {
         const entity_id = command.entity;
         const entity = this.store.get_entity(entity_id);
         const location = player.get_entity_location(entity_id);
-        let cell = map.atLocation(location);
+        let cell = this.map.atLocation(location);
 
         // Mark as owned, clear contents of cell
-        cell.owned = player;
+        cell.owner = player_id;
         player.dropoffs.push(this.store.new_dropoff(location));
         this.store.map_total_energy -= cell.energy;
 

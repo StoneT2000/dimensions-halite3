@@ -1,5 +1,5 @@
 import { Design, Match, Command, MatchStatus, Agent, Logger, MatchError } from 'dimensions-ai';
-import { constants } from './constants';
+import { Constants } from './Constants';
 
 import { Command as HCommand, MoveCommand, ConstructCommand, SpawnCommand } from './command/Command';
 import { Map as GameMap } from './model/Map';
@@ -43,7 +43,7 @@ export default class Halite3Design extends Design {
     for (let i = 0; i < match.agents.length; i++) {
       let agent = match.agents[i];
       let player = store.player_factory.make_with_id(agent.id, map.factories[i]);
-      player.energy = constants.INITIAL_ENERGY;
+      player.energy = Constants.INITIAL_ENERGY;
 
       // TODO: if given a snapshot, update values accordingly
 
@@ -91,7 +91,7 @@ export default class Halite3Design extends Design {
     let width = match.configs.initializeConfig.width;
     let height = match.configs.initializeConfig.height;
     if (match.configs.initializeConfig.game_seed) {
-      constants.game_seed = match.configs.initializeConfig.game_seed;
+      Constants.game_seed = match.configs.initializeConfig.game_seed;
     }
     let game = this.initializeGameState(match, width, height, numPlayers);
     let state: haliteState = {
@@ -101,7 +101,7 @@ export default class Halite3Design extends Design {
 
     // TODO, store map width height and constants from map gen
     // send the raw constants
-    match.sendAll(JSON.stringify(constants));
+    match.sendAll(JSON.stringify(Constants));
     
     // Send the number of players and player ID
     state.game.store.players.forEach((player: Player) => {

@@ -1,6 +1,6 @@
 // From running ./halite and logging the raw constants
 // engine stringifies and sends to bots for them to json parse
-export let constants = {
+export let Constants = {
   "CAPTURE_ENABLED": false,
   "CAPTURE_RADIUS": 3,
   "DEFAULT_MAP_HEIGHT": 64,
