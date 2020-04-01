@@ -9,12 +9,18 @@ import { Energy } from "../model/Units";
 import { Dropoff } from "../model/Dropoff";
 import { Constants } from "../Constants";
 
-abstract class Transaction<CommandType> {
+export abstract class BaseTransaction {
   // commit the transaction / perform it and update state
   abstract commit(): void;
 
   // check if we are allowed to use this transaction containing a command
   abstract check(): boolean;
+  constructor(public store: Store, public map: GameMap) {
+
+  }
+}
+abstract class Transaction<CommandType> extends BaseTransaction {
+ 
 
   commands: Map<PlayerID, Array<CommandType>> = new Map();
   /**
@@ -29,7 +35,7 @@ abstract class Transaction<CommandType> {
     this.commands.set(player.id, l);
   }
   constructor(public store: Store, public map: GameMap) {
-
+    super(store, map);
   }
   cell_updated(location: Location) {
     this.store.changed_cells.add(location);

@@ -199,25 +199,30 @@ export default class Halite3Design extends Design {
         // send this player data
       }
     });
+    let commandsMap: Map<PlayerID, Array<HCommand>> = this.getCommandsMap(match, commands);
+    match.log.system(commandsMap);
 
     // we need to store the two following changes to entities and cells make it easier to process the turn
-    game.store.changed_entities.clear();
-    game.store.changed_cells.clear();
-
+    
     // basically, first sort commands into a map of array of commands bunched appropriately due to only space delimeters
     // move: m {id} {dir}
     // construct: c {id}
     // spawn: g
-    let commandsMap: Map<PlayerID, Array<HCommand>> = this.getCommandsMap(match, commands);
-    match.log.system(commandsMap);
     
-    // from this commands map, create transactions of which we will check each players transactions
-    // we will create a single CommandTransactions object compose of all player commands
-    let transaction = new CommandTransaction(game.store, game.map);
-    game.store.players.forEach((player: Player) => {
-      
+    while(commandsMap.size != 0) {
+      game.store.changed_entities.clear();
+      game.store.changed_cells.clear();
+      // from this commands map, create transactions of which we will check each players transactions
+      // we will create a single CommandTransactions object compose of all player commands
+      let transaction = new CommandTransaction(game.store, game.map);
 
-    })
+      // let add all the commands
+      commandsMap.forEach((command_list, player_id) => {
+        command_list.forEach((command) => {
+          transaction.addCommand(command);
+        });
+      });
+    }
 
   }
   getCommandsMap(match: Match, commands: Array<Command>): Map<PlayerID, Array<HCommand>>  {
