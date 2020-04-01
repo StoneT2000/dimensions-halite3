@@ -44,6 +44,12 @@ export class CommandTransaction {
     this.construct_transaction = new ConstructTransaction(store, map);
     this.move_transaction = new MoveTransaction(store, map);
     this.spawn_transaction = new SpawnTransaction(store, map);
+    // store refs to transactions kinds
+    this.all_transactions.push(
+      this.dump_transaction, 
+      this.construct_transaction, 
+      this.move_transaction, 
+      this.spawn_transaction);
   }
   /**
    * Check that a command operates on an entity owned by the player.
@@ -142,43 +148,49 @@ export class CommandTransaction {
   }
   check(): boolean {
     let success = true;
-    // // Check that player didn't try to command enemy ships
-    // for (const auto &[player_id, misowned] : move_ownership_faulty) {
-    //     for (const auto &faulty : misowned) {
-    //         error_generated<EntityNotFoundError<MoveCommand>>(player_id, faulty);
-    //     }
-    //     success = false;
-    // }
-    // for (const auto &[player_id, misowned] : construct_ownership_faulty) {
-    //     for (const auto &faulty : misowned) {
-    //         error_generated<EntityNotFoundError<ConstructCommand>>(player_id, faulty);
-    //     }
-    //     success = false;
-    // }
+    // Check that player didn't try to command enemy ships
+    this.move_ownership_faulty.forEach((misowned, player_id) => {
+      misowned.forEach((faulty) => {
+        // error_generated<EntityNotFoundError<MoveCommand>>(player_id, faulty);
+      });
+      success = false;
+    });
+    this.construct_ownership_faulty.forEach((misowned, player_id) => {
+      misowned.forEach((faulty) => {
+        // error_generated<EntityNotFoundError<ConstructCommand>>(player_id, faulty);
+      });
+      success = false;
+    });
 
-    // // Check that expenses are not too high
-    // for (auto &[player_id, faulty] : expenses_first_faulty) {
-    //     const auto &player = store.get_player(player_id);
-    //     auto &[energy, context] = expenses[player_id];
-    //     error_generated<PlayerInsufficientEnergyError>(player_id, faulty, context, player.energy, energy);
-    //     success = false;
-    // }
-    // // Check that each entity is operated on at most once
-    // for (auto &[entity_id, faulty] : occurrences_first_faulty) {
-    //     const auto owner = store.get_entity(entity_id).owner;
-    //     auto &[_, context] = occurrences[entity_id];
-    //     error_generated<ExcessiveCommandsError>(owner, faulty, context, entity_id);
-    //     success = false;
-    // }
-    // // Check that each transaction can succeed individually
-    // for (BaseTransaction &transaction : all_transactions) {
-    //     if (!transaction.check()) {
-    //         success = false;
-    //     }
-    // }
+
+    // Check that expenses are not too high
+    this.expenses_first_faulty.forEach((faulty, player_id) => {
+      const player = this.store.get_player(player_id);
+      // auto &[energy, context] = expenses[player_id];
+      let {energy, errorContext} = this.expenses.get(player_id);
+      // error_generated<PlayerInsufficientEnergyError>(player_id, faulty, context, player.energy, energy);
+      success = false;
+    });
+    // Check that each entity is operated on at most once
+    this.occurrences_first_faulty.forEach((faulty, entity_id) => {
+      const owner = this.store.get_entity(entity_id).owner;
+      // auto &[_, context] = occurrences[entity_id];
+      let {times, errorContext} = this.occurences.get(entity_id);
+      // error_generated<ExcessiveCommandsError>(owner, faulty, context, entity_id);
+      success = false;
+    });
+    // Check that each transaction can succeed individually
+    this.all_transactions.forEach((transaction) => {
+      if (!transaction.check()) {
+        success = false;
+      }
+    })
     return success;
   }
+  /** If the transaction may be committed, commit the transaction. */
   commit() {
-
+    this.all_transactions.forEach((transaction) => {
+      transaction.commit();
+    })
   }
 }
