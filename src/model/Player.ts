@@ -18,9 +18,9 @@ export class Player extends Enumerated<_Player>{
   //   bool terminated;                     /**< Whether the player was kicked out of the game. */
   //   bool can_play = true;                /**< Whether the player has sufficient resources remaining. */
 
-  name: string
+  name: string = '';
   factory: Location
-  dropoffs: Array<Dropoff>
+  dropoffs: Array<Dropoff> =[]
   energy: Energy = 0;
   factory_energy_deposited: Energy = 0;
   total_energy_deposited: Energy = 0;
@@ -43,6 +43,10 @@ export class Player extends Enumerated<_Player>{
       factory_location: this.factory,
       entities: this.entities
     });
+  }
+
+  terminate() {
+    this.terminated = true;
   }
 
   /**
