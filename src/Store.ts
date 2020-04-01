@@ -19,6 +19,8 @@ export class Store {
   dropoff_factory: Factory<Dropoff> = new Factory<Dropoff>(Dropoff);
   // std::unordered_set<Location> changed_cells{}; /**< The cells changed on the last turn. */
   public changed_cells: Set<Location> = new Set();
+  
+  public changed_entities: Set<EntityID> = new Set(); // not in halite original implementation, but makes dimension design better
 
   public map_total_energy: number = 0;
 

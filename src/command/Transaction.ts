@@ -1,5 +1,5 @@
 import { PlayerID, Player } from "../model/Player";
-import { Command } from "./Command";
+import { Command, MoveCommand, SpawnCommand, ConstructCommand, NoCommand } from "./Command";
 import { Store } from "../Store";
 import { Map as GameMap } from "../model/Map";
 import { Entity, EntityID } from "../model/Entity";
@@ -8,20 +8,21 @@ import { Cell } from "../model/Cell";
 import { Energy } from "../model/Units";
 import { Dropoff } from "../model/Dropoff";
 
-abstract class BaseTransaction {
+abstract class Transaction<CommandType> {
   // commit the transaction / perform it and update state
   abstract commit(): void;
 
   // check if we are allowed to use this transaction containing a command
   abstract check(): boolean;
 
-  commands: Map<PlayerID, Array<Command>> = new Map();
+  commands: Map<PlayerID, Array<CommandType>> = new Map();
   /**
    * Add a command to the transaction.
    * @param player The player executing the command.
    * @param command The command to be executed.
    */
-  add_command(player: Player, command: Command): void {
+  add_command(player: Player, command: CommandType): void {
+    // put a command in the end of the corresponding commandtype array for a player
     let l = this.commands.get(player.id);
     l.push(command);
     this.commands.set(player.id, l);
@@ -29,13 +30,24 @@ abstract class BaseTransaction {
   constructor(public store: Store, public map: GameMap) {
 
   }
+  cell_updated(location: Location) {
+    this.store.changed_cells.add(location);
+  }
+  entity_updated(entity_id: EntityID) {
+    this.store.changed_entities.add(entity_id);
+  }
+
 }
-export class MoveTransaction extends BaseTransaction {
+export class MoveTransaction extends Transaction<MoveCommand> {
   constructor(store: Store, map: GameMap) {
     super(store, map);
   }
   check() {
     let success = true;
+    for (let i = 0; i < this.commands.length; i++) {
+      let command: MoveCommand = this.commands[i];
+
+    }
     // for (const auto &[player_id, moves] : commands) {
     //     auto &player = store.get_player(player_id);
     //     for (const MoveCommand &command : moves) {
@@ -52,7 +64,7 @@ export class MoveTransaction extends BaseTransaction {
 
   }
 }
-export class SpawnTransaction extends BaseTransaction {
+export class SpawnTransaction extends Transaction<SpawnCommand> {
   constructor(store: Store, map: GameMap) {
     super(store, map);
   }
@@ -63,18 +75,38 @@ export class SpawnTransaction extends BaseTransaction {
     
   }
 }
-export class ConstructTransaction extends BaseTransaction {
+export class ConstructTransaction extends Transaction<ConstructCommand> {
   constructor(store: Store, map: GameMap) {
     super(store, map);
   }
   check() {
-    return true;
+    let success = true;
+    this.commands.forEach((constructs, player_id) => {
+      let player = this.store.get_player(player_id);
+      constructs.forEach((command) => {
+        if (!player.has_entity(command.entity)) {
+          // not valid entity, cant construct
+          //error_generated<EntityNotFoundError<ConstructCommand>>(player_id, command);
+          success = false;
+        }
+        else {
+          let location = player.get_entity_location(command.entity);
+          let cell = this.map.atLocation(location);
+          if (cell.owner != null) {
+            // cell is already owned
+            //error_generated<CellOwnedError<ConstructCommand>>(player_id, command, location, cell.owner);
+            success = false;
+          }
+        }
+      });
+    })
+    return success;
   }
   commit() {
     
   }
 }
-export class DumpTransaction extends BaseTransaction {
+export class DumpTransaction extends Transaction<NoCommand> {
   constructor(store: Store, map: GameMap) {
     super(store, map);
   }
@@ -90,6 +122,8 @@ export class DumpTransaction extends BaseTransaction {
       let cell = this.map.atLocation(location);
       if (cell.owner == entity.owner) {
         dump_energy(this.store, entity, location, cell, entity.energy);
+        this.cell_updated(location);
+        this.entity_updated(entity.id);
       }
     })
   }

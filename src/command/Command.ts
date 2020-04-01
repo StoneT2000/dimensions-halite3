@@ -26,3 +26,6 @@ export class SpawnCommand extends Command {
     super();
   }
 }
+export class NoCommand extends Command {
+  public name: 'none'
+}

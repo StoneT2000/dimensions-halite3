@@ -8,7 +8,7 @@ import { Player, PlayerID } from './model/Player';
 import { Generator } from './mapgen/Generator';
 import { Factory, Entity, EntityID } from './model/Entity';
 import { Direction, Location } from './model/Location';
-import { CommandName } from './command/CommandTransaction';
+import { CommandName, CommandTransaction } from './command/CommandTransaction';
 import { Dropoff } from './model/Dropoff';
 
 type haliteState = {
@@ -143,8 +143,8 @@ export default class Halite3Design extends Design {
       }
       match.log.info(`Player initialization complete`);
     }
-    
-    /** Updating stage
+
+    /** Updating stage. Halite does it by sending updated frame data to each agent, and then processing their commands and advancing the turn. We will process commands first (empty at first), send updated frames return MatchStatus.RUNNING, then back to process commands 
      * 1. Process turn, update match state
      * 2. Send new match state to agents
      * 3. 
@@ -200,8 +200,8 @@ export default class Halite3Design extends Design {
       }
     });
 
-    // Process valid player commands, removing (terminating) players if they submit invalid ones.
-    let changed_entities: Set<EntityID> = new Set();
+    // we need to store the two following changes to entities and cells make it easier to process the turn
+    game.store.changed_entities.clear();
     game.store.changed_cells.clear();
 
     // basically, first sort commands into a map of array of commands bunched appropriately due to only space delimeters
@@ -209,7 +209,15 @@ export default class Halite3Design extends Design {
     // construct: c {id}
     // spawn: g
     let commandsMap: Map<PlayerID, Array<HCommand>> = this.getCommandsMap(match, commands);
-    console.log(commandsMap);
+    match.log.system(commandsMap);
+    
+    // from this commands map, create transactions of which we will check each players transactions
+    // we will create a single CommandTransactions object compose of all player commands
+    let transaction = new CommandTransaction(game.store, game.map);
+    game.store.players.forEach((player: Player) => {
+      
+
+    })
 
   }
   getCommandsMap(match: Match, commands: Array<Command>): Map<PlayerID, Array<HCommand>>  {
