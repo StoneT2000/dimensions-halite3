@@ -7,6 +7,7 @@ import { Location } from "../model/Location";
 import { Cell } from "../model/Cell";
 import { Energy } from "../model/Units";
 import { Dropoff } from "../model/Dropoff";
+import { constants } from "../constants";
 
 abstract class Transaction<CommandType> {
   // commit the transaction / perform it and update state
@@ -103,7 +104,38 @@ export class ConstructTransaction extends Transaction<ConstructCommand> {
     return success;
   }
   commit() {
-    
+    const cost = constants.DROPOFF_COST;
+    this.commands.forEach((constructs, player_id) => {
+      let player = this.store.get_player(player_id);
+      constructs.forEach((command) => {
+        const entity_id = command.entity;
+        const entity = this.store.get_entity(entity_id);
+        const location = player.get_entity_location(entity_id);
+        let cell = map.atLocation(location);
+
+        // Mark as owned, clear contents of cell
+        cell.owned = player;
+        player.dropoffs.push(this.store.new_dropoff(location));
+        this.store.map_total_energy -= cell.energy;
+
+        // Cost is reduced by cargo + halite on cell
+        const credit = cell.energy + entity.energy;
+
+        cell.energy = 0;
+        cell.entity = null;
+        // event_generated<ConstructionEvent>(location, player_id, command.entity);
+        this.cell_updated(location);
+
+        // Use dump_halite for stats tracking
+        dump_energy2(this.store, location, cell, credit);
+        // Charge player
+        player.energy -= cost;
+
+        player.remove_entity(entity_id);
+        this.store.delete_entity(entity_id);
+
+      });
+    });
   }
 }
 export class DumpTransaction extends Transaction<NoCommand> {
