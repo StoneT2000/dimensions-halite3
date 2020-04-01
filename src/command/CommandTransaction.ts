@@ -39,4 +39,45 @@ export class CommandTransaction {
     }
     return true;
   }
+  check(): boolean {
+    let success = true;
+    // // Check that player didn't try to command enemy ships
+    // for (const auto &[player_id, misowned] : move_ownership_faulty) {
+    //     for (const auto &faulty : misowned) {
+    //         error_generated<EntityNotFoundError<MoveCommand>>(player_id, faulty);
+    //     }
+    //     success = false;
+    // }
+    // for (const auto &[player_id, misowned] : construct_ownership_faulty) {
+    //     for (const auto &faulty : misowned) {
+    //         error_generated<EntityNotFoundError<ConstructCommand>>(player_id, faulty);
+    //     }
+    //     success = false;
+    // }
+
+    // // Check that expenses are not too high
+    // for (auto &[player_id, faulty] : expenses_first_faulty) {
+    //     const auto &player = store.get_player(player_id);
+    //     auto &[energy, context] = expenses[player_id];
+    //     error_generated<PlayerInsufficientEnergyError>(player_id, faulty, context, player.energy, energy);
+    //     success = false;
+    // }
+    // // Check that each entity is operated on at most once
+    // for (auto &[entity_id, faulty] : occurrences_first_faulty) {
+    //     const auto owner = store.get_entity(entity_id).owner;
+    //     auto &[_, context] = occurrences[entity_id];
+    //     error_generated<ExcessiveCommandsError>(owner, faulty, context, entity_id);
+    //     success = false;
+    // }
+    // // Check that each transaction can succeed individually
+    // for (BaseTransaction &transaction : all_transactions) {
+    //     if (!transaction.check()) {
+    //         success = false;
+    //     }
+    // }
+    return success;
+  }
+  commit() {
+
+  }
 }
