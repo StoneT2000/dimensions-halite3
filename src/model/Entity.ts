@@ -8,7 +8,7 @@ export class Entity extends Enumerated<_Entity> {
 
   public was_captured: boolean = false;
   public is_inspired: boolean = false;
-  constructor(id: class_id<_Entity>, public owner: PlayerID, public energy: Energy) {
+  constructor(id: class_id<_Entity>, public owner: PlayerID, public energy: Energy = 0) {
     super(id);
   }
   to_json() {

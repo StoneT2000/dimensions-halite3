@@ -56,6 +56,7 @@ export class Store {
    */
   new_entity(energy: Energy, owner: PlayerID): Entity {
     let entity = this.entity_factory.make(owner, energy);
+    this.entities.set(entity.id, entity);
     return entity;
   }
   /**

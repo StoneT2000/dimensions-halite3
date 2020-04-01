@@ -173,7 +173,7 @@ export default class Halite3Design extends Design {
         match.sendAll(`${dropoff.id} ${dropoff.location.x} ${dropoff.location.y}`);
       });
     })
-    // send changed cells TODO
+
     // send size of change first
     match.sendAll(`${game.store.changed_cells.size}`);
     game.store.changed_cells.forEach((location: Location)=> {
@@ -271,7 +271,7 @@ export default class Halite3Design extends Design {
         commandsMap.set(player.id, []);
       }
     });
-    
+    //FIXME:
     loop:
     for (let i = 0; i < commands.length; i++) {
       let cmd = commands[i].command;
