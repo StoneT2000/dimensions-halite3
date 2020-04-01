@@ -179,10 +179,68 @@ export class SpawnTransaction extends Transaction<SpawnCommand> {
     super(store, map);
   }
   check() {
-    return true;
+    let success = true;
+    // Only one spawn per turn
+    let occurences: Set<PlayerID> = new Set();
+    // std::unordered_set<Player::id_type> occurrences;
+    const MAX_SPAWNS_PER_TURN = 1;
+    this.commands.forEach((spawns, player_id) => {
+      if (spawns.length > MAX_SPAWNS_PER_TURN) {
+        success = false;
+        let spawns_deque = spawns;
+        // First spawn is legal
+        const legal: Command = spawns_deque.shift();
+        // Second is illegal
+        const illegal: Command = spawns_deque.shift();
+        // Remainder are in context
+        // ErrorContext context;
+        // context.push_back(legal);
+        // for (const Command &spawn : spawns_deque) {
+        //     context.push_back(spawn);
+        // }
+        // error_generated<ExcessiveSpawnsError>(player_id, illegal, context);
+      }
+    });
+    return success;
   }
   commit() {
-    
+    const constants = Constants;
+    let cost = constants.NEW_ENTITY_ENERGY_COST;
+    this.commands.forEach((spawns, player_id) => {
+      spawns.forEach((spawn) => {
+        let player = this.store.get_player(player_id);
+        player.energy -= cost;
+        let cell = this.map.atLocation(player.factory);
+        let entity = this.store.new_entity(0, player.id);
+        player.add_entity(entity.id, player.factory);
+        this.entity_updated(entity.id);
+        // event_generated<SpawnEvent>(player.factory, 0, player.id, entity.id);
+        if (cell.entity == null) {
+          cell.entity = entity.id;
+        } else {
+          // There is a collision, collide with the existing.
+          let existing_entity = this.store.get_entity(cell.entity);
+          let existing_player = this.store.get_player(existing_entity.owner);
+          let owner = this.store.get_player(cell.owner);
+
+          // if (existing_entity.owner == cell.owner) {
+          //     error_generated<SelfCollisionError<SpawnCommand>>(player_id, spawn, ErrorContext(), player.factory,
+          //                                                       std::vector<Entity::id_type>{cell.entity, entity.id},
+          //                                                       !Constants::get().STRICT_ERRORS);
+          // }
+          // event_generated<CollisionEvent>(owner.factory, std::vector<Entity::id_type>{cell.entity, entity.id});
+
+          // Use dump_energy in case the collision was from a
+          // different player.
+          dump_energy(this.store, existing_entity, owner.factory, cell, existing_entity.energy);
+          existing_player.remove_entity(cell.entity);
+          this.store.delete_entity(cell.entity);
+          player.remove_entity(entity.id);
+          this.store.delete_entity(entity.id);
+          cell.entity = null;
+        }
+      });
+    });
   }
 }
 export class ConstructTransaction extends Transaction<ConstructCommand> {
