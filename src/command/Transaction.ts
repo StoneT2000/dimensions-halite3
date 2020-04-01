@@ -163,7 +163,7 @@ export class MoveTransaction extends Transaction<MoveCommand> {
 
         this.cell_updated(destination);
       } else {
-        let entity_id = entities[];
+        let entity_id = entities[0];
         // Place it on the map.
         cell.entity = entity_id;
         // Give it back to the owner.
