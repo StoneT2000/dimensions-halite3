@@ -200,7 +200,7 @@ export default class Halite3Design extends Design {
       }
     });
     let commandsMap: Map<PlayerID, Array<HCommand>> = this.getCommandsMap(match, commands);
-    match.log.system(commandsMap);
+    
 
     // we need to store the two following changes to entities and cells make it easier to process the turn
     
@@ -215,13 +215,51 @@ export default class Halite3Design extends Design {
       // from this commands map, create transactions of which we will check each players transactions
       // we will create a single CommandTransactions object compose of all player commands
       let transaction = new CommandTransaction(game.store, game.map);
+      // std::unordered_set<Player::id_type> offenders;
+      let offenders = new Set();
+
+      // halite has all these callbacks to handle errors and cell and entity update.
+      // instead for updates (not errors yet TODO), the transaction itself does it as it is passed refs to store and map
 
       // let add all the commands
       commandsMap.forEach((command_list, player_id) => {
         command_list.forEach((command) => {
-          transaction.addCommand(command);
+          let player = game.store.players.get(player_id);
+          transaction.addCommand(player, command);
         });
       });
+
+      if (transaction.check()) {
+        transaction.commit();
+        console.log(game.store.changed_entities);
+        console.log(game.store.changed_cells);
+        // console.log(game.store.players.get(0).entities);
+        if (Constants.STRICT_ERRORS) {
+          // if (!offenders.empty()) {
+          //   std::ostringstream stream;
+          //   stream << "Command processing failed for players: ";
+          //   for (auto iterator = offenders.begin(); iterator != offenders.end(); iterator++) {
+          //       stream << *iterator;
+          //       if (std::next(iterator) != offenders.end()) {
+          //           stream << ", ";
+          //       }
+          //   }
+          //   stream << ", aborting due to strict error check";
+          //   Logging::log(stream.str(), Logging::Level::Error);
+          //   game.turn_number = Constants::get().MAX_TURNS;
+          //   return;
+          // }
+        } else {
+          // assert(offenders.empty());
+        }
+        break;
+      }
+      else {
+        // for (auto player : offenders) {
+        //   kill_player(player);
+        //   commands.erase(player);
+        // }
+      }
     }
 
   }
@@ -233,7 +271,7 @@ export default class Halite3Design extends Design {
         commandsMap.set(player.id, []);
       }
     });
-    console.log('commandsmap', commandsMap);
+    
     loop:
     for (let i = 0; i < commands.length; i++) {
       let cmd = commands[i].command;
@@ -300,6 +338,7 @@ export default class Halite3Design extends Design {
         match.throw(id, new MatchError(`ID: ${id} is terminated and not existent anymore`));
       }
     }
+    console.log('commandsmap', commandsMap);
     return commandsMap;
   }
   // in addition to halite 3 implementation, add condition for turn number

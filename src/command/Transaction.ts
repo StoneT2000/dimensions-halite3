@@ -12,7 +12,7 @@ import { Constants } from "../Constants";
 export abstract class BaseTransaction {
   // commit the transaction / perform it and update state
   abstract commit(): void;
-
+  commands: any;
   // check if we are allowed to use this transaction containing a command
   abstract check(): boolean;
   constructor(public store: Store, public map: GameMap) {
@@ -28,7 +28,7 @@ abstract class Transaction<CommandType> extends BaseTransaction {
    * @param player The player executing the command.
    * @param command The command to be executed.
    */
-  add_command(player: Player, command: CommandType): void {
+  public add_command(player: Player, command: CommandType): void {
     // put a command in the end of the corresponding commandtype array for a player
     let l = this.commands.get(player.id);
     l.push(command);
@@ -36,6 +36,9 @@ abstract class Transaction<CommandType> extends BaseTransaction {
   }
   constructor(public store: Store, public map: GameMap) {
     super(store, map);
+    this.store.players.forEach((player) => {
+      this.commands.set(player.id, []);
+    })
   }
   cell_updated(location: Location) {
     this.store.changed_cells.add(location);

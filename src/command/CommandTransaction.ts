@@ -83,6 +83,9 @@ export class CommandTransaction {
    * @param command The command.
    */
   add_occurrence(entity: EntityID, command: Command) {
+    if (!this.occurences.has(entity)) {
+      this.occurences.set(entity, {times: 0, errorContext: {}});
+    }
     let occurrences_entry = this.occurences.get(entity);
     if (occurrences_entry.times == MAX_COMMANDS_PER_ENTITY) {
       // Already seen one entity, this one is illegal
@@ -99,7 +102,11 @@ export class CommandTransaction {
    * @param amount The expense amount.
    */
   add_expense(player: Player, command: Command, amount: Energy) {
+    if (!this.expenses.has(player.id)) {
+      this.expenses.set(player.id, {energy: 0, errorContext: {}});
+    }
     let expenses_entry = this.expenses.get(player.id);
+    
     let newAmount = expenses_entry.energy += amount;
     if (newAmount > player.energy) {
       // if (auto [_, inserted] = expenses_first_faulty.emplace(player.id, command); !inserted) {
@@ -121,6 +128,7 @@ export class CommandTransaction {
         break;
       case 'spawn':
         this.add_expense(player, (<SpawnCommand>command), Constants.NEW_ENTITY_ENERGY_COST);
+        console.log('Spawn transaction adding:' , command);
         this.spawn_transaction.add_command(player, (<SpawnCommand>command));
         break;
       case 'construct':

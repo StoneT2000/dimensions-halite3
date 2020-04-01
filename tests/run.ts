@@ -14,7 +14,7 @@ for (let i = 0; i < 2; i++) {
 // let expectedScore = 5; 
 
 
-myDimension.createMatch(
+myDimension.runMatch(
   botSources,
   {
     name: 'test-halite-match',
