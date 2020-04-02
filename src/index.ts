@@ -276,7 +276,8 @@ export default class Halite3Design extends Design {
               continue;
             }
             const other_entity = game.store.get_entity(cur_cell.entity);
-            let oldval = ships_in_radius.get(other_entity.owner);
+            let oldval = 0;
+            if (ships_in_radius.has(other_entity.owner)) { ships_in_radius.get(other_entity.owner); }
             ships_in_radius.set(other_entity.owner, oldval + 1);
           }
         }

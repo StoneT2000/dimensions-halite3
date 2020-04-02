@@ -11,7 +11,7 @@ let botSources = [];
 let starterBot = './starter-kits/js/starter/MyBot.js';
 let stoneBot = './starter-kits/js/currentBot/MyBot.js';
 botSources.push(starterBot);
-botSources.push(stoneBot);
+botSources.push(starterBot);
 
 // let expectedResultMap = [ [ 0, 1, 2, 3 ], [ 3, 3, 3, 3 ], [ -1, -1, -1, -1 ], [ -1, -1, -1, -1 ] ];
 // let expectedScore = 5; 
@@ -27,7 +27,7 @@ myDimension.runMatch(
       height: 32,
       game_seed: 15912302
     },
-    loggingLevel: Dimension.Logger.LEVEL.WARN
+    loggingLevel: Dimension.Logger.LEVEL.INFO
   }
 ).then((res) => {
   console.log(res);

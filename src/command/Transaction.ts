@@ -9,6 +9,7 @@ import { Energy } from "../model/Units";
 import { Dropoff } from "../model/Dropoff";
 import { Constants } from "../Constants";
 import { Match, MatchError } from "dimensions-ai";
+import { GameEvent } from "../replay/GameEvent";
 
 export abstract class BaseTransaction {
   // commit the transaction / perform it and update state
@@ -18,6 +19,15 @@ export abstract class BaseTransaction {
   abstract check(): boolean;
   constructor(public store: Store, public map: GameMap) {
 
+  }
+  /**
+   * Process a generated event.
+   * @param event The event.
+   */
+  event_generated(event: GameEvent): void {
+    // if (event_callback) {
+        // event_callback(std::move(event));
+    // }
   }
 }
 abstract class Transaction<CommandType> extends BaseTransaction {
