@@ -295,11 +295,12 @@ export default class Halite3Design extends Design {
       let enable_compression = false;;
       let replay = game.replay;
       let filename = `replay-${(new Date()).toISOString()}-${replay.map_generator_seed}-${game.map.width}-${game.map.height}.hlt`;
-      let replay_directory = match.configs.replayDirectory;
-      let output_filename = replay_directory + filename;
+      let replay_directory = match.configs.replayDirectory ? match.configs.replayDirectory : '.';
+      console.log(replay_directory);
+      let output_filename = replay_directory + '/' + filename;
       // store replay
       // if (match.state.configs.no_replay) {
-        replay.output(filename, enable_compression);
+        replay.output(output_filename, enable_compression);
 
       // }
 
