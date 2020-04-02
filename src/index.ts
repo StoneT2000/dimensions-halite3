@@ -12,10 +12,12 @@ import { CommandName, CommandTransaction } from './command/CommandTransaction';
 import { Dropoff } from './model/Dropoff';
 import { Energy } from './model/Units';
 import { GameStatistics, PlayerStatistics } from './Statistics';
+import { GameEvent } from './replay/GameEvent';
 
 type haliteState = {
   playerCount: number // should only be 2 or 4
-  game: Game
+  game: Game,
+  startTime?: any
 }
 type Game = {
   map: GameMap
@@ -23,7 +25,7 @@ type Game = {
   replay?: any
   logs?: any
   store: Store,
-  turn_number: number
+  turn_number: number,
 }
 
 
@@ -110,7 +112,8 @@ export default class Halite3Design extends Design {
     let game = this.initializeGameState(match, width, height, numPlayers);
     let state: haliteState = {
       playerCount: match.agents.length,
-      game: game
+      game: game,
+      startTime: new Date()
     }
 
     // TODO, store map width height and constants from map gen
@@ -140,8 +143,6 @@ export default class Halite3Design extends Design {
   async update(match: Match, commands: Array<Command>): Promise<MatchStatus> {
  
     let game: Game = match.state.game;
-    match.log.info(`last status: ${MatchStatus[match.matchStatus]}`);
-    match.log.info(`time step: ${match.timeStep}`);
 
     // essentially keep skipping the actual running of the match until we receive commands
     if (game.turn_number == 0 && commands.length == 0) {
@@ -171,7 +172,6 @@ export default class Halite3Design extends Design {
      */
     // don't process turn 0 as it is anomaly as it is onyl turn when bot sends its name and not commands
     if (game.turn_number != 0) {
-      match.log.info('Updating Frames');
       this.update_inspiration(match);
       this.processTurn(match, commands);
     }
@@ -239,6 +239,11 @@ export default class Halite3Design extends Design {
       })
       console.log(game.game_statistics);
       match.log.info('Game has ended');
+
+      // log the execution time
+      //@ts-ignore
+      game.game_statistics.execution_time = new Date() - match.state.startTime;
+
       return MatchStatus.FINISHED;
     }
     return MatchStatus.RUNNING;
@@ -319,9 +324,19 @@ export default class Halite3Design extends Design {
       game.store.changed_cells.clear();
       // from this commands map, create transactions of which we will check each players transactions
       // we will create a single CommandTransactions object compose of all player commands
-      let transaction = new CommandTransaction(game.store, game.map, match);
+      let transaction = new CommandTransaction(game.store, game.map, match, (event: GameEvent) => {
+        event.update_stats(game.store, game.map, game.game_statistics);
+        // Create new game event for replay file.
+        // frames.back().events.push_back(std::move(event));
+      });
+
       // std::unordered_set<Player::id_type> offenders;
       let offenders = new Set();
+
+      // // TODO: missing error handler
+      // transaction.on_error([&offenders, &commands, this](CommandError error) {
+      //   this->handle_error(offenders, commands, std::move(error));
+      // });
 
       // halite has all these callbacks to handle errors and cell and entity update.
       // instead for updates (not errors yet TODO), the transaction itself does it as it is passed refs to store and map
@@ -403,12 +418,12 @@ export default class Halite3Design extends Design {
           gained = max_energy - entity.energy;
         }
 
-        // auto player_stats = game.game_statistics.player_statistics.at(entity.owner.value);
-        // player_stats.total_mined += extracted;
-        // player_stats.total_bonus += gained > extracted ? gained - extracted : 0;
-        // if (entity.was_captured) {
-        //     player_stats.total_mined_from_captured += gained;
-        // }
+        let player_stats = game.game_statistics.player_statistics[entity.owner];
+        player_stats.total_mined += extracted;
+        player_stats.total_bonus += gained > extracted ? gained - extracted : 0;
+        if (entity.was_captured) {
+          player_stats.total_mined_from_captured += gained;
+        }
         entity.energy += gained;
         cell.energy -= extracted;
         game.store.map_total_energy -= extracted;
@@ -513,6 +528,91 @@ export default class Halite3Design extends Design {
    */
   update_player_stats(match: Match) {
     let statistics: GameStatistics = match.state.game.game_statistics;
+    let game: Game = match.state.game;
+    game.game_statistics.player_statistics.forEach((player_stats) => {
+      // Player with sprites is still alive, so mark as alive on this turn and add production gained
+      const player_id = player_stats.player_id;
+      const player = game.store.get_player(player_id);
+      if (!player.terminated && player.can_play) {
+        if (this.player_can_play(player)) { // Player may have died during this turn, in which case do not update final turn
+          player_stats.last_turn_alive = game.turn_number;
+          
+          // Calculate carried_at_end
+          player_stats.carried_at_end = 0;
+          player.entities.forEach((location, _entity_id) => {
+            player_stats.carried_at_end += game.store.get_entity(_entity_id).energy;
+          });
+        }
+        player_stats.turn_productions.push(player.energy);
+        player_stats.turn_deposited.push(player.total_energy_deposited);
+        player_stats.number_dropoffs = player.dropoffs.length;
+        // player_stats.ships_peak = std::max(player_stats.ships_peak, (long)player.entities.size());
+        player_stats.ships_peak = Math.max(player_stats.ships_peak, player.entities.size);
+        player.entities.forEach((location, _entity_id) => {
+          const entity_distance = game.map.distance(location, player.factory);
+          if (entity_distance > player_stats.max_entity_distance)
+              player_stats.max_entity_distance = entity_distance;
+          player_stats.total_distance += entity_distance;
+          player_stats.total_entity_lifespan++;
+          if (this.possible_interaction(player_id, location, match)) {
+              player_stats.interaction_opportunities++;
+          }
+        });
+        player_stats.halite_per_dropoff.set(player.factory, player.factory_energy_deposited);
+        player_stats.total_production = player.total_energy_deposited;
+        player.dropoffs.forEach((dropoff) => {
+            player_stats.halite_per_dropoff.set(dropoff.location, dropoff.deposited_halite);
+        })
+
+      } else {
+        player_stats.turn_productions.push(0);
+        player_stats.turn_deposited.push(0);
+      }
+    });
+  }
+
+  /**
+   * Determine if entity owned by given player is in range of another player (their entity, dropoff, or factory) and thus may interact
+   *
+   * param owner_id Id of owner of entity at given location
+   * param entity_location Location of entity we are assessing for an interaction opportunity
+   * return truthy Indicator of whether there players are in close range for an interaction (true) or not (false)
+   */
+  possible_interaction(owner_id: PlayerID, entity_location: Location, match: Match): boolean {
+    let game: Game = match.state.game;
+    // Fetch all locations 2 cells away
+    let close_cells: Set<Location> = new Set();
+    const neighbors = game.map.get_neighbors(entity_location);
+    // close_cells.insert(neighbors.begin(), neighbors.end());
+    close_cells = new Set(neighbors);
+    neighbors.forEach((neighbor) => {
+      const cells_once_removed = game.map.get_neighbors(neighbor);
+      // close_cells.insert(cells_once_removed.begin(), cells_once_removed.end());
+      cells_once_removed.forEach((location) => {
+        close_cells.add(location)
+      })
+    });
+
+    // Interaction possibilty implies a cell has an entity owned by another player or there is a factory or dropoff
+    // of another player on the cell. Interactions between entities of a single player are ignored
+    close_cells.forEach((cell_location) => {
+      const cell = game.map.atLocation(cell_location);
+      if (cell.entity != null) {
+        if (game.store.get_entity(cell.entity).owner != owner_id) return true;
+      }
+      if (cell.owner != null && cell.owner != owner_id) return true;
+    });
+    return false;
+  }
+
+  /**
+   * Determine whether a player can still play in the future
+   *
+   * @param player Player to check
+   * @return True if the player can play on the next turn
+   */
+  player_can_play(player: Player) {
+    return player.entities.size || player.energy >= Constants.NEW_ENTITY_ENERGY_COST;
   }
 
   /**
@@ -538,9 +638,7 @@ export default class Halite3Design extends Design {
     let results = {
       error_logs: {
       },
-      execution_time: {
-
-      },
+      execution_time: game.game_statistics.execution_time,
       final_snapshot: {
 
       },
@@ -561,6 +659,12 @@ export default class Halite3Design extends Design {
     if (match.configs.initializeConfig.game_seed != undefined) {
       results.map_seed = match.configs.initializeConfig.game_seed;
     }
+    results.stats = game.game_statistics.player_statistics.map((stat) => {
+      return {
+        score: stat.turn_productions[stat.turn_productions.length - 1],
+        rank: stat.rank
+      }
+    })
 
     let rankings = [];
     game.store.players.forEach((player: Player) => {

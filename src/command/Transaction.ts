@@ -9,7 +9,7 @@ import { Energy } from "../model/Units";
 import { Dropoff } from "../model/Dropoff";
 import { Constants } from "../Constants";
 import { Match, MatchError } from "dimensions-ai";
-import { GameEvent } from "../replay/GameEvent";
+import { GameEvent, ConstructionEvent, CollisionEvent, SpawnEvent } from "../replay/GameEvent";
 
 export abstract class BaseTransaction {
   // commit the transaction / perform it and update state
@@ -17,17 +17,15 @@ export abstract class BaseTransaction {
   commands: any;
   // check if we are allowed to use this transaction containing a command
   abstract check(): boolean;
-  constructor(public store: Store, public map: GameMap) {
+  constructor(public store: Store, public map: GameMap, public event_callback: Function) {
 
   }
   /**
-   * Process a generated event.
-   * @param event The event.
+   * Process a given event created. Halite creates events in here, isntead we create it before we call this
+   * @param event 
    */
-  event_generated(event: GameEvent): void {
-    // if (event_callback) {
-        // event_callback(std::move(event));
-    // }
+  event_generated(event: GameEvent) {
+    this.event_callback(event);
   }
 }
 abstract class Transaction<CommandType> extends BaseTransaction {
@@ -45,8 +43,8 @@ abstract class Transaction<CommandType> extends BaseTransaction {
     l.push(command);
     this.commands.set(player.id, l);
   }
-  constructor(public store: Store, public map: GameMap, public match: Match) {
-    super(store, map);
+  constructor(public store: Store, public map: GameMap, public match: Match, event_callback: Function) {
+    super(store, map, event_callback);
     this.store.players.forEach((player) => {
       this.commands.set(player.id, []);
     })
@@ -60,8 +58,8 @@ abstract class Transaction<CommandType> extends BaseTransaction {
 
 }
 export class MoveTransaction extends Transaction<MoveCommand> {
-  constructor(store: Store, map: GameMap, match: Match) {
-    super(store, map, match);
+  constructor(store: Store, map: GameMap, match: Match, event_callback: Function) {
+    super(store, map, match, event_callback);
   }
   check() {
     let success = true;
@@ -188,7 +186,7 @@ export class MoveTransaction extends Transaction<MoveCommand> {
         })
         // When generating the event, HaliteImpl will record
         // statistics.
-        // event_generated<CollisionEvent>(destination, collision_ids);
+        this.event_generated(new CollisionEvent(destination, collision_ids));
         // Now we can delete the entities.
         collision_ids.forEach((entity_id) => {
           let entity = this.store.get_entity(entity_id);
@@ -211,8 +209,8 @@ export class MoveTransaction extends Transaction<MoveCommand> {
   
 }
 export class SpawnTransaction extends Transaction<SpawnCommand> {
-  constructor(store: Store, map: GameMap, match: Match) {
-    super(store, map, match);
+  constructor(store: Store, map: GameMap, match: Match, event_callback: Function) {
+    super(store, map, match, event_callback);
   }
   check() {
     let success = true;
@@ -253,6 +251,7 @@ export class SpawnTransaction extends Transaction<SpawnCommand> {
         player.add_entity(entity.id, player.factory);
         this.entity_updated(entity.id);
         // event_generated<SpawnEvent>(player.factory, 0, player.id, entity.id);
+        this.event_generated(new SpawnEvent(player.factory, 0, player.id, entity.id));
 
         if (cell.entity == null) {
           cell.entity = entity.id;
@@ -269,6 +268,7 @@ export class SpawnTransaction extends Transaction<SpawnCommand> {
               this.match.throw(player_id, new MatchError(`Player ${player_id} - Entities ${existing_entity.id} self collided with ${cell.entity} at player factory: (${player.factory.toString()})`));
           }
           // event_generated<CollisionEvent>(owner.factory, std::vector<Entity::id_type>{cell.entity, entity.id});
+          this.event_generated(new CollisionEvent(owner.factory, [cell.entity, entity.id]))
 
           // Use dump_energy in case the collision was from a
           // different player.
@@ -284,8 +284,8 @@ export class SpawnTransaction extends Transaction<SpawnCommand> {
   }
 }
 export class ConstructTransaction extends Transaction<ConstructCommand> {
-  constructor(store: Store, map: GameMap, match: Match) {
-    super(store, map, match);
+  constructor(store: Store, map: GameMap, match: Match, event_callback: Function) {
+    super(store, map, match, event_callback);
   }
   check() {
     let success = true;
@@ -332,7 +332,7 @@ export class ConstructTransaction extends Transaction<ConstructCommand> {
 
         cell.energy = 0;
         cell.entity = null;
-        // event_generated<ConstructionEvent>(location, player_id, command.entity);
+        this.event_generated(new ConstructionEvent(location, player_id, command.entity));
         this.cell_updated(location);
 
         // Use dump_halite for stats tracking
@@ -348,8 +348,8 @@ export class ConstructTransaction extends Transaction<ConstructCommand> {
   }
 }
 export class DumpTransaction extends Transaction<NoCommand> {
-  constructor(store: Store, map: GameMap, match: Match) {
-    super(store, map, match);
+  constructor(store: Store, map: GameMap, match: Match, event_callback: Function) {
+    super(store, map, match, event_callback);
   }
   check(): boolean {
     return true;

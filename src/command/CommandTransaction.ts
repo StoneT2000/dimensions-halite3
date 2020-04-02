@@ -40,11 +40,11 @@ export class CommandTransaction {
   spawn_transaction: SpawnTransaction;         /**< The SpawnCommand transaction. */
 
   public all_transactions: Array<BaseTransaction> = [];
-  constructor(public store: Store, public map: GameMap, public match: Match) {
-    this.dump_transaction = new DumpTransaction(store, map, match);
-    this.construct_transaction = new ConstructTransaction(store, map, match);
-    this.move_transaction = new MoveTransaction(store, map, match);
-    this.spawn_transaction = new SpawnTransaction(store, map, match);
+  constructor(public store: Store, public map: GameMap, public match: Match, event_callback: Function) {
+    this.dump_transaction = new DumpTransaction(store, map, match, event_callback);
+    this.construct_transaction = new ConstructTransaction(store, map, match, event_callback);
+    this.move_transaction = new MoveTransaction(store, map, match, event_callback);
+    this.spawn_transaction = new SpawnTransaction(store, map, match, event_callback);
     // store refs to transactions kinds
     this.all_transactions.push(
       this.dump_transaction, 

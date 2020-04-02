@@ -1,2332 +1,404 @@
+INFO: {"CAPTURE_ENABLED":false,"CAPTURE_RADIUS":3,"DEFAULT_MAP_HEIGHT":64,"DEFAULT_MAP_WIDTH":64,"DROPOFF_COST":4000,"DROPOFF_PENALTY_RATIO":4,"EXTRACT_RATIO":4,"FACTOR_EXP_1":2,"FACTOR_EXP_2":2,"INITIAL_ENERGY":5000,"INSPIRATION_ENABLED":true,"INSPIRATION_RADIUS":4,"INSPIRATION_SHIP_COUNT":2,"INSPIRED_BONUS_MULTIPLIER":2,"INSPIRED_EXTRACT_RATIO":4,"INSPIRED_MOVE_COST_RATIO":10,"MAX_CELL_PRODUCTION":1000,"MAX_ENERGY":1000,"MAX_PLAYERS":16,"MAX_TURNS":400,"MAX_TURN_THRESHOLD":64,"MIN_CELL_PRODUCTION":900,"MIN_TURNS":400,"MIN_TURN_THRESHOLD":32,"MOVE_COST_RATIO":10,"NEW_ENTITY_ENERGY_COST":1000,"PERSISTENCE":0.7,"SHIPS_ABOVE_FOR_CAPTURE":3,"STRICT_ERRORS":false,"game_seed":1546875259}
 INFO: My Player ID is 1.
-INFO: There are 2 players
-INFO: Average Halite: 399.21875
-INFO: SHORT RANGE MINING
-INFO: Map Size: 1024
+INFO: Player id: 0, halite: 0
+INFO: Player id: 1, halite: 0
 INFO: ================ TURN 001 ================
-INFO: Average Halite: 399.21875
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 0
-INFO: Turn took: 22 ms; AvgTime: 22
 INFO: ================ TURN 002 ================
-INFO: Average Halite: 399.21875
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 0; Current dropoffs: 1; Numships: 1
-INFO: Turn took: 35 ms; AvgTime: 28.5
 INFO: ================ TURN 003 ================
-INFO: Average Halite: 399.21875
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 2
-INFO: Turn took: 18 ms; AvgTime: 25
 INFO: ================ TURN 004 ================
-INFO: Average Halite: 399.0234375
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 3
-INFO: Turn took: 28 ms; AvgTime: 25.75
 INFO: ================ TURN 005 ================
-INFO: Average Halite: 398.779296875
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 4
-INFO: Turn took: 24 ms; AvgTime: 25.4
 INFO: ================ TURN 006 ================
-INFO: Average Halite: 398.3994140625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 5
-INFO: Turn took: 31 ms; AvgTime: 26.333333333333332
 INFO: ================ TURN 007 ================
-INFO: Average Halite: 398.05859375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 5
-INFO: Turn took: 30 ms; AvgTime: 26.857142857142858
 INFO: ================ TURN 008 ================
-INFO: Average Halite: 397.5654296875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 5
-INFO: Turn took: 31 ms; AvgTime: 27.375
 INFO: ================ TURN 009 ================
-INFO: Average Halite: 397.28125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 5
-INFO: Turn took: 28 ms; AvgTime: 27.444444444444443
 INFO: ================ TURN 010 ================
-INFO: Average Halite: 396.8046875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 5
-INFO: Turn took: 30 ms; AvgTime: 27.7
 INFO: ================ TURN 011 ================
-INFO: Average Halite: 396.3818359375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 5
-INFO: Turn took: 26 ms; AvgTime: 27.545454545454547
 INFO: ================ TURN 012 ================
-INFO: Average Halite: 395.9150390625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 5
-INFO: Turn took: 26 ms; AvgTime: 27.416666666666668
 INFO: ================ TURN 013 ================
-INFO: Average Halite: 395.533203125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 5
-INFO: Turn took: 25 ms; AvgTime: 27.23076923076923
 INFO: ================ TURN 014 ================
-INFO: Average Halite: 395.1923828125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 5
-INFO: Turn took: 25 ms; AvgTime: 27.071428571428573
 INFO: ================ TURN 015 ================
-INFO: Average Halite: 394.7626953125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 5
-INFO: Turn took: 40 ms; AvgTime: 27.933333333333334
 INFO: ================ TURN 016 ================
-INFO: Average Halite: 394.373046875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 5
-INFO: Turn took: 45 ms; AvgTime: 29
 INFO: ================ TURN 017 ================
-INFO: Average Halite: 394.0673828125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 5
-INFO: Turn took: 30 ms; AvgTime: 29.058823529411764
 INFO: ================ TURN 018 ================
-INFO: Average Halite: 393.5634765625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 5
-INFO: Turn took: 28 ms; AvgTime: 29
 INFO: ================ TURN 019 ================
-INFO: Average Halite: 393.234375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 5
-INFO: Turn took: 31 ms; AvgTime: 29.105263157894736
 INFO: ================ TURN 020 ================
-INFO: Average Halite: 392.8212890625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 5
-INFO: Turn took: 29 ms; AvgTime: 29.1
 INFO: ================ TURN 021 ================
-INFO: Average Halite: 392.4599609375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 5
-INFO: Turn took: 24 ms; AvgTime: 28.857142857142858
 INFO: ================ TURN 022 ================
-INFO: Average Halite: 392.126953125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 5
-INFO: Turn took: 26 ms; AvgTime: 28.727272727272727
 INFO: ================ TURN 023 ================
-INFO: Average Halite: 391.947265625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 5
-INFO: Turn took: 18 ms; AvgTime: 28.26086956521739
 INFO: ================ TURN 024 ================
-INFO: Average Halite: 391.80859375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 5
-INFO: Turn took: 14 ms; AvgTime: 27.666666666666668
 INFO: ================ TURN 025 ================
-INFO: Average Halite: 391.52734375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 5
-INFO: Turn took: 22 ms; AvgTime: 27.44
 INFO: ================ TURN 026 ================
-INFO: Average Halite: 391.349609375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 5
-INFO: Turn took: 19 ms; AvgTime: 27.115384615384617
 INFO: ================ TURN 027 ================
-INFO: Average Halite: 391.1669921875
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 5
-INFO: Turn took: 16 ms; AvgTime: 26.703703703703702
 INFO: ================ TURN 028 ================
-INFO: Average Halite: 391.0712890625
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 6
-INFO: Turn took: 22 ms; AvgTime: 26.535714285714285
 INFO: ================ TURN 029 ================
-INFO: Average Halite: 390.9326171875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 7
-INFO: Turn took: 21 ms; AvgTime: 26.344827586206897
 INFO: ================ TURN 030 ================
-INFO: Average Halite: 390.783203125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 7
-INFO: Turn took: 20 ms; AvgTime: 26.133333333333333
 INFO: ================ TURN 031 ================
-INFO: Average Halite: 390.509765625
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 7
-INFO: Turn took: 27 ms; AvgTime: 26.161290322580644
 INFO: ================ TURN 032 ================
-INFO: Average Halite: 390.2724609375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 8
-INFO: Turn took: 22 ms; AvgTime: 26.03125
 INFO: ================ TURN 033 ================
-INFO: Average Halite: 389.9853515625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 8
-INFO: Turn took: 32 ms; AvgTime: 26.21212121212121
 INFO: ================ TURN 034 ================
-INFO: Average Halite: 389.7236328125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 8
-INFO: Turn took: 33 ms; AvgTime: 26.41176470588235
 INFO: ================ TURN 035 ================
-INFO: Average Halite: 389.3212890625
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 8
-INFO: Turn took: 57 ms; AvgTime: 27.285714285714285
 INFO: ================ TURN 036 ================
-INFO: Average Halite: 388.974609375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 9
-INFO: Turn took: 28 ms; AvgTime: 27.305555555555557
 INFO: ================ TURN 037 ================
-INFO: Average Halite: 388.515625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 9
-INFO: Turn took: 31 ms; AvgTime: 27.405405405405407
 INFO: ================ TURN 038 ================
-INFO: Average Halite: 387.9873046875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 9
-INFO: Turn took: 31 ms; AvgTime: 27.5
 INFO: ================ TURN 039 ================
-INFO: Average Halite: 387.4765625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 9
-INFO: Turn took: 41 ms; AvgTime: 27.846153846153847
 INFO: ================ TURN 040 ================
-INFO: Average Halite: 387.0078125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 9
-INFO: Turn took: 43 ms; AvgTime: 28.225
 INFO: ================ TURN 041 ================
-INFO: Average Halite: 386.4541015625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 9
-INFO: Turn took: 37 ms; AvgTime: 28.4390243902439
 INFO: ================ TURN 042 ================
-INFO: Average Halite: 385.931640625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 9
-INFO: Turn took: 39 ms; AvgTime: 28.69047619047619
 INFO: ================ TURN 043 ================
-INFO: Average Halite: 385.3037109375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 9
-INFO: Turn took: 37 ms; AvgTime: 28.88372093023256
 INFO: ================ TURN 044 ================
-INFO: Average Halite: 384.685546875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 9
-INFO: Turn took: 34 ms; AvgTime: 29
 INFO: ================ TURN 045 ================
-INFO: Average Halite: 384.1298828125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 9
-INFO: Turn took: 46 ms; AvgTime: 29.377777777777776
 INFO: ================ TURN 046 ================
-INFO: Average Halite: 383.7236328125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 9
-INFO: Turn took: 33 ms; AvgTime: 29.456521739130434
 INFO: ================ TURN 047 ================
-INFO: Average Halite: 383.1279296875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 9
-INFO: Turn took: 44 ms; AvgTime: 29.76595744680851
 INFO: ================ TURN 048 ================
-INFO: Average Halite: 382.6552734375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 9
-INFO: Turn took: 35 ms; AvgTime: 29.875
 INFO: ================ TURN 049 ================
-INFO: Average Halite: 382.2021484375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 9
-INFO: Turn took: 33 ms; AvgTime: 29.93877551020408
 INFO: ================ TURN 050 ================
-INFO: Average Halite: 381.4833984375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 9
-INFO: Turn took: 35 ms; AvgTime: 30.04
 INFO: ================ TURN 051 ================
-INFO: Average Halite: 381.0703125
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 9
-INFO: Turn took: 23 ms; AvgTime: 29.901960784313726
 INFO: ================ TURN 052 ================
-INFO: Average Halite: 380.6904296875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 10
-INFO: Turn took: 29 ms; AvgTime: 29.884615384615383
 INFO: ================ TURN 053 ================
-INFO: Average Halite: 380.3896484375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 10
-INFO: Turn took: 21 ms; AvgTime: 29.71698113207547
 INFO: ================ TURN 054 ================
-INFO: Average Halite: 380.1474609375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 10
-INFO: Turn took: 27 ms; AvgTime: 29.666666666666668
 INFO: ================ TURN 055 ================
-INFO: Average Halite: 379.908203125
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 10
-INFO: Turn took: 21 ms; AvgTime: 29.509090909090908
 INFO: ================ TURN 056 ================
-INFO: Average Halite: 379.7607421875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 11
-INFO: Turn took: 28 ms; AvgTime: 29.482142857142858
 INFO: ================ TURN 057 ================
-INFO: Average Halite: 379.298828125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 11
-INFO: Turn took: 41 ms; AvgTime: 29.68421052631579
 INFO: ================ TURN 058 ================
-INFO: Average Halite: 378.9345703125
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 11
-INFO: Turn took: 27 ms; AvgTime: 29.637931034482758
 INFO: ================ TURN 059 ================
-INFO: Average Halite: 378.6318359375
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 12
-INFO: Turn took: 32 ms; AvgTime: 29.677966101694917
 INFO: ================ TURN 060 ================
-INFO: Average Halite: 378.2548828125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 13
-INFO: Turn took: 37 ms; AvgTime: 29.8
 INFO: ================ TURN 061 ================
-INFO: Average Halite: 377.9072265625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 13
-INFO: Turn took: 38 ms; AvgTime: 29.934426229508198
 INFO: ================ TURN 062 ================
-INFO: Average Halite: 377.623046875
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 13
-INFO: Turn took: 36 ms; AvgTime: 30.032258064516128
 INFO: ================ TURN 063 ================
-INFO: Average Halite: 377.279296875
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 14
-INFO: Turn took: 37 ms; AvgTime: 30.142857142857142
 INFO: ================ TURN 064 ================
-INFO: Average Halite: 376.7685546875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 15
-INFO: Turn took: 43 ms; AvgTime: 30.34375
 INFO: ================ TURN 065 ================
-INFO: Average Halite: 376.33203125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 15
-INFO: Turn took: 43 ms; AvgTime: 30.53846153846154
 INFO: ================ TURN 066 ================
-INFO: Average Halite: 375.890625
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 15
-INFO: Turn took: 43 ms; AvgTime: 30.727272727272727
 INFO: ================ TURN 067 ================
-INFO: Average Halite: 375.2646484375
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 1; Current dropoffs: 1; Numships: 16
-INFO: Ship-19: will have 770 to build with
-INFO: Turn took: 51 ms; AvgTime: 31.029850746268657
 INFO: ================ TURN 068 ================
-INFO: Average Halite: 374.669921875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 2; Current dropoffs: 1; Numships: 17
-INFO: Ship-18: will have 1022 to build with
-INFO: Turn took: 56 ms; AvgTime: 31.397058823529413
 INFO: ================ TURN 069 ================
-INFO: Average Halite: 374.1591796875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 2; Current dropoffs: 1; Numships: 17
-INFO: Ship-18: will have 1132 to build with
-INFO: Turn took: 51 ms; AvgTime: 31.681159420289855
 INFO: ================ TURN 070 ================
-INFO: Average Halite: 373.62109375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 2; Current dropoffs: 1; Numships: 17
-INFO: Ship-18: will have 1215 to build with
-INFO: Turn took: 52 ms; AvgTime: 31.97142857142857
 INFO: ================ TURN 071 ================
-INFO: Average Halite: 372.982421875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 2; Current dropoffs: 1; Numships: 17
-INFO: Ship-19: will have 1860 to build with
-INFO: Turn took: 60 ms; AvgTime: 32.36619718309859
 INFO: ================ TURN 072 ================
-INFO: Average Halite: 372.140625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 2; Current dropoffs: 1; Numships: 17
-INFO: Ship-19: will have 1930 to build with
-INFO: Turn took: 48 ms; AvgTime: 32.583333333333336
 INFO: ================ TURN 073 ================
-INFO: Average Halite: 371.1318359375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 2; Current dropoffs: 1; Numships: 17
-INFO: Ship-18: will have 2237 to build with
-INFO: Turn took: 55 ms; AvgTime: 32.89041095890411
 INFO: ================ TURN 074 ================
-INFO: Average Halite: 370.35546875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 2; Current dropoffs: 1; Numships: 17
-INFO: Ship-18: will have 2347 to build with
-INFO: Turn took: 56 ms; AvgTime: 33.2027027027027
 INFO: ================ TURN 075 ================
-INFO: Average Halite: 369.7392578125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 2; Current dropoffs: 1; Numships: 17
-INFO: Ship-21: will have 1723 to build with
-INFO: Turn took: 54 ms; AvgTime: 33.48
 INFO: ================ TURN 076 ================
-INFO: Average Halite: 369.111328125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 2; Current dropoffs: 1; Numships: 17
-INFO: Ship-19: will have 2122 to build with
-INFO: Turn took: 57 ms; AvgTime: 33.78947368421053
 INFO: ================ TURN 077 ================
-INFO: Average Halite: 368.3828125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 2; Current dropoffs: 1; Numships: 17
-INFO: Ship-19: will have 2192 to build with
-INFO: Turn took: 55 ms; AvgTime: 34.064935064935064
 INFO: ================ TURN 078 ================
-INFO: Average Halite: 367.3271484375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 2; Current dropoffs: 1; Numships: 17
-INFO: Ship-19: will have 2275 to build with
-INFO: Turn took: 54 ms; AvgTime: 34.32051282051282
 INFO: ================ TURN 079 ================
-INFO: Average Halite: 366.4453125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 2; Current dropoffs: 1; Numships: 17
-INFO: Ship-19: will have 3265 to build with
-INFO: Turn took: 52 ms; AvgTime: 34.54430379746835
 INFO: ================ TURN 080 ================
-INFO: Average Halite: 365.9052734375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 2; Current dropoffs: 1; Numships: 17
-INFO: Ship-21: will have 2736 to build with
-INFO: Turn took: 46 ms; AvgTime: 34.6875
 INFO: ================ TURN 081 ================
-INFO: Average Halite: 365.33203125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 2; Current dropoffs: 1; Numships: 17
-INFO: Ship-20: will have 3177 to build with
-INFO: Turn took: 49 ms; AvgTime: 34.864197530864196
 INFO: ================ TURN 082 ================
-INFO: Average Halite: 364.607421875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 2; Current dropoffs: 1; Numships: 17
-INFO: Ship-20: will have 3287 to build with
-INFO: Turn took: 116 ms; AvgTime: 35.853658536585364
 INFO: ================ TURN 083 ================
-INFO: Average Halite: 363.9091796875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 2; Current dropoffs: 1; Numships: 17
-INFO: Ship-20: will have 3370 to build with
-INFO: Turn took: 77 ms; AvgTime: 36.34939759036145
 INFO: ================ TURN 084 ================
-INFO: Average Halite: 363.296875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 2; Current dropoffs: 1; Numships: 17
-INFO: Ship-21: will have 3979 to build with
-INFO: Turn took: 84 ms; AvgTime: 36.916666666666664
 INFO: ================ TURN 085 ================
-INFO: Average Halite: 362.9970703125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 2; Current dropoffs: 1; Numships: 17
-INFO: Ship-21: will have 3979 to build with
-INFO: Turn took: 78 ms; AvgTime: 37.4
 INFO: ================ TURN 086 ================
-INFO: Average Halite: 362.4404296875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 2; Current dropoffs: 1; Numships: 17
-INFO: Ship-21: will have 4049 to build with
-INFO: Ship-21 is designated to build dropoff at Position(0, 16)
-INFO: Turn took: 67 ms; AvgTime: 37.74418604651163
 INFO: ================ TURN 087 ================
-INFO: Average Halite: 362.1484375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 2; Current dropoffs: 1; Numships: 17
-INFO: Turn took: 57 ms; AvgTime: 37.96551724137931
 INFO: ================ TURN 088 ================
-INFO: Average Halite: 361.9189453125
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 2; Current dropoffs: 1; Numships: 17
-INFO: Turn took: 55 ms; AvgTime: 38.15909090909091
 INFO: ================ TURN 089 ================
-INFO: Average Halite: 361.7236328125
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 2; Current dropoffs: 1; Numships: 18
-INFO: Turn took: 51 ms; AvgTime: 38.30337078651685
 INFO: ================ TURN 090 ================
-INFO: Average Halite: 361.5048828125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 2; Current dropoffs: 1; Numships: 19
-INFO: Turn took: 60 ms; AvgTime: 38.544444444444444
 INFO: ================ TURN 091 ================
-INFO: Average Halite: 361.2373046875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 2; Current dropoffs: 1; Numships: 19
-INFO: Turn took: 65 ms; AvgTime: 38.83516483516483
 INFO: ================ TURN 092 ================
-INFO: Average Halite: 360.9853515625
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 2; Current dropoffs: 1; Numships: 19
-INFO: Turn took: 66 ms; AvgTime: 39.130434782608695
 INFO: ================ TURN 093 ================
-INFO: Average Halite: 360.8359375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 2; Current dropoffs: 1; Numships: 20
-INFO: Building with ship-21
-INFO: Turn took: 71 ms; AvgTime: 39.473118279569896
 INFO: ================ TURN 094 ================
-INFO: Average Halite: 360.20703125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 2; Current dropoffs: 2; Numships: 19
-INFO: Ship-29 PANIC: NO AVAILABLE PLACES TO GO from Position(6, 5)
-INFO: Ship-29 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(6, 6), forcing Ship-20 to move to Position(5, 6)
-INFO: Turn took: 44 ms; AvgTime: 39.52127659574468
 INFO: ================ TURN 095 ================
-INFO: Average Halite: 359.763671875
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 2; Current dropoffs: 2; Numships: 19
-INFO: Turn took: 33 ms; AvgTime: 39.45263157894737
 INFO: ================ TURN 096 ================
-INFO: Average Halite: 359.5283203125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 2; Current dropoffs: 2; Numships: 20
-INFO: Turn took: 40 ms; AvgTime: 39.458333333333336
 INFO: ================ TURN 097 ================
-INFO: Average Halite: 359.23828125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 2; Current dropoffs: 2; Numships: 20
-INFO: Turn took: 33 ms; AvgTime: 39.391752577319586
 INFO: ================ TURN 098 ================
-INFO: Average Halite: 358.9443359375
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 2; Current dropoffs: 2; Numships: 20
-INFO: Turn took: 33 ms; AvgTime: 39.326530612244895
 INFO: ================ TURN 099 ================
-INFO: Average Halite: 358.7412109375
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 2; Current dropoffs: 2; Numships: 21
-INFO: Turn took: 38 ms; AvgTime: 39.313131313131315
 INFO: ================ TURN 100 ================
-INFO: Average Halite: 358.453125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 2; Current dropoffs: 2; Numships: 22
-INFO: Turn took: 37 ms; AvgTime: 39.29
 INFO: ================ TURN 101 ================
-INFO: Average Halite: 358.2958984375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 2; Current dropoffs: 2; Numships: 22
-INFO: Turn took: 42 ms; AvgTime: 39.31683168316832
 INFO: ================ TURN 102 ================
-INFO: Average Halite: 358.1123046875
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 2; Current dropoffs: 2; Numships: 22
-INFO: Turn took: 43 ms; AvgTime: 39.35294117647059
 INFO: ================ TURN 103 ================
-INFO: Average Halite: 357.5849609375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 2; Current dropoffs: 2; Numships: 23
-INFO: Turn took: 67 ms; AvgTime: 39.62135922330097
 INFO: ================ TURN 104 ================
-INFO: Average Halite: 357.1806640625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 2; Current dropoffs: 2; Numships: 23
-INFO: Turn took: 49 ms; AvgTime: 39.71153846153846
 INFO: ================ TURN 105 ================
-INFO: Average Halite: 356.7998046875
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 2; Current dropoffs: 2; Numships: 23
-INFO: Turn took: 49 ms; AvgTime: 39.8
 INFO: ================ TURN 106 ================
-INFO: Average Halite: 356.3916015625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 2; Current dropoffs: 2; Numships: 24
-INFO: Turn took: 63 ms; AvgTime: 40.0188679245283
 INFO: ================ TURN 107 ================
-INFO: Average Halite: 355.888671875
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 2; Current dropoffs: 2; Numships: 24
-INFO: Turn took: 56 ms; AvgTime: 40.16822429906542
 INFO: ================ TURN 108 ================
-INFO: Average Halite: 355.486328125
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 2; Current dropoffs: 2; Numships: 25
-INFO: Turn took: 68 ms; AvgTime: 40.425925925925924
 INFO: ================ TURN 109 ================
-INFO: Average Halite: 355.1484375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 2; Current dropoffs: 2; Numships: 26
-INFO: Turn took: 69 ms; AvgTime: 40.68807339449541
 INFO: ================ TURN 110 ================
-INFO: Average Halite: 354.1806640625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 2; Current dropoffs: 2; Numships: 26
-INFO: Turn took: 78 ms; AvgTime: 41.027272727272724
 INFO: ================ TURN 111 ================
-INFO: Average Halite: 353.6748046875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 2; Current dropoffs: 2; Numships: 26
-INFO: Turn took: 93 ms; AvgTime: 41.4954954954955
 INFO: ================ TURN 112 ================
-INFO: Average Halite: 352.8935546875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 2; Current dropoffs: 2; Numships: 26
-INFO: Turn took: 94 ms; AvgTime: 41.964285714285715
 INFO: ================ TURN 113 ================
-INFO: Average Halite: 352.140625
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 2; Current dropoffs: 2; Numships: 26
-INFO: Turn took: 112 ms; AvgTime: 42.584070796460175
 INFO: ================ TURN 114 ================
-INFO: Average Halite: 351.5625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 2; Current dropoffs: 2; Numships: 27
-INFO: Turn took: 105 ms; AvgTime: 43.13157894736842
 INFO: ================ TURN 115 ================
-INFO: Average Halite: 350.7392578125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 2; Current dropoffs: 2; Numships: 27
-INFO: Turn took: 109 ms; AvgTime: 43.70434782608696
 INFO: ================ TURN 116 ================
-INFO: Average Halite: 350.041015625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 2; Current dropoffs: 2; Numships: 27
-INFO: Turn took: 98 ms; AvgTime: 44.172413793103445
 INFO: ================ TURN 117 ================
-INFO: Average Halite: 349.26171875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 2; Current dropoffs: 2; Numships: 27
-INFO: Turn took: 100 ms; AvgTime: 44.64957264957265
 INFO: ================ TURN 118 ================
-INFO: Average Halite: 348.3525390625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 2; Current dropoffs: 2; Numships: 27
-INFO: Turn took: 99 ms; AvgTime: 45.110169491525426
 INFO: ================ TURN 119 ================
-INFO: Average Halite: 347.748046875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 2; Current dropoffs: 2; Numships: 27
-INFO: Turn took: 98 ms; AvgTime: 45.554621848739494
 INFO: ================ TURN 120 ================
-INFO: Average Halite: 347.3095703125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 2; Current dropoffs: 2; Numships: 27
-INFO: Turn took: 103 ms; AvgTime: 46.03333333333333
 INFO: ================ TURN 121 ================
-INFO: Average Halite: 346.65625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 2; Current dropoffs: 2; Numships: 27
-INFO: Turn took: 104 ms; AvgTime: 46.51239669421488
 INFO: ================ TURN 122 ================
-INFO: Average Halite: 345.8046875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 2; Current dropoffs: 2; Numships: 27
-INFO: Turn took: 110 ms; AvgTime: 47.032786885245905
 INFO: ================ TURN 123 ================
-INFO: Average Halite: 344.9560546875
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 2; Current dropoffs: 2; Numships: 27
-INFO: Turn took: 124 ms; AvgTime: 47.65853658536585
 INFO: ================ TURN 124 ================
-INFO: Average Halite: 344.484375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 2; Current dropoffs: 2; Numships: 28
-INFO: Turn took: 136 ms; AvgTime: 48.37096774193548
 INFO: ================ TURN 125 ================
-INFO: Average Halite: 343.408203125
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 2; Current dropoffs: 2; Numships: 28
-INFO: Turn took: 130 ms; AvgTime: 49.024
 INFO: ================ TURN 126 ================
-INFO: Average Halite: 342.30078125
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 2; Current dropoffs: 2; Numships: 29
-INFO: Turn took: 145 ms; AvgTime: 49.785714285714285
 INFO: ================ TURN 127 ================
-INFO: Average Halite: 341.2880859375
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 2; Current dropoffs: 2; Numships: 30
-INFO: Turn took: 146 ms; AvgTime: 50.54330708661417
 INFO: ================ TURN 128 ================
-INFO: Average Halite: 340.40625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 2; Current dropoffs: 2; Numships: 31
-INFO: Ship-27: will have 754 to build with
-INFO: Turn took: 152 ms; AvgTime: 51.3359375
 INFO: ================ TURN 129 ================
-INFO: Average Halite: 339.5166015625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 3; Current dropoffs: 2; Numships: 31
-INFO: Ship-27: will have 1602 to build with
-INFO: Turn took: 135 ms; AvgTime: 51.98449612403101
 INFO: ================ TURN 130 ================
-INFO: Average Halite: 338.82421875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 3; Current dropoffs: 2; Numships: 31
-INFO: Ship-27: will have 1685 to build with
-INFO: Turn took: 136 ms; AvgTime: 52.63076923076923
 INFO: ================ TURN 131 ================
-INFO: Average Halite: 338.1396484375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 3; Current dropoffs: 2; Numships: 31
-INFO: Ship-27: will have 1748 to build with
-INFO: Turn took: 125 ms; AvgTime: 53.18320610687023
 INFO: ================ TURN 132 ================
-INFO: Average Halite: 337.0693359375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 3; Current dropoffs: 2; Numships: 31
-INFO: Ship-27: will have 2718 to build with
-INFO: Turn took: 131 ms; AvgTime: 53.77272727272727
 INFO: ================ TURN 133 ================
-INFO: Average Halite: 336.06640625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 3; Current dropoffs: 2; Numships: 31
-INFO: Ship-27: will have 3633 to build with
-INFO: Turn took: 174 ms; AvgTime: 54.67669172932331
 INFO: ================ TURN 134 ================
-INFO: Average Halite: 335.2138671875
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 3; Current dropoffs: 2; Numships: 31
-INFO: Ship-27: will have 4596 to build with
-INFO: Ship-27 is designated to build dropoff at Position(4, 24)
-INFO: Turn took: 100 ms; AvgTime: 55.014925373134325
 INFO: ================ TURN 135 ================
-INFO: Average Halite: 334.6220703125
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 3; Current dropoffs: 2; Numships: 32
-INFO: Turn took: 101 ms; AvgTime: 55.355555555555554
 INFO: ================ TURN 136 ================
-INFO: Average Halite: 333.9375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 3; Current dropoffs: 2; Numships: 33
-INFO: Turn took: 93 ms; AvgTime: 55.63235294117647
 INFO: ================ TURN 137 ================
-INFO: Average Halite: 333.46484375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 3; Current dropoffs: 2; Numships: 33
-INFO: Turn took: 113 ms; AvgTime: 56.051094890510946
 INFO: ================ TURN 138 ================
-INFO: Average Halite: 332.384765625
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 3; Current dropoffs: 2; Numships: 33
-INFO: Turn took: 112 ms; AvgTime: 56.45652173913044
 INFO: ================ TURN 139 ================
-INFO: Average Halite: 331.666015625
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 3; Current dropoffs: 2; Numships: 34
-INFO: Turn took: 132 ms; AvgTime: 57
 INFO: ================ TURN 140 ================
-INFO: Average Halite: 330.6220703125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 3; Current dropoffs: 2; Numships: 35
-INFO: Turn took: 132 ms; AvgTime: 57.535714285714285
 INFO: ================ TURN 141 ================
-INFO: Average Halite: 329.4404296875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 3; Current dropoffs: 2; Numships: 35
-INFO: Turn took: 142 ms; AvgTime: 58.13475177304964
 INFO: ================ TURN 142 ================
-INFO: Average Halite: 328.4736328125
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 3; Current dropoffs: 2; Numships: 35
-INFO: Turn took: 147 ms; AvgTime: 58.76056338028169
 INFO: ================ TURN 143 ================
-INFO: Average Halite: 327.373046875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 3; Current dropoffs: 2; Numships: 36
-INFO: Turn took: 139 ms; AvgTime: 59.32167832167832
 INFO: ================ TURN 144 ================
-INFO: Average Halite: 326.43359375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 3; Current dropoffs: 2; Numships: 36
-INFO: Building with ship-27
-INFO: Turn took: 154 ms; AvgTime: 59.979166666666664
 INFO: ================ TURN 145 ================
-INFO: Average Halite: 325.0888671875
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 3; Current dropoffs: 3; Numships: 35
-INFO: Turn took: 103 ms; AvgTime: 60.275862068965516
 INFO: ================ TURN 146 ================
-INFO: Average Halite: 324.412109375
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 3; Current dropoffs: 3; Numships: 36
-INFO: Turn took: 107 ms; AvgTime: 60.5958904109589
 INFO: ================ TURN 147 ================
-INFO: Average Halite: 323.7080078125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 3; Current dropoffs: 3; Numships: 37
-INFO: Turn took: 108 ms; AvgTime: 60.91836734693877
 INFO: ================ TURN 148 ================
-INFO: Average Halite: 322.833984375
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 3; Current dropoffs: 3; Numships: 37
-INFO: Turn took: 99 ms; AvgTime: 61.17567567567568
 INFO: ================ TURN 149 ================
-INFO: Average Halite: 321.908203125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 3; Current dropoffs: 3; Numships: 38
-INFO: Turn took: 103 ms; AvgTime: 61.45637583892618
 INFO: ================ TURN 150 ================
-INFO: Average Halite: 320.9951171875
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 3; Current dropoffs: 3; Numships: 38
-INFO: Turn took: 105 ms; AvgTime: 61.74666666666667
 INFO: ================ TURN 151 ================
-INFO: Average Halite: 320.337890625
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 3; Current dropoffs: 3; Numships: 39
-INFO: Turn took: 93 ms; AvgTime: 61.95364238410596
 INFO: ================ TURN 152 ================
-INFO: Average Halite: 319.458984375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 3; Current dropoffs: 3; Numships: 40
-INFO: Turn took: 100 ms; AvgTime: 62.203947368421055
 INFO: ================ TURN 153 ================
-INFO: Average Halite: 318.4521484375
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 3; Current dropoffs: 3; Numships: 40
-INFO: Turn took: 98 ms; AvgTime: 62.43790849673203
 INFO: ================ TURN 154 ================
-INFO: Average Halite: 317.5654296875
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 3; Current dropoffs: 3; Numships: 41
-INFO: Turn took: 88 ms; AvgTime: 62.603896103896105
 INFO: ================ TURN 155 ================
-INFO: Average Halite: 316.39453125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 3; Current dropoffs: 3; Numships: 42
-INFO: Turn took: 88 ms; AvgTime: 62.76774193548387
 INFO: ================ TURN 156 ================
-INFO: Average Halite: 315.548828125
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 3; Current dropoffs: 3; Numships: 42
-INFO: Turn took: 94 ms; AvgTime: 62.967948717948715
 INFO: ================ TURN 157 ================
-INFO: Average Halite: 314.9462890625
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 3; Current dropoffs: 3; Numships: 43
-INFO: Turn took: 107 ms; AvgTime: 63.2484076433121
 INFO: ================ TURN 158 ================
-INFO: Average Halite: 313.74609375
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 3; Current dropoffs: 3; Numships: 44
-INFO: Turn took: 87 ms; AvgTime: 63.39873417721519
 INFO: ================ TURN 159 ================
-INFO: Average Halite: 313.0830078125
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 3; Current dropoffs: 3; Numships: 45
-INFO: Turn took: 113 ms; AvgTime: 63.710691823899374
 INFO: ================ TURN 160 ================
-INFO: Average Halite: 312.228515625
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 3; Current dropoffs: 3; Numships: 46
-INFO: Ship-37: will have 1780 to build with
-INFO: Turn took: 113 ms; AvgTime: 64.01875
 INFO: ================ TURN 161 ================
-INFO: Average Halite: 311.23828125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 3; Numships: 47
-INFO: Ship-28: will have 2063 to build with
-INFO: Turn took: 148 ms; AvgTime: 64.54037267080746
 INFO: ================ TURN 162 ================
-INFO: Average Halite: 310.2060546875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 3; Numships: 47
-INFO: Ship-28: will have 3869 to build with
-INFO: Turn took: 130 ms; AvgTime: 64.94444444444444
 INFO: ================ TURN 163 ================
-INFO: Average Halite: 308.990234375
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 4; Current dropoffs: 3; Numships: 47
-INFO: Ship-28: will have 4605 to build with
-INFO: Ship-28 is designated to build dropoff at Position(13, 20)
-INFO: Turn took: 129 ms; AvgTime: 65.33742331288343
 INFO: ================ TURN 164 ================
-INFO: Average Halite: 308.2294921875
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 4; Current dropoffs: 3; Numships: 48
-INFO: Turn took: 137 ms; AvgTime: 65.77439024390245
 INFO: ================ TURN 165 ================
-INFO: Average Halite: 307.263671875
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 4; Current dropoffs: 3; Numships: 49
-INFO: Turn took: 171 ms; AvgTime: 66.4121212121212
 INFO: ================ TURN 166 ================
-INFO: Average Halite: 306.52734375
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 4; Current dropoffs: 3; Numships: 50
-INFO: Turn took: 176 ms; AvgTime: 67.07228915662651
 INFO: ================ TURN 167 ================
-INFO: Average Halite: 305.6904296875
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 4; Current dropoffs: 3; Numships: 51
-INFO: Turn took: 184 ms; AvgTime: 67.77245508982035
 INFO: ================ TURN 168 ================
-INFO: Average Halite: 303.962890625
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 4; Current dropoffs: 3; Numships: 52
-INFO: Turn took: 207 ms; AvgTime: 68.60119047619048
 INFO: ================ TURN 169 ================
-INFO: Average Halite: 302.53515625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 3; Numships: 53
-INFO: Ship-38: will have 4750 to build with
-INFO: Ship-38 is designated to build dropoff at Position(17, 28)
-INFO: Turn took: 134 ms; AvgTime: 68.98816568047337
 INFO: ================ TURN 170 ================
-INFO: Average Halite: 301.2587890625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 3; Numships: 53
-INFO: Turn took: 153 ms; AvgTime: 69.48235294117647
 INFO: ================ TURN 171 ================
-INFO: Average Halite: 299.8076171875
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 4; Current dropoffs: 3; Numships: 53
-INFO: Turn took: 160 ms; AvgTime: 70.01169590643275
 INFO: ================ TURN 172 ================
-INFO: Average Halite: 298.767578125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 3; Numships: 54
-INFO: Turn took: 170 ms; AvgTime: 70.59302325581395
 INFO: ================ TURN 173 ================
-INFO: Average Halite: 297.396484375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 3; Numships: 54
-INFO: Turn took: 224 ms; AvgTime: 71.47976878612717
 INFO: ================ TURN 174 ================
-INFO: Average Halite: 295.91015625
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 4; Current dropoffs: 3; Numships: 54
-INFO: Turn took: 208 ms; AvgTime: 72.26436781609195
 INFO: ================ TURN 175 ================
-INFO: Average Halite: 294.1630859375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 3; Numships: 55
-INFO: Building with ship-28
-INFO: Turn took: 203 ms; AvgTime: 73.01142857142857
 INFO: ================ TURN 176 ================
-INFO: Average Halite: 291.9150390625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 4; Numships: 54
-INFO: Turn took: 119 ms; AvgTime: 73.27272727272727
 INFO: ================ TURN 177 ================
-INFO: Average Halite: 290.71484375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 4; Numships: 54
-INFO: Turn took: 124 ms; AvgTime: 73.55932203389831
 INFO: ================ TURN 178 ================
-INFO: Average Halite: 289.2236328125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 4; Numships: 54
-INFO: Turn took: 137 ms; AvgTime: 73.91573033707866
 INFO: ================ TURN 179 ================
-INFO: Average Halite: 287.689453125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 4; Numships: 54
-INFO: Turn took: 133 ms; AvgTime: 74.24581005586592
 INFO: ================ TURN 180 ================
-INFO: Average Halite: 285.7978515625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 4; Numships: 54
-INFO: Turn took: 121 ms; AvgTime: 74.50555555555556
 INFO: ================ TURN 181 ================
-INFO: Average Halite: 284.3876953125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 4; Numships: 54
-INFO: Turn took: 137 ms; AvgTime: 74.85082872928177
 INFO: ================ TURN 182 ================
-INFO: Average Halite: 283.048828125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 4; Numships: 54
-INFO: Turn took: 141 ms; AvgTime: 75.21428571428571
 INFO: ================ TURN 183 ================
-INFO: Average Halite: 281.609375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 4; Numships: 54
-INFO: Building with ship-38
-INFO: Turn took: 155 ms; AvgTime: 75.65027322404372
 INFO: ================ TURN 184 ================
-INFO: Average Halite: 279.4541015625
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 53
-INFO: Turn took: 127 ms; AvgTime: 75.92934782608695
 INFO: ================ TURN 185 ================
-INFO: Average Halite: 277.9208984375
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 54
-INFO: Turn took: 99 ms; AvgTime: 76.05405405405405
 INFO: ================ TURN 186 ================
-INFO: Average Halite: 276.62890625
-INFO: Spawned IDS: -10
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 55
-INFO: Turn took: 121 ms; AvgTime: 76.29569892473118
 INFO: ================ TURN 187 ================
-INFO: Average Halite: 275.46484375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 115 ms; AvgTime: 76.50267379679144
 INFO: ================ TURN 188 ================
-INFO: Average Halite: 274.5458984375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 112 ms; AvgTime: 76.69148936170212
 INFO: ================ TURN 189 ================
-INFO: Average Halite: 272.6533203125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 107 ms; AvgTime: 76.85185185185185
 INFO: ================ TURN 190 ================
-INFO: Average Halite: 271.5009765625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 92 ms; AvgTime: 76.93157894736842
 INFO: ================ TURN 191 ================
-INFO: Average Halite: 270.41796875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 102 ms; AvgTime: 77.06282722513089
 INFO: ================ TURN 192 ================
-INFO: Average Halite: 269.236328125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 109 ms; AvgTime: 77.22916666666667
 INFO: ================ TURN 193 ================
-INFO: Average Halite: 267.5859375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 114 ms; AvgTime: 77.41968911917098
 INFO: ================ TURN 194 ================
-INFO: Average Halite: 266.4228515625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 94 ms; AvgTime: 77.50515463917526
 INFO: ================ TURN 195 ================
-INFO: Average Halite: 265.22265625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 119 ms; AvgTime: 77.71794871794872
 INFO: ================ TURN 196 ================
-INFO: Average Halite: 263.978515625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 114 ms; AvgTime: 77.90306122448979
 INFO: ================ TURN 197 ================
-INFO: Average Halite: 262.4404296875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 146 ms; AvgTime: 78.248730964467
 INFO: ================ TURN 198 ================
-INFO: Average Halite: 260.76171875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 143 ms; AvgTime: 78.57575757575758
 INFO: ================ TURN 199 ================
-INFO: Average Halite: 258.873046875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 162 ms; AvgTime: 78.99497487437186
 INFO: ================ TURN 200 ================
-INFO: Average Halite: 257.53515625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 162 ms; AvgTime: 79.41
 INFO: ================ TURN 201 ================
-INFO: Average Halite: 255.73046875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 171 ms; AvgTime: 79.86567164179104
 INFO: ================ TURN 202 ================
-INFO: Average Halite: 254.0439453125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 167 ms; AvgTime: 80.29702970297029
 INFO: ================ TURN 203 ================
-INFO: Average Halite: 252.13671875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 172 ms; AvgTime: 80.7487684729064
 INFO: ================ TURN 204 ================
-INFO: Average Halite: 250.20703125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 173 ms; AvgTime: 81.20098039215686
 INFO: ================ TURN 205 ================
-INFO: Average Halite: 248.7890625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 185 ms; AvgTime: 81.70731707317073
 INFO: ================ TURN 206 ================
-INFO: Average Halite: 246.88671875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 196 ms; AvgTime: 82.2621359223301
 INFO: ================ TURN 207 ================
-INFO: Average Halite: 244.8828125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 201 ms; AvgTime: 82.83574879227054
 INFO: ================ TURN 208 ================
-INFO: Average Halite: 242.609375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 210 ms; AvgTime: 83.44711538461539
 INFO: ================ TURN 209 ================
-INFO: Average Halite: 240.76171875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 213 ms; AvgTime: 84.06698564593302
 INFO: ================ TURN 210 ================
-INFO: Average Halite: 239.126953125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 200 ms; AvgTime: 84.61904761904762
 INFO: ================ TURN 211 ================
-INFO: Average Halite: 237.158203125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 196 ms; AvgTime: 85.14691943127963
 INFO: ================ TURN 212 ================
-INFO: Average Halite: 235.625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 207 ms; AvgTime: 85.72169811320755
 INFO: ================ TURN 213 ================
-INFO: Average Halite: 233.9462890625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 216 ms; AvgTime: 86.33333333333333
 INFO: ================ TURN 214 ================
-INFO: Average Halite: 232.1171875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 196 ms; AvgTime: 86.84579439252336
 INFO: ================ TURN 215 ================
-INFO: Average Halite: 230.7412109375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 212 ms; AvgTime: 87.42790697674418
 INFO: ================ TURN 216 ================
-INFO: Average Halite: 228.986328125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 216 ms; AvgTime: 88.02314814814815
 INFO: ================ TURN 217 ================
-INFO: Average Halite: 227.732421875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 208 ms; AvgTime: 88.57603686635944
 INFO: ================ TURN 218 ================
-INFO: Average Halite: 225.912109375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 204 ms; AvgTime: 89.10550458715596
 INFO: ================ TURN 219 ================
-INFO: Average Halite: 224.0908203125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 209 ms; AvgTime: 89.65296803652969
 INFO: ================ TURN 220 ================
-INFO: Average Halite: 222.54296875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 219 ms; AvgTime: 90.24090909090908
 INFO: ================ TURN 221 ================
-INFO: Average Halite: 221.0439453125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 199 ms; AvgTime: 90.73303167420815
 INFO: ================ TURN 222 ================
-INFO: Average Halite: 219.755859375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 209 ms; AvgTime: 91.26576576576576
 INFO: ================ TURN 223 ================
-INFO: Average Halite: 218.150390625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 200 ms; AvgTime: 91.75336322869956
 INFO: ================ TURN 224 ================
-INFO: Average Halite: 216.6044921875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 210 ms; AvgTime: 92.28125
 INFO: ================ TURN 225 ================
-INFO: Average Halite: 215.271484375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 188 ms; AvgTime: 92.70666666666666
 INFO: ================ TURN 226 ================
-INFO: Average Halite: 213.8388671875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 203 ms; AvgTime: 93.19469026548673
 INFO: ================ TURN 227 ================
-INFO: Average Halite: 212.8232421875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 214 ms; AvgTime: 93.72687224669603
 INFO: ================ TURN 228 ================
-INFO: Average Halite: 211.4560546875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 184 ms; AvgTime: 94.12280701754386
 INFO: ================ TURN 229 ================
-INFO: Average Halite: 210.1875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 198 ms; AvgTime: 94.5764192139738
 INFO: ================ TURN 230 ================
-INFO: Average Halite: 209.087890625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 189 ms; AvgTime: 94.98695652173913
 INFO: ================ TURN 231 ================
-INFO: Average Halite: 207.763671875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 195 ms; AvgTime: 95.41991341991341
 INFO: ================ TURN 232 ================
-INFO: Average Halite: 206.7099609375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 204 ms; AvgTime: 95.88793103448276
 INFO: ================ TURN 233 ================
-INFO: Average Halite: 205.4970703125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 189 ms; AvgTime: 96.28755364806867
 INFO: ================ TURN 234 ================
-INFO: Average Halite: 204.384765625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 192 ms; AvgTime: 96.69658119658119
 INFO: ================ TURN 235 ================
-INFO: Average Halite: 203.20703125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 204 ms; AvgTime: 97.1531914893617
 INFO: ================ TURN 236 ================
-INFO: Average Halite: 202.0712890625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 210 ms; AvgTime: 97.63135593220339
 INFO: ================ TURN 237 ================
-INFO: Average Halite: 201.03125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 217 ms; AvgTime: 98.13502109704642
 INFO: ================ TURN 238 ================
-INFO: Average Halite: 199.6005859375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 213 ms; AvgTime: 98.61764705882354
 INFO: ================ TURN 239 ================
-INFO: Average Halite: 198.3857421875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 215 ms; AvgTime: 99.10460251046025
 INFO: ================ TURN 240 ================
-INFO: Average Halite: 196.662109375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 235 ms; AvgTime: 99.67083333333333
 INFO: ================ TURN 241 ================
-INFO: Average Halite: 195.5078125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 209 ms; AvgTime: 100.12448132780084
 INFO: ================ TURN 242 ================
-INFO: Average Halite: 194.1865234375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 218 ms; AvgTime: 100.61157024793388
 INFO: ================ TURN 243 ================
-INFO: Average Halite: 192.896484375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 202 ms; AvgTime: 101.02880658436214
 INFO: ================ TURN 244 ================
-INFO: Average Halite: 191.462890625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 213 ms; AvgTime: 101.48770491803279
 INFO: ================ TURN 245 ================
-INFO: Average Halite: 190.0048828125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 200 ms; AvgTime: 101.88979591836734
 INFO: ================ TURN 246 ================
-INFO: Average Halite: 188.423828125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 200 ms; AvgTime: 102.28861788617886
 INFO: ================ TURN 247 ================
-INFO: Average Halite: 187.232421875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 206 ms; AvgTime: 102.7085020242915
 INFO: ================ TURN 248 ================
-INFO: Average Halite: 186.1123046875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 211 ms; AvgTime: 103.14516129032258
 INFO: ================ TURN 249 ================
-INFO: Average Halite: 184.73828125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 196 ms; AvgTime: 103.51807228915662
 INFO: ================ TURN 250 ================
-INFO: Average Halite: 183.5029296875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 200 ms; AvgTime: 103.904
 INFO: ================ TURN 251 ================
-INFO: Average Halite: 181.962890625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 208 ms; AvgTime: 104.3187250996016
 INFO: ================ TURN 252 ================
-INFO: Average Halite: 180.5908203125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 201 ms; AvgTime: 104.70238095238095
 INFO: ================ TURN 253 ================
-INFO: Average Halite: 179.6875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 201 ms; AvgTime: 105.08300395256917
 INFO: ================ TURN 254 ================
-INFO: Average Halite: 178.3583984375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 169 ms; AvgTime: 105.33464566929133
 INFO: ================ TURN 255 ================
-INFO: Average Halite: 177.07421875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 183 ms; AvgTime: 105.63921568627451
 INFO: ================ TURN 256 ================
-INFO: Average Halite: 175.7060546875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Turn took: 194 ms; AvgTime: 105.984375
 INFO: ================ TURN 257 ================
-INFO: Average Halite: 174.4560546875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Ship-56 is going to try to collide with at least 2 other friends nearby f:3, e:2, e with space:1 at Position(0, 4)
-INFO: Ship-73 is going to try to collide with at least 2 other friends nearby f:3, e:2, e with space:1 at Position(0, 4)
-INFO: Turn took: 170 ms; AvgTime: 106.23346303501945
 INFO: ================ TURN 258 ================
-INFO: Average Halite: 173.3974609375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 56
-INFO: Ship-73 is going to try to collide with at least 2 other friends nearby f:3, e:2, e with space:1 at Position(0, 4)
-INFO: Ship-56 is going to try to collide with at least 2 other friends nearby f:4, e:3, e with space:2 at Position(0, 3)
-INFO: Ship-71 is going to try to collide with at least 2 other friends nearby f:3, e:2, e with space:1 at Position(0, 4)
-INFO: Turn took: 202 ms; AvgTime: 106.6046511627907
 INFO: ================ TURN 259 ================
-INFO: Average Halite: 173.69921875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 55
-INFO: Turn took: 188 ms; AvgTime: 106.91891891891892
 INFO: ================ TURN 260 ================
-INFO: Average Halite: 172.3798828125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 55
-INFO: Ship-73 is going to try to collide with at least 2 other friends nearby f:3, e:2, e with space:2 at Position(0, 3)
-INFO: Ship-71 is going to try to collide with at least 2 other friends nearby f:3, e:2, e with space:2 at Position(0, 3)
-INFO: Turn took: 192 ms; AvgTime: 107.24615384615385
 INFO: ================ TURN 261 ================
-INFO: Average Halite: 171.2099609375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 55
-INFO: Turn took: 178 ms; AvgTime: 107.51724137931035
 INFO: ================ TURN 262 ================
-INFO: Average Halite: 169.853515625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 55
-INFO: Turn took: 215 ms; AvgTime: 107.92748091603053
 INFO: ================ TURN 263 ================
-INFO: Average Halite: 168.6533203125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 55
-INFO: Ship-73 is going to try to collide with at least 2 other friends nearby f:3, e:2, e with space:2 at Position(0, 3)
-INFO: Turn took: 191 ms; AvgTime: 108.24334600760456
 INFO: ================ TURN 264 ================
-INFO: Average Halite: 167.7197265625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 55
-INFO: Turn took: 172 ms; AvgTime: 108.48484848484848
 INFO: ================ TURN 265 ================
-INFO: Average Halite: 166.24609375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 55
-INFO: Turn took: 197 ms; AvgTime: 108.8188679245283
 INFO: ================ TURN 266 ================
-INFO: Average Halite: 165.0595703125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 55
-INFO: Ship-73 is going to try to collide with at least 2 other friends nearby f:3, e:2, e with space:2 at Position(0, 3)
-INFO: Turn took: 212 ms; AvgTime: 109.20676691729324
 INFO: ================ TURN 267 ================
-INFO: Average Halite: 164.0009765625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 55
-INFO: Turn took: 182 ms; AvgTime: 109.47940074906367
 INFO: ================ TURN 268 ================
-INFO: Average Halite: 162.873046875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 55
-INFO: Turn took: 191 ms; AvgTime: 109.78358208955224
 INFO: ================ TURN 269 ================
-INFO: Average Halite: 162.171875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 55
-INFO: Ship-73 is going to try to collide with at least 2 other friends nearby f:3, e:2, e with space:2 at Position(0, 3)
-INFO: Turn took: 175 ms; AvgTime: 110.02602230483271
 INFO: ================ TURN 270 ================
-INFO: Average Halite: 161.3974609375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 55
-INFO: Turn took: 174 ms; AvgTime: 110.26296296296296
 INFO: ================ TURN 271 ================
-INFO: Average Halite: 160.4658203125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 55
-INFO: Turn took: 176 ms; AvgTime: 110.50553505535055
 INFO: ================ TURN 272 ================
-INFO: Average Halite: 159.765625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 55
-INFO: Ship-73 is going to try to collide with at least 2 other friends nearby f:3, e:2, e with space:2 at Position(0, 3)
-INFO: Turn took: 180 ms; AvgTime: 110.76102941176471
 INFO: ================ TURN 273 ================
-INFO: Average Halite: 158.9755859375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 55
-INFO: Turn took: 171 ms; AvgTime: 110.98168498168498
 INFO: ================ TURN 274 ================
-INFO: Average Halite: 157.9755859375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 55
-INFO: Turn took: 194 ms; AvgTime: 111.28467153284672
 INFO: ================ TURN 275 ================
-INFO: Average Halite: 157.2392578125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 55
-INFO: Turn took: 172 ms; AvgTime: 111.50545454545454
 INFO: ================ TURN 276 ================
-INFO: Average Halite: 156.5087890625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 55
-INFO: Turn took: 182 ms; AvgTime: 111.76086956521739
 INFO: ================ TURN 277 ================
-INFO: Average Halite: 155.7294921875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 55
-INFO: Turn took: 185 ms; AvgTime: 112.02527075812274
 INFO: ================ TURN 278 ================
-INFO: Average Halite: 154.76953125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 55
-INFO: Ship-73 is going to try to collide with at least 2 other friends nearby f:3, e:2, e with space:2 at Position(0, 3)
-INFO: Turn took: 197 ms; AvgTime: 112.33093525179856
 INFO: ================ TURN 279 ================
-INFO: Average Halite: 153.8740234375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 55
-INFO: Ship-37 is going to try to collide with at least 2 other friends nearby f:3, e:2, e with space:2 at Position(0, 3)
-INFO: Turn took: 200 ms; AvgTime: 112.64516129032258
 INFO: ================ TURN 280 ================
-INFO: Average Halite: 152.94921875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 55
-INFO: Ship-73 is going to try to collide with at least 2 other friends nearby f:4, e:2, e with space:2 at Position(0, 3)
-INFO: Turn took: 167 ms; AvgTime: 112.83928571428571
 INFO: ================ TURN 281 ================
-INFO: Average Halite: 151.515625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 55
-INFO: Turn took: 194 ms; AvgTime: 113.12811387900356
 INFO: ================ TURN 282 ================
-INFO: Average Halite: 150.3349609375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 55
-INFO: Ship-9 PANIC: NO AVAILABLE PLACES TO GO from Position(23, 21)
-INFO: Ship-9 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(23, 21), forcing Ship-65 to move to Position(22, 20)
-INFO: Turn took: 207 ms; AvgTime: 113.46099290780141
 INFO: ================ TURN 283 ================
-INFO: Average Halite: 149.4140625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 55
-INFO: Turn took: 222 ms; AvgTime: 113.84452296819788
 INFO: ================ TURN 284 ================
-INFO: Average Halite: 148.6083984375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 55
-INFO: Turn took: 188 ms; AvgTime: 114.1056338028169
 INFO: ================ TURN 285 ================
-INFO: Average Halite: 147.5068359375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 55
-INFO: Turn took: 191 ms; AvgTime: 114.37543859649122
 INFO: ================ TURN 286 ================
-INFO: Average Halite: 146.6318359375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 55
-INFO: Turn took: 212 ms; AvgTime: 114.71678321678321
 INFO: ================ TURN 287 ================
-INFO: Average Halite: 145.6279296875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 55
-INFO: Ship-50 is going to try to collide with at least 2 other friends nearby f:4, e:2, e with space:2 at Position(0, 3)
-INFO: Turn took: 196 ms; AvgTime: 115
 INFO: ================ TURN 288 ================
-INFO: Average Halite: 144.7705078125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 55
-INFO: Turn took: 180 ms; AvgTime: 115.22569444444444
 INFO: ================ TURN 289 ================
-INFO: Average Halite: 143.79296875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 55
-INFO: Turn took: 197 ms; AvgTime: 115.50865051903114
 INFO: ================ TURN 290 ================
-INFO: Average Halite: 142.859375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 55
-INFO: Turn took: 212 ms; AvgTime: 115.84137931034483
 INFO: ================ TURN 291 ================
-INFO: Average Halite: 141.8466796875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 55
-INFO: Turn took: 206 ms; AvgTime: 116.1512027491409
 INFO: ================ TURN 292 ================
-INFO: Average Halite: 140.8271484375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 55
-INFO: Turn took: 205 ms; AvgTime: 116.45547945205479
 INFO: ================ TURN 293 ================
-INFO: Average Halite: 139.8759765625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 55
-INFO: Turn took: 195 ms; AvgTime: 116.7235494880546
 INFO: ================ TURN 294 ================
-INFO: Average Halite: 138.9716796875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 55
-INFO: Turn took: 205 ms; AvgTime: 117.02380952380952
 INFO: ================ TURN 295 ================
-INFO: Average Halite: 138.236328125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 55
-INFO: Turn took: 221 ms; AvgTime: 117.37627118644068
 INFO: ================ TURN 296 ================
-INFO: Average Halite: 137.126953125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 55
-INFO: Ship-24 is going to try to collide with at least 2 other friends nearby f:5, e:2, e with space:2 at Position(0, 3)
-INFO: Turn took: 203 ms; AvgTime: 117.66554054054055
 INFO: ================ TURN 297 ================
-INFO: Average Halite: 136.1455078125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 55
-INFO: Ship-19 is going to try to collide with at least 2 other friends nearby f:4, e:2, e with space:2 at Position(0, 3)
-INFO: Turn took: 192 ms; AvgTime: 117.91582491582491
 INFO: ================ TURN 298 ================
-INFO: Average Halite: 135.0185546875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 55
-INFO: Turn took: 209 ms; AvgTime: 118.22147651006712
 INFO: ================ TURN 299 ================
-INFO: Average Halite: 134.08203125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 55
-INFO: Turn took: 206 ms; AvgTime: 118.51505016722408
 INFO: ================ TURN 300 ================
-INFO: Average Halite: 133.2861328125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 55
-INFO: Ship-45 is going to try to collide with at least 2 other friends nearby f:4, e:3, e with space:3 at Position(2, 1)
-INFO: Turn took: 202 ms; AvgTime: 118.79333333333334
 INFO: ================ TURN 301 ================
-INFO: Average Halite: 132.9599609375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 54
-INFO: Turn took: 215 ms; AvgTime: 119.11295681063123
 INFO: ================ TURN 302 ================
-INFO: Average Halite: 131.96875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 54
-INFO: Ship-71 is going to try to collide with at least 2 other friends nearby f:4, e:2, e with space:2 at Position(0, 2)
-INFO: Turn took: 229 ms; AvgTime: 119.47682119205298
 INFO: ================ TURN 303 ================
-INFO: Average Halite: 130.96484375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 54
-INFO: Ship-45 is going to try to collide with at least 2 other friends nearby f:5, e:2, e with space:2 at Position(0, 2)
-INFO: Turn took: 223 ms; AvgTime: 119.81848184818482
 INFO: ================ TURN 304 ================
-INFO: Average Halite: 130.06640625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 54
-INFO: Ship-19 is going to try to collide with at least 2 other friends nearby f:5, e:2, e with space:2 at Position(0, 2)
-INFO: Ship-71 is going to try to collide with at least 2 other friends nearby f:5, e:2, e with space:2 at Position(0, 2)
-INFO: Turn took: 209 ms; AvgTime: 120.11184210526316
 INFO: ================ TURN 305 ================
-INFO: Average Halite: 129.220703125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 54
-INFO: Ship-35 is going to try to collide with at least 2 other friends nearby f:3, e:2, e with space:2 at Position(0, 30)
-INFO: Ship-45 is going to try to collide with at least 2 other friends nearby f:6, e:2, e with space:2 at Position(0, 2)
-INFO: Turn took: 203 ms; AvgTime: 120.38360655737705
 INFO: ================ TURN 306 ================
-INFO: Average Halite: 127.84375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 54
-INFO: Ship-45 is going to try to collide with at least 2 other friends nearby f:4, e:3, e with space:3 at Position(2, 1)
-INFO: Ship-19 is going to try to collide with at least 2 other friends nearby f:4, e:2, e with space:2 at Position(0, 2)
-INFO: Turn took: 188 ms; AvgTime: 120.60457516339869
 INFO: ================ TURN 307 ================
-INFO: Average Halite: 127.5146484375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 53
-INFO: Ship-19 is going to try to collide with at least 2 other friends nearby f:3, e:2, e with space:2 at Position(2, 1)
-INFO: Ship-71 is going to try to collide with at least 2 other friends nearby f:3, e:2, e with space:2 at Position(2, 1)
-INFO: Turn took: 193 ms; AvgTime: 120.84039087947883
 INFO: ================ TURN 308 ================
-INFO: Average Halite: 126.69140625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 53
-INFO: Ship-19 is going to try to collide with at least 2 other friends nearby f:4, e:3, e with space:3 at Position(1, 1)
-INFO: Turn took: 167 ms; AvgTime: 120.99025974025975
 INFO: ================ TURN 309 ================
-INFO: Average Halite: 125.599609375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 53
-INFO: Ship-14 is going to try to collide with at least 2 other friends nearby f:3, e:2, e with space:2 at Position(0, 30)
-INFO: Ship-35 is going to try to collide with at least 2 other friends nearby f:3, e:2, e with space:2 at Position(0, 30)
-INFO: Ship-73 is going to try to collide with at least 2 other friends nearby f:5, e:2, e with space:2 at Position(0, 2)
-INFO: Ship-42 is going to try to collide with at least 2 other friends nearby f:5, e:2, e with space:2 at Position(0, 2)
-INFO: Turn took: 188 ms; AvgTime: 121.20711974110033
 INFO: ================ TURN 310 ================
-INFO: Average Halite: 125.001953125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 53
-INFO: Ship-34 is going to try to collide with at least 2 other friends nearby f:5, e:2, e with space:2 at Position(0, 2)
-INFO: Ship-19 is going to try to collide with at least 2 other friends nearby f:6, e:3, e with space:2 at Position(1, 1)
-INFO: Ship-71 is going to try to collide with at least 2 other friends nearby f:6, e:3, e with space:2 at Position(1, 1)
-INFO: Turn took: 193 ms; AvgTime: 121.43870967741935
 INFO: ================ TURN 311 ================
-INFO: Average Halite: 123.822265625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 53
-INFO: Ship-14 is going to try to collide with at least 2 other friends nearby f:3, e:2, e with space:2 at Position(32, 30)
-INFO: Ship-35 is going to try to collide with at least 2 other friends nearby f:3, e:2, e with space:2 at Position(0, 30)
-INFO: Ship-73 is going to try to collide with at least 2 other friends nearby f:5, e:3, e with space:2 at Position(1, 1)
-INFO: Turn took: 198 ms; AvgTime: 121.68488745980707
 INFO: ================ TURN 312 ================
-INFO: Average Halite: 122.66796875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 53
-INFO: Ship-19 is going to try to collide with at least 2 other friends nearby f:3, e:2, e with space:1 at Position(2, 0)
-INFO: Turn took: 193 ms; AvgTime: 121.91346153846153
 INFO: ================ TURN 313 ================
-INFO: Average Halite: 121.7568359375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 53
-INFO: Ship-73 is going to try to collide with at least 2 other friends nearby f:5, e:3, e with space:2 at Position(1, 1)
-INFO: Turn took: 208 ms; AvgTime: 122.18849840255591
 INFO: ================ TURN 314 ================
-INFO: Average Halite: 120.85546875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 53
-INFO: Ship-67 is going to try to collide with at least 2 other friends nearby f:3, e:2, e with space:2 at Position(0, 30)
-INFO: Turn took: 197 ms; AvgTime: 122.4267515923567
 INFO: ================ TURN 315 ================
-INFO: Average Halite: 120.068359375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 53
-INFO: Ship-73 is going to try to collide with at least 2 other friends nearby f:4, e:3, e with space:2 at Position(1, 1)
-INFO: Turn took: 193 ms; AvgTime: 122.65079365079364
 INFO: ================ TURN 316 ================
-INFO: Average Halite: 119.4140625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 53
-INFO: Ship-35 is going to try to collide with at least 2 other friends nearby f:4, e:2, e with space:2 at Position(32, 30)
-INFO: Ship-67 is going to try to collide with at least 2 other friends nearby f:4, e:2, e with space:2 at Position(0, 30)
-INFO: Turn took: 197 ms; AvgTime: 122.88607594936708
 INFO: ================ TURN 317 ================
-INFO: Average Halite: 118.6650390625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 53
-INFO: Ship-37 is going to try to collide with at least 2 other friends nearby f:6, e:2, e with space:2 at Position(0, 2)
-INFO: Ship-12 is going to try to collide with at least 2 other friends nearby f:5, e:2, e with space:2 at Position(0, 30)
-INFO: Ship-73 is going to try to collide with at least 2 other friends nearby f:4, e:3, e with space:2 at Position(1, 1)
-INFO: Turn took: 193 ms; AvgTime: 123.10725552050474
 INFO: ================ TURN 318 ================
-INFO: Average Halite: 118.0087890625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 53
-INFO: Ship-60 is going to try to collide with at least 2 other friends nearby f:4, e:2, e with space:2 at Position(0, 2)
-INFO: Ship-67 is going to try to collide with at least 2 other friends nearby f:4, e:2, e with space:2 at Position(0, 30)
-INFO: Turn took: 188 ms; AvgTime: 123.31132075471699
 INFO: ================ TURN 319 ================
-INFO: Average Halite: 117.1923828125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 53
-INFO: Ship-37 is going to try to collide with at least 2 other friends nearby f:5, e:2, e with space:2 at Position(0, 2)
-INFO: Ship-12 is going to try to collide with at least 2 other friends nearby f:4, e:2, e with space:2 at Position(32, 30)
-INFO: Turn took: 181 ms; AvgTime: 123.4921630094044
 INFO: ================ TURN 320 ================
-INFO: Average Halite: 116.443359375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 53
-INFO: Ship-37 is going to try to collide with at least 2 other friends nearby f:4, e:2, e with space:2 at Position(0, 2)
-INFO: Ship-67 is going to try to collide with at least 2 other friends nearby f:4, e:2, e with space:2 at Position(0, 30)
-INFO: Turn took: 191 ms; AvgTime: 123.703125
 INFO: ================ TURN 321 ================
-INFO: Average Halite: 115.734375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 53
-INFO: Ship-12 is going to try to collide with at least 2 other friends nearby f:3, e:2, e with space:2 at Position(32, 30)
-INFO: Turn took: 178 ms; AvgTime: 123.87227414330218
 INFO: ================ TURN 322 ================
-INFO: Average Halite: 115.1220703125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 53
-INFO: Ship-37 is going to try to collide with at least 2 other friends nearby f:4, e:2, e with space:2 at Position(0, 2)
-INFO: Turn took: 164 ms; AvgTime: 123.9968944099379
 INFO: ================ TURN 323 ================
-INFO: Average Halite: 114.4697265625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 53
-INFO: Ship-67 is going to try to collide with at least 2 other friends nearby f:3, e:2, e with space:2 at Position(0, 30)
-INFO: Ship-19 is going to try to collide with at least 2 other friends nearby f:6, e:2, e with space:2 at Position(0, 2)
-INFO: Ship-12 is going to try to collide with at least 2 other friends nearby f:3, e:2, e with space:2 at Position(32, 30)
-INFO: Turn took: 170 ms; AvgTime: 124.13931888544892
 INFO: ================ TURN 324 ================
-INFO: Average Halite: 113.712890625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 53
-INFO: Ship-19 is going to try to collide with at least 2 other friends nearby f:5, e:2, e with space:2 at Position(0, 2)
-INFO: Turn took: 183 ms; AvgTime: 124.32098765432099
 INFO: ================ TURN 325 ================
-INFO: Average Halite: 113.1572265625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 53
-INFO: Turn took: 177 ms; AvgTime: 124.48307692307692
 INFO: ================ TURN 326 ================
-INFO: Average Halite: 112.623046875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 53
-INFO: Ship-67 is going to try to collide with at least 2 other friends nearby f:3, e:2, e with space:2 at Position(32, 30)
-INFO: Ship-19 is going to try to collide with at least 2 other friends nearby f:4, e:2, e with space:2 at Position(32, 2)
-INFO: Turn took: 183 ms; AvgTime: 124.66257668711657
 INFO: ================ TURN 327 ================
-INFO: Average Halite: 111.837890625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 53
-INFO: Turn took: 187 ms; AvgTime: 124.85321100917432
 INFO: ================ TURN 328 ================
-INFO: Average Halite: 111.087890625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 53
-INFO: Ship-67 is going to try to collide with at least 2 other friends nearby f:3, e:2, e with space:2 at Position(32, 30)
-INFO: Ship-19 is going to try to collide with at least 2 other friends nearby f:6, e:2, e with space:2 at Position(32, 2)
-INFO: Ship-24 is going to try to collide with at least 2 other friends nearby f:6, e:2, e with space:2 at Position(0, 2)
-INFO: Turn took: 176 ms; AvgTime: 125.00914634146342
 INFO: ================ TURN 329 ================
-INFO: Average Halite: 110.2314453125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 53
-INFO: Turn took: 178 ms; AvgTime: 125.17021276595744
 INFO: ================ TURN 330 ================
-INFO: Average Halite: 109.234375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 53
-INFO: Ship-67 is going to try to collide with at least 2 other friends nearby f:3, e:2, e with space:2 at Position(32, 30)
-INFO: Ship-19 is going to try to collide with at least 2 other friends nearby f:7, e:2, e with space:2 at Position(32, 2)
-INFO: Ship-44 is going to try to collide with at least 2 other friends nearby f:7, e:2, e with space:2 at Position(0, 2)
-INFO: Turn took: 181 ms; AvgTime: 125.33939393939394
 INFO: ================ TURN 331 ================
-INFO: Average Halite: 108.5537109375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 53
-INFO: Ship-24 is going to try to collide with at least 2 other friends nearby f:4, e:3, e with space:2 at Position(1, 1)
-INFO: Turn took: 178 ms; AvgTime: 125.49848942598187
 INFO: ================ TURN 332 ================
-INFO: Average Halite: 107.6943359375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 53
-INFO: Ship-54 is going to try to collide with at least 2 other friends nearby f:7, e:2, e with space:2 at Position(0, 2)
-INFO: Ship-19 is going to try to collide with at least 2 other friends nearby f:7, e:2, e with space:2 at Position(32, 2)
-INFO: Turn took: 203 ms; AvgTime: 125.73192771084338
 INFO: ================ TURN 333 ================
-INFO: Average Halite: 106.8076171875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 53
-INFO: Ship-44 is going to try to collide with at least 2 other friends nearby f:5, e:3, e with space:2 at Position(1, 1)
-INFO: Ship-24 is going to try to collide with at least 2 other friends nearby f:5, e:3, e with space:2 at Position(1, 1)
-INFO: Turn took: 187 ms; AvgTime: 125.91591591591592
 INFO: ================ TURN 334 ================
-INFO: Average Halite: 106.046875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 53
-INFO: Ship-19 is going to try to collide with at least 2 other friends nearby f:5, e:3, e with space:3 at Position(31, 1)
-INFO: Turn took: 201 ms; AvgTime: 126.14071856287426
 INFO: ================ TURN 335 ================
-INFO: Average Halite: 105.69921875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 52
-INFO: Ship-68 is going to try to collide with at least 2 other friends nearby f:3, e:2, e with space:1 at Position(1, 1)
-INFO: Ship-54 is going to try to collide with at least 2 other friends nearby f:3, e:2, e with space:1 at Position(1, 1)
-INFO: Ship-24 is going to try to collide with at least 2 other friends nearby f:3, e:2, e with space:1 at Position(2, 0)
-INFO: Turn took: 191 ms; AvgTime: 126.33432835820895
 INFO: ================ TURN 336 ================
-INFO: Average Halite: 104.9189453125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 52
-INFO: Ship-24 is going to try to collide with at least 2 other friends nearby f:5, e:2, e with space:1 at Position(2, 0)
-INFO: Ship-19 is going to try to collide with at least 2 other friends nearby f:4, e:2, e with space:2 at Position(31, 1)
-INFO: Turn took: 204 ms; AvgTime: 126.56547619047619
 INFO: ================ TURN 337 ================
-INFO: Average Halite: 104.095703125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 52
-INFO: Ship-24 is going to try to collide with at least 2 other friends nearby f:5, e:4, e with space:3 at Position(1, 0)
-INFO: Ship-73 is going to try to collide with at least 2 other friends nearby f:5, e:2, e with space:1 at Position(1, 1)
-INFO: Ship-68 is going to try to collide with at least 2 other friends nearby f:4, e:2, e with space:1 at Position(2, 0)
-INFO: Ship-54 is going to try to collide with at least 2 other friends nearby f:5, e:2, e with space:1 at Position(1, 1)
-INFO: Turn took: 203 ms; AvgTime: 126.79228486646885
 INFO: ================ TURN 338 ================
-INFO: Average Halite: 104.7109375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 51
-INFO: Ship-67 is going to try to collide with at least 2 other friends nearby f:4, e:2, e with space:2 at Position(32, 30)
-INFO: Ship-62 is going to try to collide with at least 2 other friends nearby f:4, e:2, e with space:2 at Position(0, 30)
-INFO: Ship-19 is going to try to collide with at least 2 other friends nearby f:4, e:2, e with space:2 at Position(31, 1)
-INFO: Turn took: 185 ms; AvgTime: 126.96449704142012
 INFO: ================ TURN 339 ================
-INFO: Average Halite: 103.955078125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 51
-INFO: Ship-11 is going to try to collide with at least 2 other friends nearby f:4, e:2, e with space:2 at Position(31, 31)
-INFO: Turn took: 191 ms; AvgTime: 127.15339233038348
 INFO: ================ TURN 340 ================
-INFO: Average Halite: 102.990234375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 51
-INFO: Ship-34 is going to try to collide with at least 2 other friends nearby f:3, e:2, e with space:2 at Position(0, 2)
-INFO: Ship-72 is going to try to collide with at least 2 other friends nearby f:3, e:2, e with space:2 at Position(0, 2)
-INFO: Ship-11 is going to try to collide with at least 2 other friends nearby f:5, e:3, e with space:3 at Position(31, 32)
-INFO: Turn took: 182 ms; AvgTime: 127.31470588235294
 INFO: ================ TURN 341 ================
-INFO: Average Halite: 102.38671875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 50
-INFO: Ship-49 is going to try to collide with at least 2 other friends nearby f:4, e:2, e with space:1 at Position(1, 1)
-INFO: Ship-19 is going to try to collide with at least 2 other friends nearby f:4, e:2, e with space:1 at Position(31, 1)
-INFO: Ship-34 is going to try to collide with at least 2 other friends nearby f:6, e:2, e with space:1 at Position(0, 1)
-INFO: Ship-72 is going to try to collide with at least 2 other friends nearby f:6, e:2, e with space:1 at Position(0, 1)
-INFO: Turn took: 172 ms; AvgTime: 127.44574780058652
 INFO: ================ TURN 342 ================
-INFO: Average Halite: 103.0234375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 49
-INFO: Turn took: 163 ms; AvgTime: 127.54970760233918
 INFO: ================ TURN 343 ================
-INFO: Average Halite: 102.5107421875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 49
-INFO: Turn took: 168 ms; AvgTime: 127.66763848396502
 INFO: ================ TURN 344 ================
-INFO: Average Halite: 101.1455078125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 49
-INFO: Turn took: 179 ms; AvgTime: 127.81686046511628
 INFO: ================ TURN 345 ================
-INFO: Average Halite: 100.03125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 49
-INFO: Turn took: 173 ms; AvgTime: 127.94782608695652
 INFO: ================ TURN 346 ================
-INFO: Average Halite: 99.166015625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 49
-INFO: Turn took: 176 ms; AvgTime: 128.08670520231215
 INFO: ================ TURN 347 ================
-INFO: Average Halite: 98.5361328125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 49
-INFO: Turn took: 169 ms; AvgTime: 128.20461095100865
 INFO: ================ TURN 348 ================
-INFO: Average Halite: 97.716796875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 49
-INFO: Turn took: 159 ms; AvgTime: 128.29310344827587
 INFO: ================ TURN 349 ================
-INFO: Average Halite: 97.2685546875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 49
-INFO: Turn took: 158 ms; AvgTime: 128.378223495702
 INFO: ================ TURN 350 ================
-INFO: Average Halite: 96.8310546875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 49
-INFO: Ship-46 has enough time to reach Position(0, 0), which has 1 enemies in 16 unit radius
-INFO: Ship-35 has enough time to reach Position(0, 0), which has 1 enemies in 16 unit radius
-INFO: Ship-59 has enough time to reach Position(0, 0), which has 1 enemies in 16 unit radius
-INFO: Ship-43 has enough time to reach Position(0, 0), which has 1 enemies in 16 unit radius
-INFO: Ship-57 has enough time to reach Position(0, 0), which has 1 enemies in 16 unit radius
-INFO: Ship-14 is going to try to collide with at least 2 other friends nearby f:3, e:1, e with space:1 at Position(-1, 29)
-INFO: Ship-14 has enough time to reach Position(0, 0), which has 1 enemies in 16 unit radius
-INFO: Ship-51 has enough time to reach Position(0, 0), which has 1 enemies in 16 unit radius
-INFO: Ship-41 has enough time to reach Position(0, 0), which has 1 enemies in 16 unit radius
-INFO: Ship-4 has enough time to reach Position(0, 0), which has 1 enemies in 16 unit radius
-INFO: Ship-66 has enough time to reach Position(0, 0), which has 1 enemies in 16 unit radius
-INFO: Ship-58 has enough time to reach Position(0, 0), which has 1 enemies in 16 unit radius
-INFO: Ship-65 has enough time to reach Position(0, 0), which has 1 enemies in 16 unit radius
-INFO: Ship-20 has enough time to reach Position(0, 0), which has 1 enemies in 16 unit radius
-INFO: Ship-3 has enough time to reach Position(0, 0), which has 1 enemies in 16 unit radius
-INFO: Ship-60 has enough time to reach Position(0, 0), which has 1 enemies in 16 unit radius
-INFO: Ship-42 has enough time to reach Position(0, 0), which has 1 enemies in 16 unit radius
-INFO: Ship-36 has enough time to reach Position(0, 0), which has 1 enemies in 16 unit radius
-INFO: Turn took: 172 ms; AvgTime: 128.50285714285715
 INFO: ================ TURN 351 ================
-INFO: Average Halite: 96.0166015625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 49
-INFO: Ship-58 might run across Position(0, 0) as it wants to stay still, dir to enemy dropoff is Direction(0, 1)
-INFO: Turn took: 101 ms; AvgTime: 128.42450142450141
 INFO: ================ TURN 352 ================
-INFO: Average Halite: 95.4794921875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 49
-INFO: Ship-62 has enough time to reach Position(0, 0), which has 1 enemies in 16 unit radius
-INFO: Turn took: 94 ms; AvgTime: 128.32670454545453
 INFO: ================ TURN 353 ================
-INFO: Average Halite: 95.076171875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 49
-INFO: Ship-54 has enough time to reach Position(0, 0), which has 1 enemies in 16 unit radius
-INFO: Turn took: 96 ms; AvgTime: 128.23512747875355
 INFO: ================ TURN 354 ================
-INFO: Average Halite: 94.70703125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 49
-INFO: Turn took: 85 ms; AvgTime: 128.1129943502825
 INFO: ================ TURN 355 ================
-INFO: Average Halite: 94.4892578125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 49
-INFO: Ship-61 has enough time to reach Position(0, 0), which has 1 enemies in 16 unit radius
-INFO: Turn took: 102 ms; AvgTime: 128.03943661971832
 INFO: ================ TURN 356 ================
-INFO: Average Halite: 94.2939453125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 49
-INFO: Ship-31 has enough time to reach Position(0, 0), which has 1 enemies in 16 unit radius
-INFO: Ship-47 has enough time to reach Position(0, 0), which has 1 enemies in 16 unit radius
-INFO: Turn took: 106 ms; AvgTime: 127.97752808988764
 INFO: ================ TURN 357 ================
-INFO: Average Halite: 93.779296875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 49
-INFO: Ship-7 has enough time to reach Position(0, 0), which has 1 enemies in 16 unit radius
-INFO: Ship-29 has enough time to reach Position(0, 0), which has 1 enemies in 16 unit radius
-INFO: Turn took: 89 ms; AvgTime: 127.86834733893558
 INFO: ================ TURN 358 ================
-INFO: Average Halite: 93.5087890625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 49
-INFO: Ship-49 has enough time to reach Position(0, 0), which has 1 enemies in 16 unit radius
-INFO: Turn took: 81 ms; AvgTime: 127.73743016759776
 INFO: ================ TURN 359 ================
-INFO: Average Halite: 93.11328125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 49
-INFO: Ship-37 has enough time to reach Position(0, 0), which has 1 enemies in 16 unit radius
-INFO: Turn took: 81 ms; AvgTime: 127.60724233983287
 INFO: ================ TURN 360 ================
-INFO: Average Halite: 92.736328125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 49
-INFO: Ship-46 might run across Position(0, 0) as it wants to stay still, dir to enemy dropoff is Direction(0, 1)
-INFO: Ship-72 has enough time to reach Position(0, 0), which has 1 enemies in 16 unit radius
-INFO: Turn took: 85 ms; AvgTime: 127.4888888888889
 INFO: ================ TURN 361 ================
-INFO: Average Halite: 92.2958984375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 49
-INFO: Ship-46 might run across Position(0, 0) as it wants to stay still, dir to enemy dropoff is Direction(0, 1)
-INFO: Ship-71 has enough time to reach Position(0, 0), which has 1 enemies in 16 unit radius
-INFO: Ship-63 has enough time to reach Position(0, 0), which has 1 enemies in 16 unit radius
-INFO: Turn took: 79 ms; AvgTime: 127.35457063711911
 INFO: ================ TURN 362 ================
-INFO: Average Halite: 91.84375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 49
-INFO: Ship-46 might run across Position(0, 0) as it wants to stay still, dir to enemy dropoff is Direction(0, 1)
-INFO: Ship-67 is going to try to collide with at least 2 other friends nearby f:2, e:1, e with space:1 at Position(28, 0)
-INFO: Turn took: 70 ms; AvgTime: 127.19613259668509
 INFO: ================ TURN 363 ================
-INFO: Average Halite: 91.501953125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 49
-INFO: Ship-46 might run across Position(0, 0) as it wants to stay still, dir to enemy dropoff is Direction(0, 1)
-INFO: Ship-67 is going to try to collide with at least 2 other friends nearby f:3, e:1, e with space:1 at Position(28, 1)
-INFO: Turn took: 65 ms; AvgTime: 127.02479338842976
 INFO: ================ TURN 364 ================
-INFO: Average Halite: 91.21875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 49
-INFO: Ship-14 might run across Position(0, 0) as it wants to stay still, dir to enemy dropoff is Direction(1, 0)
-INFO: Ship-67 is going to try to collide with at least 2 other friends nearby f:3, e:1, e with space:1 at Position(28, 0)
-INFO: Turn took: 75 ms; AvgTime: 126.88186813186813
 INFO: ================ TURN 365 ================
-INFO: Average Halite: 90.8310546875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 49
-INFO: Ship-14 might run across Position(0, 0) as it wants to stay still, dir to enemy dropoff is Direction(1, 0)
-INFO: Ship-67 is going to try to collide with at least 2 other friends nearby f:6, e:1, e with space:1 at Position(29, 0)
-INFO: Ship-6 has enough time to reach Position(0, 0), which has 1 enemies in 16 unit radius
-INFO: Turn took: 91 ms; AvgTime: 126.78356164383561
 INFO: ================ TURN 366 ================
-INFO: Average Halite: 91.2529296875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 48
-INFO: Ship-46 might run across Position(0, 0) as it wants to stay still, dir to enemy dropoff is Direction(0, 1)
-INFO: Ship-18 has enough time to reach Position(0, 0), which has 0 enemies in 16 unit radius
-INFO: Turn took: 62 ms; AvgTime: 126.60655737704919
 INFO: ================ TURN 367 ================
-INFO: Average Halite: 91.0400390625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 48
-INFO: Ship-46 might run across Position(0, 0) as it wants to stay still, dir to enemy dropoff is Direction(0, 1)
-INFO: Turn took: 67 ms; AvgTime: 126.4441416893733
 INFO: ================ TURN 368 ================
-INFO: Average Halite: 90.5361328125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 48
-INFO: Ship-46 might run across Position(0, 0) as it wants to stay still, dir to enemy dropoff is Direction(0, 1)
-INFO: Ship-58 PANIC: NO AVAILABLE PLACES TO GO from Position(31, 31)
-INFO: Ship-58 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(0, 31), forcing Ship-46 to move to Position(0, 0)
-INFO: Ship-53 has enough time to reach Position(0, 0), which has 0 enemies in 16 unit radius
-INFO: Ship-50 has enough time to reach Position(0, 0), which has 0 enemies in 16 unit radius
-INFO: Turn took: 70 ms; AvgTime: 126.29076086956522
 INFO: ================ TURN 369 ================
-INFO: Average Halite: 90.2490234375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 48
-INFO: Ship-58 might run across Position(0, 0) as it wants to stay still, dir to enemy dropoff is Direction(0, 1)
-INFO: Ship-37 PANIC: NO AVAILABLE PLACES TO GO from Position(1, 2)
-INFO: Ship-37 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(1, 1), forcing Ship-31 to move to Position(0, 0)
-INFO: Turn took: 59 ms; AvgTime: 126.10840108401084
 INFO: ================ TURN 370 ================
-INFO: Average Halite: 89.9873046875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 48
-INFO: Ship-58 might run across Position(0, 0) as it wants to stay still, dir to enemy dropoff is Direction(0, 1)
-INFO: Ship-37 PANIC: NO AVAILABLE PLACES TO GO from Position(1, 1)
-INFO: Ship-37 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(0, 1), forcing Ship-41 to move to Position(31, 1)
-INFO: Turn took: 55 ms; AvgTime: 125.91621621621621
 INFO: ================ TURN 371 ================
-INFO: Average Halite: 89.5341796875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 48
-INFO: Ship-58 might run across Position(0, 0) as it wants to stay still, dir to enemy dropoff is Direction(0, 1)
-INFO: Ship-46 PANIC: NO AVAILABLE PLACES TO GO from Position(1, 31)
-INFO: Ship-46 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(0, 31), forcing Ship-58 to move to Position(0, 0)
-INFO: Turn took: 55 ms; AvgTime: 125.72506738544475
 INFO: ================ TURN 372 ================
-INFO: Average Halite: 89.3095703125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 48
-INFO: Ship-46 might run across Position(0, 0) as it wants to stay still, dir to enemy dropoff is Direction(0, 1)
-INFO: Ship-3 PANIC: NO AVAILABLE PLACES TO GO from Position(2, 0)
-INFO: Ship-3 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(2, 31), forcing Ship-60 to move to Position(3, 31)
-INFO: Ship-31 PANIC: NO AVAILABLE PLACES TO GO from Position(1, 31)
-INFO: Ship-31 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(0, 31), forcing Ship-46 to move to Position(0, 0)
-INFO: Ship-25 has enough time to reach Position(0, 0), which has 0 enemies in 16 unit radius
-INFO: Turn took: 51 ms; AvgTime: 125.5241935483871
 INFO: ================ TURN 373 ================
-INFO: Average Halite: 89.1142578125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 48
-INFO: Ship-31 might run across Position(0, 0) as it wants to stay still, dir to enemy dropoff is Direction(0, 1)
-INFO: Ship-43 PANIC: NO AVAILABLE PLACES TO GO from Position(1, 31)
-INFO: Ship-43 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(2, 31), forcing Ship-60 to move to Position(3, 0)
-INFO: Turn took: 48 ms; AvgTime: 125.31635388739946
 INFO: ================ TURN 374 ================
-INFO: Average Halite: 89.013671875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 48
-INFO: Ship-68 has enough time to reach Position(0, 0), which has 0 enemies in 16 unit radius
-INFO: Ship-31 might run across Position(0, 0) as it wants to stay still, dir to enemy dropoff is Direction(0, 1)
-INFO: Ship-58 PANIC: NO AVAILABLE PLACES TO GO from Position(1, 31)
-INFO: Ship-58 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(0, 31), forcing Ship-31 to move to Position(0, 0)
-INFO: Turn took: 50 ms; AvgTime: 125.11497326203208
 INFO: ================ TURN 375 ================
-INFO: Average Halite: 88.57421875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 48
-INFO: Ship-58 might run across Position(0, 0) as it wants to stay still, dir to enemy dropoff is Direction(0, 1)
-INFO: Ship-49 PANIC: NO AVAILABLE PLACES TO GO from Position(1, 1)
-INFO: Ship-49 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(0, 1), forcing Ship-71 to move to Position(31, 2)
-INFO: Ship-46 PANIC: NO AVAILABLE PLACES TO GO from Position(1, 31)
-INFO: Ship-46 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(0, 31), forcing Ship-58 to move to Position(0, 0)
-INFO: Ship-64 has enough time to reach Position(0, 0), which has 0 enemies in 16 unit radius
-INFO: Turn took: 47 ms; AvgTime: 124.90666666666667
 INFO: ================ TURN 376 ================
-INFO: Average Halite: 88.3291015625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 48
-INFO: Ship-46 might run across Position(0, 0) as it wants to stay still, dir to enemy dropoff is Direction(0, 1)
-INFO: Ship-51 PANIC: NO AVAILABLE PLACES TO GO from Position(31, 31)
-INFO: Ship-51 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(0, 31), forcing Ship-46 to move to Position(0, 0)
-INFO: Ship-72 PANIC: NO AVAILABLE PLACES TO GO from Position(1, 31)
-INFO: Ship-72 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(1, 31), forcing Ship-20 to move to Position(1, 29)
-INFO: Turn took: 36 ms; AvgTime: 124.67021276595744
 INFO: ================ TURN 377 ================
-INFO: Average Halite: 88.1376953125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 48
-INFO: Ship-51 might run across Position(0, 0) as it wants to stay still, dir to enemy dropoff is Direction(0, 1)
-INFO: Ship-49 PANIC: NO AVAILABLE PLACES TO GO from Position(1, 1)
-INFO: Ship-49 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(0, 1), forcing Ship-61 to move to Position(31, 2)
-INFO: Ship-41 PANIC: NO AVAILABLE PLACES TO GO from Position(31, 31)
-INFO: Ship-41 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(0, 31), forcing Ship-51 to move to Position(0, 0)
-INFO: Turn took: 37 ms; AvgTime: 124.43766578249337
 INFO: ================ TURN 378 ================
-INFO: Average Halite: 87.998046875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 48
-INFO: Ship-41 might run across Position(0, 0) as it wants to stay still, dir to enemy dropoff is Direction(0, 1)
-INFO: Ship-37 PANIC: NO AVAILABLE PLACES TO GO from Position(1, 1)
-INFO: Ship-37 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(0, 1), forcing Ship-18 to move to Position(31, 2)
-INFO: Turn took: 43 ms; AvgTime: 124.22222222222223
 INFO: ================ TURN 379 ================
-INFO: Average Halite: 87.8271484375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 48
-INFO: Ship-41 might run across Position(0, 0) as it wants to stay still, dir to enemy dropoff is Direction(0, 1)
-INFO: Ship-49 PANIC: NO AVAILABLE PLACES TO GO from Position(1, 1)
-INFO: Ship-49 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(0, 1), forcing Ship-6 to move to Position(31, 2)
-INFO: Ship-46 PANIC: NO AVAILABLE PLACES TO GO from Position(1, 31)
-INFO: Ship-46 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(0, 31), forcing Ship-41 to move to Position(0, 0)
-INFO: Turn took: 41 ms; AvgTime: 124.00263852242745
 INFO: ================ TURN 380 ================
-INFO: Average Halite: 87.759765625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 48
-INFO: Ship-46 might run across Position(0, 0) as it wants to stay still, dir to enemy dropoff is Direction(0, 1)
-INFO: Ship-51 PANIC: NO AVAILABLE PLACES TO GO from Position(1, 31)
-INFO: Ship-51 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(0, 31), forcing Ship-46 to move to Position(0, 0)
-INFO: Ship-58 PANIC: NO AVAILABLE PLACES TO GO from Position(31, 31)
-INFO: Ship-58 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(31, 0), forcing Ship-18 to move to Position(31, 2)
-INFO: Turn took: 23 ms; AvgTime: 123.73684210526316
 INFO: ================ TURN 381 ================
-INFO: Average Halite: 87.6357421875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 48
-INFO: Ship-51 might run across Position(0, 0) as it wants to stay still, dir to enemy dropoff is Direction(0, 1)
-INFO: Ship-72 PANIC: NO AVAILABLE PLACES TO GO from Position(1, 31)
-INFO: Ship-72 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(0, 31), forcing Ship-51 to move to Position(0, 0)
-INFO: Ship-61 PANIC: NO AVAILABLE PLACES TO GO from Position(31, 31)
-INFO: Ship-61 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(31, 31), forcing Ship-58 to move to Position(31, 1)
-INFO: Ship-49 PANIC: NO AVAILABLE PLACES TO GO from Position(1, 1)
-INFO: Ship-49 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(1, 2), forcing Ship-66 to move to Position(1, 3)
-INFO: Turn took: 23 ms; AvgTime: 123.4724409448819
 INFO: ================ TURN 382 ================
-INFO: Average Halite: 87.5537109375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 48
-INFO: Ship-72 might run across Position(0, 0) as it wants to stay still, dir to enemy dropoff is Direction(0, 1)
-INFO: Ship-41 PANIC: NO AVAILABLE PLACES TO GO from Position(1, 31)
-INFO: Ship-41 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(0, 31), forcing Ship-72 to move to Position(0, 0)
-INFO: Turn took: 23 ms; AvgTime: 123.20942408376963
 INFO: ================ TURN 383 ================
-INFO: Average Halite: 87.458984375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 48
-INFO: Ship-41 might run across Position(0, 0) as it wants to stay still, dir to enemy dropoff is Direction(0, 1)
-INFO: Ship-46 PANIC: NO AVAILABLE PLACES TO GO from Position(1, 31)
-INFO: Ship-46 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(0, 31), forcing Ship-41 to move to Position(0, 0)
-INFO: Turn took: 23 ms; AvgTime: 122.94778067885117
 INFO: ================ TURN 384 ================
-INFO: Average Halite: 87.4052734375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 48
-INFO: Ship-46 might run across Position(0, 0) as it wants to stay still, dir to enemy dropoff is Direction(0, 1)
-INFO: Ship-50 PANIC: NO AVAILABLE PLACES TO GO from Position(1, 1)
-INFO: Ship-50 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(0, 1), forcing Ship-57 to move to Position(31, 2)
-INFO: Ship-37 PANIC: NO AVAILABLE PLACES TO GO from Position(31, 1)
-INFO: Ship-37 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(31, 1), forcing Ship-18 to move to Position(31, 3)
-INFO: Ship-51 PANIC: NO AVAILABLE PLACES TO GO from Position(1, 31)
-INFO: Ship-51 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(0, 31), forcing Ship-46 to move to Position(0, 0)
-INFO: Turn took: 18 ms; AvgTime: 122.67447916666667
 INFO: ================ TURN 385 ================
-INFO: Average Halite: 87.28125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 48
-INFO: Ship-51 might run across Position(0, 0) as it wants to stay still, dir to enemy dropoff is Direction(0, 1)
-INFO: Turn took: 18 ms; AvgTime: 122.40259740259741
 INFO: ================ TURN 386 ================
-INFO: Average Halite: 87.2470703125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 48
-INFO: Ship-51 might run across Position(0, 0) as it wants to stay still, dir to enemy dropoff is Direction(0, 1)
-INFO: Ship-6 PANIC: NO AVAILABLE PLACES TO GO from Position(31, 31)
-INFO: Ship-6 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(0, 31), forcing Ship-51 to move to Position(0, 0)
-INFO: Ship-50 PANIC: NO AVAILABLE PLACES TO GO from Position(1, 1)
-INFO: Ship-50 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(0, 1), forcing Ship-68 to move to Position(31, 2)
-INFO: Turn took: 36 ms; AvgTime: 122.17875647668394
 INFO: ================ TURN 387 ================
-INFO: Average Halite: 87.2412109375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 48
-INFO: Ship-6 might run across Position(0, 0) as it wants to stay still, dir to enemy dropoff is Direction(0, 1)
-INFO: Ship-60 PANIC: NO AVAILABLE PLACES TO GO from Position(0, 2)
-INFO: Ship-60 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(0, 2), forcing Ship-53 to move to Position(0, 4)
-INFO: Ship-46 PANIC: NO AVAILABLE PLACES TO GO from Position(1, 31)
-INFO: Ship-46 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(0, 31), forcing Ship-6 to move to Position(0, 0)
-INFO: Turn took: 15 ms; AvgTime: 121.90180878552971
 INFO: ================ TURN 388 ================
-INFO: Average Halite: 87.18359375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 48
-INFO: Ship-46 might run across Position(0, 0) as it wants to stay still, dir to enemy dropoff is Direction(0, 1)
-INFO: Ship-63 PANIC: NO AVAILABLE PLACES TO GO from Position(1, 1)
-INFO: Ship-63 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(0, 1), forcing Ship-60 to move to Position(31, 2)
-INFO: Ship-57 PANIC: NO AVAILABLE PLACES TO GO from Position(31, 31)
-INFO: Ship-57 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(0, 31), forcing Ship-46 to move to Position(0, 0)
-INFO: Ship-41 PANIC: NO AVAILABLE PLACES TO GO from Position(1, 31)
-INFO: Ship-41 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(2, 31), forcing Ship-3 to move to Position(3, 0)
-INFO: Turn took: 16 ms; AvgTime: 121.62886597938144
 INFO: ================ TURN 389 ================
-INFO: Average Halite: 87.1826171875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 48
-INFO: Ship-57 might run across Position(0, 0) as it wants to stay still, dir to enemy dropoff is Direction(0, 1)
-INFO: Ship-51 PANIC: NO AVAILABLE PLACES TO GO from Position(1, 31)
-INFO: Ship-51 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(0, 31), forcing Ship-57 to move to Position(0, 0)
-INFO: Ship-4 PANIC: NO AVAILABLE PLACES TO GO from Position(31, 31)
-INFO: Ship-4 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(31, 0), forcing Ship-61 to move to Position(30, 1)
-INFO: Turn took: 10 ms; AvgTime: 121.34190231362467
 INFO: ================ TURN 390 ================
-INFO: Average Halite: 87.1806640625
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 48
-INFO: Ship-51 might run across Position(0, 0) as it wants to stay still, dir to enemy dropoff is Direction(0, 1)
-INFO: Ship-63 PANIC: NO AVAILABLE PLACES TO GO from Position(1, 1)
-INFO: Ship-63 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(0, 1), forcing Ship-60 to move to Position(31, 2)
-INFO: Ship-6 PANIC: NO AVAILABLE PLACES TO GO from Position(1, 31)
-INFO: Ship-6 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(0, 31), forcing Ship-51 to move to Position(0, 0)
-INFO: Turn took: 5 ms; AvgTime: 121.04358974358975
 INFO: ================ TURN 391 ================
-INFO: Average Halite: 87.173828125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 48
-INFO: Ship-6 might run across Position(0, 0) as it wants to stay still, dir to enemy dropoff is Direction(0, 1)
-INFO: Ship-4 PANIC: NO AVAILABLE PLACES TO GO from Position(31, 31)
-INFO: Ship-4 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(0, 31), forcing Ship-6 to move to Position(0, 0)
-INFO: Ship-46 PANIC: NO AVAILABLE PLACES TO GO from Position(1, 31)
-INFO: Ship-46 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(1, 30), forcing Ship-20 to move to Position(2, 30)
-INFO: Turn took: 10 ms; AvgTime: 120.75959079283888
 INFO: ================ TURN 392 ================
-INFO: Average Halite: 87.169921875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 48
-INFO: Ship-4 might run across Position(0, 0) as it wants to stay still, dir to enemy dropoff is Direction(0, 1)
-INFO: Ship-18 PANIC: NO AVAILABLE PLACES TO GO from Position(31, 31)
-INFO: Ship-18 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(0, 31), forcing Ship-4 to move to Position(0, 0)
-INFO: Ship-63 PANIC: NO AVAILABLE PLACES TO GO from Position(1, 1)
-INFO: Ship-63 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(0, 1), forcing Ship-53 to move to Position(31, 2)
-INFO: Ship-57 PANIC: NO AVAILABLE PLACES TO GO from Position(1, 31)
-INFO: Ship-57 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(2, 31), forcing Ship-20 to move to Position(2, 29)
-INFO: Turn took: 10 ms; AvgTime: 120.47704081632654
 INFO: ================ TURN 393 ================
-INFO: Average Halite: 87.1689453125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 48
-INFO: Ship-18 might run across Position(0, 0) as it wants to stay still, dir to enemy dropoff is Direction(0, 1)
-INFO: Ship-62 PANIC: NO AVAILABLE PLACES TO GO from Position(31, 31)
-INFO: Ship-62 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(0, 31), forcing Ship-18 to move to Position(0, 0)
-INFO: Ship-51 PANIC: NO AVAILABLE PLACES TO GO from Position(1, 31)
-INFO: Ship-51 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(1, 31), forcing Ship-42 to move to Position(2, 30)
-INFO: Turn took: 5 ms; AvgTime: 120.18320610687023
 INFO: ================ TURN 394 ================
-INFO: Average Halite: 87.15234375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 3; Current dropoffs: 5; Numships: 48
-INFO: Ship-62 might run across Position(0, 0) as it wants to stay still, dir to enemy dropoff is Direction(0, 1)
-INFO: Ship-60 PANIC: NO AVAILABLE PLACES TO GO from Position(31, 31)
-INFO: Ship-60 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(0, 31), forcing Ship-62 to move to Position(0, 0)
-INFO: Ship-63 PANIC: NO AVAILABLE PLACES TO GO from Position(1, 1)
-INFO: Ship-63 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(0, 1), forcing Ship-66 to move to Position(31, 2)
-INFO: Turn took: 36 ms; AvgTime: 119.96954314720813
 INFO: ================ TURN 395 ================
-INFO: Average Halite: 87.13671875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 3; Current dropoffs: 5; Numships: 46
-INFO: Ship-60 might run across Position(0, 0) as it wants to stay still, dir to enemy dropoff is Direction(0, 1)
-INFO: Ship-6 PANIC: NO AVAILABLE PLACES TO GO from Position(1, 31)
-INFO: Ship-6 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(0, 31), forcing Ship-60 to move to Position(0, 0)
-INFO: Ship-4 PANIC: NO AVAILABLE PLACES TO GO from Position(31, 31)
-INFO: Ship-4 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(31, 30), forcing Ship-54 to move to Position(30, 30)
-INFO: Turn took: 32 ms; AvgTime: 119.74683544303798
 INFO: ================ TURN 396 ================
-INFO: Average Halite: 87.123046875
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 3; Current dropoffs: 5; Numships: 46
-INFO: Ship-6 might run across Position(0, 0) as it wants to stay still, dir to enemy dropoff is Direction(0, 1)
-INFO: Ship-51 PANIC: NO AVAILABLE PLACES TO GO from Position(1, 31)
-INFO: Ship-51 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(0, 31), forcing Ship-6 to move to Position(0, 0)
-INFO: Ship-63 PANIC: NO AVAILABLE PLACES TO GO from Position(1, 1)
-INFO: Ship-63 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(0, 1), forcing Ship-61 to move to Position(31, 2)
-INFO: Turn took: 4 ms; AvgTime: 119.45454545454545
 INFO: ================ TURN 397 ================
-INFO: Average Halite: 87.0986328125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 3; Current dropoffs: 5; Numships: 46
-INFO: Ship-51 might run across Position(0, 0) as it wants to stay still, dir to enemy dropoff is Direction(0, 1)
-INFO: Ship-18 PANIC: NO AVAILABLE PLACES TO GO from Position(1, 31)
-INFO: Ship-18 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(0, 31), forcing Ship-51 to move to Position(0, 0)
-INFO: Turn took: 6 ms; AvgTime: 119.16876574307305
 INFO: ================ TURN 398 ================
-INFO: Average Halite: 87.08984375
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 0; Current dropoffs: 5; Numships: 46
-INFO: Ship-18 might run across Position(0, 0) as it wants to stay still, dir to enemy dropoff is Direction(0, 1)
-INFO: Ship-60 PANIC: NO AVAILABLE PLACES TO GO from Position(1, 31)
-INFO: Ship-60 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(0, 31), forcing Ship-18 to move to Position(0, 0)
-INFO: Ship-63 PANIC: NO AVAILABLE PLACES TO GO from Position(1, 1)
-INFO: Ship-63 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(0, 1), forcing Ship-36 to move to Position(31, 2)
-INFO: Turn took: 4 ms; AvgTime: 118.87939698492463
 INFO: ================ TURN 399 ================
-INFO: Average Halite: 87.078125
-INFO: Spawned IDS: 
-INFO: Max Dropoffs: 4; Current dropoffs: 5; Numships: 46
-INFO: Ship-60 might run across Position(0, 0) as it wants to stay still, dir to enemy dropoff is Direction(0, 1)
-INFO: Ship-6 PANIC: NO AVAILABLE PLACES TO GO from Position(1, 31)
-INFO: Ship-6 PANIC: SUCCESSFULLY NAVIGATED OUT by moving to Position(0, 31), forcing Ship-60 to move to Position(0, 0)
-INFO: Turn took: 5 ms; AvgTime: 118.59398496240601
 INFO: ================ TURN 400 ================
-INFO: Average Halite: 87.037109375

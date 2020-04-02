@@ -27,7 +27,7 @@ export class Map extends Grid<Cell> {
       new Location((x+1) % this.width, y),
       new Location((x-1 + this.width) % this.width, y),
       new Location(x, (y+1) % this.height),
-      new Location(x, (y-1) % this.height)
+      new Location(x, (y-1 + this.height) % this.height)
     ]
   }
   /**

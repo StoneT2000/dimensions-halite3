@@ -9,6 +9,7 @@ export class PlayerStatistics {
   last_turn_alive = 0;
   last_turn_ship_spawn = 0;
   turn_productions: Array<Energy> = [];
+  turn_deposited: Array<Energy> = [];
   total_production: Energy = 0;
   total_mined: Energy = 0;
   total_bonus: Energy = 0;
