@@ -178,13 +178,14 @@ export class Replay {
       ENGINE_VERSION: Replay.ENGINE_VERSION,
       GAME_CONSTANTS: this.GAME_CONSTANTS,
       REPLAY_FILE_VERSION: Replay.REPLAY_FILE_VERSION,
-      full_frames: this.full_frames,
+      full_frames: this.full_frames.map((turn) => turn.to_json(turn)),
       game_statistics: this.game_statistics.to_json(),
       map_generator_seed: this.map_generator_seed,
       number_of_players: this.number_of_players,
       players: [], 
       production_map: this.production_map.to_json()
     }
+    console.log('Found ' + this.full_frames.length + ' frames');
     let players_json = []
     this.players.forEach((player) => {
       players_json.push(player.to_json()) // TODO, deal with to_json for maps with tpyes that need to do a to_json

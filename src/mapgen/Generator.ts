@@ -12,7 +12,16 @@ export class Generator {
         map.grid[y][x].energy = 400;
       }
     }
+    let num_tile_cols = 4;
+    let tile_width = 8;
+    let tile_height = 8;
     // place factory for each plaeyr
+    for (let player_id = 0; player_id < numPlayers; player_id++) {
+      let p_f_x = (player_id % num_tile_cols) * tile_width + factory_x;
+      let p_f_y = (player_id % num_tile_cols) * tile_height + factory_y;
+      map.at(p_f_x, p_f_y).energy = 0;
+      map.factories.push(new Location(p_f_x, p_f_y));
+    }
     //   for (unsigned long player_idx = 0; player_idx < num_players; player_idx++) {
     //     const dimension_type player_factory_x = (player_idx % num_tile_cols) * tile_width + factory_x;
     //     const dimension_type player_factory_y = (player_idx / num_tile_cols) * tile_height + factory_y;
@@ -22,10 +31,10 @@ export class Generator {
     // }
 
     // constant places
-    for (let i = 0; i < numPlayers; i++) {
-      let player_factory_x = (i * 6) % map.width;
-      let player_factory_y = (i * 6) % map.height;
-      map.factories.push(new Location(player_factory_x, player_factory_y));
-    }
+    // for (let i = 0; i < numPlayers; i++) {
+    //   let player_factory_x = (i * 6) % map.width;
+    //   let player_factory_y = (i * 6) % map.height;
+    //   map.factories.push(new Location(player_factory_x, player_factory_y));
+    // }
   }
 }

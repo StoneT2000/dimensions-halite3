@@ -13,7 +13,7 @@ import { Dropoff } from './model/Dropoff';
 import { Energy } from './model/Units';
 import { GameStatistics, PlayerStatistics } from './Statistics';
 import { GameEvent } from './replay/GameEvent';
-import { Replay } from './replay/Replay';
+import { Replay, Turn } from './replay/Replay';
 
 type haliteState = {
   playerCount: number // should only be 2 or 4
@@ -75,8 +75,6 @@ export default class Halite3Design extends Design {
       // store player into store
       store.players.set(player.id, player);
 
-      // store initial players into replay
-      replay.players.set(player.id, player);
     }
 
     // game.replay.game_statistics = game.game_statistics;
@@ -98,12 +96,13 @@ export default class Halite3Design extends Design {
      * TODOS: Relevant things not implemented yet. same comment as comment in relevant code in HaliteImpl.cpp
      * Update max turn # by map size (300 @ 32x32 to 500 at 80x80)
      * 
-     * Add a 0 frame so we can record beginning-of-game state
+     * 
      * 
      * Load the map from the snapshot (if provided in configs or cli)
-     * 
+     */
 
-
+    
+    
     /**
      * 0. NOTE, delimiter is commonly a ' ' (space)
      * 1. sendall raw constants √
@@ -129,6 +128,11 @@ export default class Halite3Design extends Design {
       game: game,
       startTime: new Date(),
     }
+    // Add a 0 frame so we can record beginning-of-game state
+    game.replay.full_frames.push(new Turn());
+
+
+    game.replay.game_statistics = game.game_statistics; // ?? why? HaliteImpl.cpp:84
 
     // TODO, store map width height and constants from map gen
     // send the raw constants
@@ -180,8 +184,14 @@ export default class Halite3Design extends Design {
           names.set(commands[i].agentID, commands[i].command);
         }
       }
-      names.forEach((name, key) => {
-        match.log.info(`Player: ${key} is ready | Name: ${name}`);
+      names.forEach((name, player_id) => {
+        match.log.info(`Player: ${player_id} is ready | Name: ${name}`);
+        game.store.get_player(player_id).name = name;
+        // insert the initial player states
+        
+      })
+      game.store.players.forEach((player, player_id) => {
+        game.replay.players.set(player_id, player);
       })
       match.log.info(`Player initialization complete`);
     }
@@ -195,10 +205,29 @@ export default class Halite3Design extends Design {
      */
     // don't process turn 0 as it is anomaly as it is onyl turn when bot sends its name and not commands
     if (game.turn_number != 0) {
+      // Create new turn struct for replay file, to be filled by further turn actions
+      game.replay.full_frames.push(new Turn());
+      let len = game.replay.full_frames.length;
+      // Add state of entities at start of turn.
+      // First, update inspiration flags, so they can be used for
+      // movement/mining and so they are part of the replay.
       this.update_inspiration(match);
+      game.replay.full_frames[len - 1].add_entities(game.store);
+
       this.processTurn(match, commands);
+
+      // Add end of frame state.
+      game.replay.full_frames[len - 1].add_end_state(game.store);
     }
     game.turn_number++;
+    // Used to track the current turn number inside Event::update_stats
+    game.game_statistics.turn_number = game.turn_number;
+
+
+    /**
+     * Sending changed data to all players. In halite, I believe this was run at the start of this.processTurn
+     * Moving here should be fine as updating replays doesn't affect this
+     */
     // send turn number
     match.sendAll(`${game.turn_number}`);
     game.store.players.forEach((player: Player) => {
@@ -226,15 +255,16 @@ export default class Halite3Design extends Design {
 
     // instead of a for loop up to max turns, we check if game ended all the time
     if (this.gameEnded(match)) {
-
+      game.turn_number++;
       game.game_statistics.number_turns = game.turn_number;
 
       // Add state of entities at end of game.
-      // game.replay.full_frames.emplace_back();
+      game.replay.full_frames.push(new Turn());
+      let len = game.replay.full_frames.length;
       this.update_inspiration(match);
-      // game.replay.full_frames.back().add_entities(game.store);
+      game.replay.full_frames[len - 1].add_entities(game.store);
       this.update_player_stats(match);
-      // game.replay.full_frames.back().add_end_state(game.store);
+      game.replay.full_frames[len - 1].add_end_state(game.store);
 
       // rank_players(); // sort by energy, then put firstplace as first, then sort by player id
       // sort by turns alive first
@@ -259,12 +289,13 @@ export default class Halite3Design extends Design {
       game.game_statistics.player_statistics.sort((a, b) => {
         return a.player_id - b.player_id;
       });
+      
       match.log.info('Game has ended');
 
       let enable_compression = false;;
       let replay = game.replay;
       let filename = `replay-${(new Date()).toISOString()}-${replay.map_generator_seed}-${game.map.width}-${game.map.height}.hlt`;
-      let replay_directory = './';
+      let replay_directory = match.configs.replayDirectory;
       let output_filename = replay_directory + filename;
       // store replay
       // if (match.state.configs.no_replay) {
@@ -557,7 +588,6 @@ export default class Halite3Design extends Design {
     else {
       // if match ends for other reasons
       let game: Game = match.state.game;
-      game.turn_number++;
 
       if (game.store.map_total_energy == 0) {
         // check if map is empty of energy

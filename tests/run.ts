@@ -10,7 +10,7 @@ let myDimension = Dimension.create(halite, 'Domination', Dimension.Logger.LEVEL.
 let botSources = [];
 let starterBot = './starter-kits/js/starter/MyBot.js';
 let stoneBot = './starter-kits/js/currentBot/MyBot.js';
-botSources.push(starterBot);
+botSources.push(stoneBot);
 botSources.push(starterBot);
 
 // let expectedResultMap = [ [ 0, 1, 2, 3 ], [ 3, 3, 3, 3 ], [ -1, -1, -1, -1 ], [ -1, -1, -1, -1 ] ];
@@ -27,7 +27,8 @@ myDimension.runMatch(
       height: 32,
       game_seed: 15912302
     },
-    loggingLevel: Dimension.Logger.LEVEL.INFO
+    loggingLevel: Dimension.Logger.LEVEL.INFO,
+    replayDirectory: './replays'
   }
 ).then((res) => {
   console.log(res);
