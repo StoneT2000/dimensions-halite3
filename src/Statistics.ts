@@ -3,7 +3,7 @@ import { Energy } from "./model/Units";
 import { Location } from "./model/Location";
 
 export class PlayerStatistics {
-  player_id: PlayerID;
+  player_id: number;
   random_id: number = 0;
   rank: number = 0;
   last_turn_alive = 0;
@@ -61,8 +61,8 @@ export class PlayerStatistics {
       max_entity_distance: this.max_entity_distance,
       number_dropoffs: this.number_dropoffs,
       interaction_opportunities: this.interaction_opportunities,
-      //ships_captured: this.,
-      //ships_given: this.,
+      // ships_captured: this.ships_captured,
+      // ships_given: this.ships_given,
       ships_spawned: this.ships_spawned,
       ships_peak: this.ships_peak,
       self_collisions: this.self_collisions,
@@ -70,14 +70,14 @@ export class PlayerStatistics {
       dropoff_collisions: this.dropoff_collisions,
       total_mined: this.total_mined,
       total_bonus: this.total_bonus,
-      //total_mined_from_captured: this.,
+      // total_mined_from_captured: this.total_mined_from_captured,
       total_dropped: this.total_dropped,
       carried_at_end: this.carried_at_end,
       mining_efficiency: mining_efficiency,
       halite_per_dropoff: this.halite_per_dropoff,
       average_entity_distance: average_distance,
     }
-    return JSON.stringify(json);
+    return json;
   }
 
 }
@@ -89,12 +89,12 @@ export class GameStatistics {
   execution_time = 0;                            /**< Execution time of the game in ms. */
 
   turn_number = 0;
-  to_json(stats: GameStatistics) {
-    return JSON.stringify({
+  to_json() {
+    return {
       number_turns: this.number_turns,
-      player_statistics: this.player_statistics,
+      player_statistics: this.player_statistics.map((stat) => stat.to_json(stat)),
       execution_time: this.execution_time,
       map_total_halite: this.map_total_halite
-    })
+    };
   }
 }

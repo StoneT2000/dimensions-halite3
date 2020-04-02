@@ -23,8 +23,8 @@ export class Cell {
 
   }
   to_json() {
-    return JSON.stringify({
+    return {
       energy: this.energy
-    })
+    };
   }
 }

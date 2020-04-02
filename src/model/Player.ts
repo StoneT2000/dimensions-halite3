@@ -38,13 +38,17 @@ export class Player extends Enumerated<_Player>{
     
   }
   to_json() {
-    return JSON.stringify({
-      player_id: this.id,
+    let entities_json = {};
+    this.entities.forEach((location, entity_id) => {
+
+    })
+    return {
+      player_id: <number>this.id,
       name: this.name,
       energy: this.energy,
-      factory_location: this.factory,
-      entities: this.entities
-    });
+      factory_location: this.factory.to_json(),
+      entities: entities_json
+    };
   }
 
   terminate() {

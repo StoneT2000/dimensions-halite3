@@ -26,7 +26,16 @@ export class Grid<Entry> {
     }
   }
   to_json() {
-
+    return {
+      width: this.width,
+      height: this.height,
+      grid: this.grid.map((row) => {
+        return row.map((entry) => {
+          //@ts-ignore
+          return entry.to_json(); // should have a to_json member function
+        })
+      })
+    }
   }
   /**
    * Ge an entry at grid coordinates.

@@ -8,7 +8,7 @@ import { Location } from "../model/Location";
 export type GameEvent = BaseEvent;
 export abstract class BaseEvent {
   location: Location;
-  abstract to_json(): string;
+  abstract to_json(): any;
   abstract update_stats(store: Store, map: GameMap, stats: GameStatistics); 
   constructor(location: Location) {
     this.location = location;
@@ -34,14 +34,14 @@ export class SpawnEvent extends BaseEvent {
     // stats.player_statistics.at(owner_id.value).last_turn_ship_spawn = stats.turn_number;
     stats.player_statistics[this.owner_id].last_turn_ship_spawn = stats.turn_number;
   }
-  to_json(): string {
-    return JSON.stringify({
+  to_json() {
+    return {
       type: SpawnEvent.GAME_EVENT_TYPE_NAME,
-      location: this.location,
-      owner_id: this.owner_id,
-      id: this.id,
+      location: this.location.to_json(),
+      owner_id: <number>this.owner_id,
+      id: <number>this.id,
       energy: this.energy
-    });
+    };
   };
 }
 
@@ -64,7 +64,12 @@ export class CaptureEvent extends BaseEvent {
   }
   to_json(): string {
     return JSON.stringify({
-      
+      type: CaptureEvent.GAME_EVENT_TYPE_NAME,
+      location: this.location.to_json(),
+      old_owner: <number>this.old_owner,
+      new_owner: <number>this.new_owner,
+      old_id: <number>this.old_id,
+      new_id: <number>this.new_id
     });
   };
 }
@@ -105,12 +110,12 @@ export class CollisionEvent extends BaseEvent {
       }
     });
   }
-  to_json(): string {
-    return JSON.stringify({
+  to_json() {
+    return {
       type: CollisionEvent.GAME_EVENT_TYPE_NAME,
-      location: this.location,
-      ships: this.ships
-    });
+      location: this.location.to_json(),
+      ships: <Array<number>>this.ships
+    };
   };
 }
 
@@ -127,12 +132,12 @@ export class ConstructionEvent extends BaseEvent {
   update_stats(store: Store, map: GameMap, stats: GameStatistics) {
     // nothing is supposed to happen
   }
-  to_json(): string {
-    return JSON.stringify({
+  to_json() {
+    return {
       type: ConstructionEvent.GAME_EVENT_TYPE_NAME,
-      location: this.location,
-      owner_id: this.owner_id,
-      id: this.id
-    });
+      location: this.location.to_json(),
+      owner_id: <number>this.owner_id,
+      id: <number>this.id
+    };
   };
 }

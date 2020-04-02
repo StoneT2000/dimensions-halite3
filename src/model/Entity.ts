@@ -12,11 +12,11 @@ export class Entity extends Enumerated<_Entity> {
     super(id);
   }
   to_json() {
-    return JSON.stringify({
+    return {
       id: this.id,
       is_inspired: this.is_inspired,
       energy: this.energy
-    });
+    };
   }
 }
 

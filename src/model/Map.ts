@@ -6,11 +6,13 @@ export class Map extends Grid<Cell> {
   public factories: Array<Location> = [];
   static NEIGHBOR_COUNT = 4;
   to_json() {
-    return JSON.stringify({
+    return {
       height: this.height,
       width: this.width,
-      grid: this.grid
-    })
+      grid: this.grid.map((row) => {
+        return row.map((cell) => cell.to_json());
+      })
+    };
   }
 
   /**

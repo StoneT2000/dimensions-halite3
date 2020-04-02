@@ -13,6 +13,7 @@ import { Dropoff } from './model/Dropoff';
 import { Energy } from './model/Units';
 import { GameStatistics, PlayerStatistics } from './Statistics';
 import { GameEvent } from './replay/GameEvent';
+import { Replay } from './replay/Replay';
 
 type haliteState = {
   playerCount: number // should only be 2 or 4
@@ -22,7 +23,7 @@ type haliteState = {
 type Game = {
   map: GameMap
   game_statistics: GameStatistics
-  replay?: any
+  replay: Replay
   logs?: any
   store: Store,
   turn_number: number,
@@ -32,18 +33,28 @@ type Game = {
 export default class Halite3Design extends Design {
   
   // this emuluates the initialize_game section in HaliteImpl
-  initializeGameState(match: Match, width: number, height: number, numPlayers: number) {
+  initializeGameState(match: Match, width: number, height: number, numPlayers: number, seed: number) {
     let map = new GameMap(width, height);
 
     Generator.generateBasic(map, numPlayers);
     let store = new Store();
     let stats = new GameStatistics();
+    let replay = new Replay(stats, numPlayers, seed, map);
+    match.log.info("Map seed is " + seed);
     let game = {
       map: map,
       turn_number: 0,
       store: store,
-      game_statistics: stats
+      game_statistics: stats,
+      replay: replay
     };
+
+    // load map total halite
+    for (let row = 0; row < map.height; row++) {
+      for (let col = 0; col < map.width; col++) {
+          stats.map_total_halite += map.at(row, col).energy;
+      }
+    }
 
     // load map data into store
     for (let row = 0; row < map.height; row++) {
@@ -63,6 +74,9 @@ export default class Halite3Design extends Design {
       // }
       // store player into store
       store.players.set(player.id, player);
+
+      // store initial players into replay
+      replay.players.set(player.id, player);
     }
 
     // game.replay.game_statistics = game.game_statistics;
@@ -109,11 +123,11 @@ export default class Halite3Design extends Design {
     let height = game_constants.height ? game_constants.height : Constants.DEFAULT_MAP_HEIGHT;
     let seed = game_constants.game_seed ? game_constants.game_seed : Constants.game_seed;
 
-    let game = this.initializeGameState(match, width, height, numPlayers);
+    let game = this.initializeGameState(match, width, height, numPlayers, seed);
     let state: haliteState = {
       playerCount: match.agents.length,
       game: game,
-      startTime: new Date()
+      startTime: new Date(),
     }
 
     // TODO, store map width height and constants from map gen
@@ -212,7 +226,6 @@ export default class Halite3Design extends Design {
 
     // instead of a for loop up to max turns, we check if game ended all the time
     if (this.gameEnded(match)) {
-      game.turn_number++;
 
       game.game_statistics.number_turns = game.turn_number;
 
@@ -247,6 +260,17 @@ export default class Halite3Design extends Design {
         return a.player_id - b.player_id;
       });
       match.log.info('Game has ended');
+
+      let enable_compression = false;;
+      let replay = game.replay;
+      let filename = `replay-${(new Date()).toISOString()}-${replay.map_generator_seed}-${game.map.width}-${game.map.height}.hlt`;
+      let replay_directory = './';
+      let output_filename = replay_directory + filename;
+      // store replay
+      // if (match.state.configs.no_replay) {
+        replay.output(filename, enable_compression);
+
+      // }
 
       // log the execution time
       //@ts-ignore
@@ -527,8 +551,46 @@ export default class Halite3Design extends Design {
   }
   // in addition to halite 3 implementation, add condition for turn number
   gameEnded(match: Match): boolean {
-    if (match.state.game.turn_number >= Constants.MAX_TURNS) {
+    if (match.state.game.turn_number > Constants.MAX_TURNS) {
       return true;
+    }
+    else {
+      // if match ends for other reasons
+      let game: Game = match.state.game;
+      game.turn_number++;
+
+      if (game.store.map_total_energy == 0) {
+        // check if map is empty of energy
+        let unplayable = true;
+        mapLoop:
+        game.store.entities.forEach((entity) =>{
+          if (unplayable && entity.energy != 0) {
+            unplayable = false;
+          }
+        });
+        return unplayable;
+
+      }
+      let num_alive_players = 0;
+      game.store.players.forEach((player, player_id) => {
+        let can_play = this.player_can_play(player);
+        if (!player.terminated && player.can_play && !can_play) {
+          match.log.warn(`Player ${player.id} has insufficient resources to continue`);
+          player.can_play = false;
+          // Update 'last turn alive' one last time (liveness lasts
+          // to the end of a turn in which player makes a valid move)
+          let stats = game.game_statistics.player_statistics[player_id];
+          stats.last_turn_alive = game.turn_number;
+        }
+        if (!player.terminated && can_play) {
+          num_alive_players++;
+        }
+      });
+      if (num_alive_players > 1) {
+        return false;
+      }
+      // If there is only one player in the game, then let them keep playing.
+      return !(game.store.players.size == 1 && num_alive_players == 1);
     }
     return false;
   }

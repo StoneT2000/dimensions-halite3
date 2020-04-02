@@ -28,10 +28,10 @@ export class Location {
   }
 
   to_json() {
-    return JSON.stringify({
+    return {
       x: this.x,
       y: this.y
-    });
+    };
   }
   toString() {
     return `(${this.x}, ${this.y})`
