@@ -209,9 +209,9 @@ export default class Halite3Design extends Design {
 
       // Add state of entities at end of game.
       // game.replay.full_frames.emplace_back();
-      // update_inspiration();
+      this.update_inspiration(match);
       // game.replay.full_frames.back().add_entities(game.store);
-      // update_player_stats();
+      this.update_player_stats(match);
       // game.replay.full_frames.back().add_end_state(game.store);
 
       // rank_players(); // sort by energy, then put firstplace as first, then sort by player id
@@ -245,8 +245,56 @@ export default class Halite3Design extends Design {
 
     
   }
-  update_inspiration() {
-    // TODO
+  update_inspiration(match: Match) {
+    if (!Constants.INSPIRATION_ENABLED) {
+      return;
+    }
+    let game: Game = match.state.game;
+    const inspiration_radius = Constants.INSPIRATION_RADIUS;
+    const ships_threshold = Constants.INSPIRATION_SHIP_COUNT;
+
+    // Check every ship of every player
+    game.store.players.forEach((player, player_id) => {
+      player.entities.forEach((location, entity_id) => {
+        // map from player ID to # of ships within the inspiration
+        // radius of the current ship
+        let ships_in_radius: Map<PlayerID, number> = new Map();
+        game.store.players.forEach((_, pid) => {
+          ships_in_radius.set(pid, 0);
+        });
+
+        // Explore locations around this ship
+        for (let dx = -inspiration_radius; dx <= inspiration_radius; dx++) {
+          for (let dy = -inspiration_radius; dy <= inspiration_radius; dy++) {
+            let cur = new Location(
+              (((location.x + dx) % game.map.width) + game.map.width) % game.map.width,
+              (((location.y + dy) % game.map.height) + game.map.height) % game.map.height
+            )
+            let cur_cell = game.map.atLocation(cur);
+            if (cur_cell.entity == null || 
+              game.map.distance(location, cur) > inspiration_radius) {
+              continue;
+            }
+            const other_entity = game.store.get_entity(cur_cell.entity);
+            let oldval = ships_in_radius.get(other_entity.owner);
+            ships_in_radius.set(other_entity.owner, oldval + 1);
+          }
+        }
+
+        // Total up ships of other player
+        let opponent_entities = 0;
+        ships_in_radius.forEach((count, pid) => {
+          if (pid != player_id) {
+            opponent_entities += count;
+          }
+        })
+        // Mark ship as inspired or not
+        let entity = game.store.get_entity(entity_id);
+        entity.is_inspired = opponent_entities >= ships_threshold;
+
+      });
+    });
+        
   }
   processTurn(match: Match, commands: Array<Command>) {
     let game: Game = match.state.game;
@@ -370,7 +418,7 @@ export default class Halite3Design extends Design {
       // not implementing because default constants set this to false anyway
     }
 
-
+    this.update_player_stats(match);
   }
   getCommandsMap(match: Match, commands: Array<Command>): Map<PlayerID, Array<HCommand>>  {
     let commandsMap: Map<PlayerID, Array<HCommand>> = new Map();
@@ -456,6 +504,12 @@ export default class Halite3Design extends Design {
       return true;
     }
     return false;
+  }
+  /**
+   * Updates player stats
+   */
+  update_player_stats(match: Match) {
+    let statistics: GameStatistics = match.state.game.game_statistics;
   }
 
   /**
