@@ -2,10 +2,13 @@ import * as Dimension from 'dimensions-ai';
 import Halite3Design from '../src/index';
 
 
-let halite = new Halite3Design('Domination', {
+let halite3Design = new Halite3Design('Halite 3 Design', {
   commandDelimiter: ' '
 });
-let myDimension = Dimension.create(halite, 'Domination', Dimension.Logger.LEVEL.ALL);
+let myDimension = Dimension.create(halite3Design, {
+  name: 'Halite 3', 
+  loggingLevel: Dimension.Logger.LEVEL.ALL
+});
 
 let botSources = [];
 let starterBotJS = './starter-kits/js/starter/MyBot.js';

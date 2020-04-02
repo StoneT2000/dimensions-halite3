@@ -9,6 +9,6 @@
   "author": "StoneT2000",
   "license": "ISC",
   "dependencies": {
-    "dimensions-ai": "^1.0.12"
+    "dimensions-ai": "^1.0.14"
   }
 }
