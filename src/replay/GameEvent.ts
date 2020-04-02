@@ -62,15 +62,15 @@ export class CaptureEvent extends BaseEvent {
   update_stats(store: Store, map: GameMap, stats: GameStatistics) {
 
   }
-  to_json(): string {
-    return JSON.stringify({
+  to_json() {
+    return {
       type: CaptureEvent.GAME_EVENT_TYPE_NAME,
       location: this.location.to_json(),
       old_owner: <number>this.old_owner,
       new_owner: <number>this.new_owner,
       old_id: <number>this.old_id,
       new_id: <number>this.new_id
-    });
+    };
   };
 }
 

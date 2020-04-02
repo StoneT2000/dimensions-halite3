@@ -164,7 +164,7 @@ export class Replay {
     this.game_statistics = game_statistics;
     this.number_of_players = number_of_players;
     this.map_generator_seed = seed;
-    this.production_map = production_map;
+    this.production_map = production_map.copy(); // need to copy the state over, not a reference
   }
 
   /**
@@ -185,7 +185,6 @@ export class Replay {
       players: [], 
       production_map: this.production_map.to_json()
     }
-    console.log('Found ' + this.full_frames.length + ' frames');
     let players_json = []
     this.players.forEach((player) => {
       players_json.push(player.to_json()) // TODO, deal with to_json for maps with tpyes that need to do a to_json

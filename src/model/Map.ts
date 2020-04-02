@@ -84,5 +84,16 @@ export class Map extends Grid<Cell> {
       }
     }
   }
+  copy() {
+    let map = new Map(this.width, this.height);
+    for (let i = 0; i < this.width; i++) {
+      for (let j = 0; j < this.height; j++) {
+        map.grid[i][j].energy = this.grid[i][j].energy; 
+        map.grid[i][j].owner = this.grid[i][j].owner;
+        map.grid[i][j].entity = this.grid[i][j].entity;
+      }
+    }
+    return map;
+  }
   // Map(dimension_type width, dimension_type height) : Grid(width, height) {}
 }

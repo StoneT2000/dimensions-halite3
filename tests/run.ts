@@ -10,7 +10,8 @@ let myDimension = Dimension.create(halite, 'Domination', Dimension.Logger.LEVEL.
 let botSources = [];
 let starterBot = './starter-kits/js/starter/MyBot.js';
 let stoneBot = './starter-kits/js/currentBot/MyBot.js';
-botSources.push(stoneBot);
+// botSources.push(stoneBot);
+botSources.push(starterBot);
 botSources.push(starterBot);
 
 // let expectedResultMap = [ [ 0, 1, 2, 3 ], [ 3, 3, 3, 3 ], [ -1, -1, -1, -1 ], [ -1, -1, -1, -1 ] ];

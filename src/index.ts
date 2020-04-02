@@ -391,7 +391,7 @@ export default class Halite3Design extends Design {
       let transaction = new CommandTransaction(game.store, game.map, match, (event: GameEvent) => {
         event.update_stats(game.store, game.map, game.game_statistics);
         // Create new game event for replay file.
-        // frames.back().events.push_back(std::move(event));
+        game.replay.full_frames[game.replay.full_frames.length - 1].events.push(event);
       });
 
       // std::unordered_set<Player::id_type> offenders;
@@ -437,6 +437,8 @@ export default class Halite3Design extends Design {
         } else {
           // assert(offenders.empty());
         }
+        let len = game.replay.full_frames.length;
+        game.replay.full_frames[len - 1].moves = commandsMap;
         break;
       }
       else {
@@ -499,7 +501,8 @@ export default class Halite3Design extends Design {
     if (Constants.CAPTURE_ENABLED) {
       // not implementing because default constants set this to false anyway
     }
-
+    let len = game.replay.full_frames.length;
+    game.replay.full_frames[len - 1].add_cells(game.map, game.store.changed_cells);
     this.update_player_stats(match);
   }
   getCommandsMap(match: Match, commands: Array<Command>): Map<PlayerID, Array<HCommand>>  {
