@@ -23,7 +23,7 @@ game.initialize().then(async () => {
         const { gameMap, me } = game;
 
         const commandQueue = [];
-        console.error(`I have ${me.getShips().length} ships, ${me.haliteAmount} halite`);
+        // console.error(`I have ${me.getShips().length} ships, ${me.haliteAmount} halite`);
         for (const ship of me.getShips()) {
             if (ship.haliteAmount > hlt.constants.MAX_HALITE / 2) {
                 const destination = me.shipyard.position;

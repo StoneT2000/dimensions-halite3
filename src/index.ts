@@ -172,7 +172,7 @@ export default class Halite3Design extends Design {
     // don't process turn 0 as it is anomaly as it is onyl turn when bot sends its name and not commands
     if (game.turn_number != 0) {
       match.log.info('Updating Frames');
-      this.update_inspiration();
+      this.update_inspiration(match);
       this.processTurn(match, commands);
     }
     game.turn_number++;
@@ -335,10 +335,11 @@ export default class Halite3Design extends Design {
 
       if (transaction.check()) {
         transaction.commit();
-        console.log(' Changed entities', game.store.changed_entities);
-        console.log('changed cells', game.store.changed_cells);
+        // console.log(' Changed entities', game.store.changed_entities);
+        // console.log('changed cells', game.store.changed_cells);
 
         if (Constants.STRICT_ERRORS) {
+          // TODO?
           // if (!offenders.empty()) {
           //   std::ostringstream stream;
           //   stream << "Command processing failed for players: ";
@@ -359,6 +360,7 @@ export default class Halite3Design extends Design {
         break;
       }
       else {
+        // TODO
         // for (auto player : offenders) {
         //   kill_player(player);
         //   commands.erase(player);

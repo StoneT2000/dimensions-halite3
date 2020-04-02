@@ -8,10 +8,11 @@ let halite = new Halite3Design('Domination', {
 let myDimension = Dimension.create(halite, 'Domination', Dimension.Logger.LEVEL.ALL);
 
 let botSources = [];
-let jsSource = './starter-kits/js/MyBot.js';
-for (let i = 0; i < 2; i++) {
-  botSources.push(jsSource);
-}
+let starterBot = './starter-kits/js/starter/MyBot.js';
+let stoneBot = './starter-kits/js/currentBot/MyBot.js';
+botSources.push(starterBot);
+botSources.push(stoneBot);
+
 // let expectedResultMap = [ [ 0, 1, 2, 3 ], [ 3, 3, 3, 3 ], [ -1, -1, -1, -1 ], [ -1, -1, -1, -1 ] ];
 // let expectedScore = 5; 
 
@@ -26,7 +27,7 @@ myDimension.runMatch(
       height: 32,
       game_seed: 15912302
     },
-    loggingLevel: Dimension.Logger.LEVEL.ALL
+    loggingLevel: Dimension.Logger.LEVEL.WARN
   }
 ).then((res) => {
   console.log(res);
