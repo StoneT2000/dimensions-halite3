@@ -32,7 +32,7 @@ game.initialize().then(async () => {
             }
             else if (gameMap.get(ship.position).haliteAmount < hlt.constants.MAX_HALITE / 10) {
                 const direction = Direction.getAllCardinals()[Math.floor(4 * Math.random())];
-                const destination = ship.position.directionalOffset(Direction.South);
+                const destination = ship.position.directionalOffset(direction);
                 const safeMove = gameMap.naiveNavigate(ship, destination);
                 commandQueue.push(ship.move(safeMove));
                 

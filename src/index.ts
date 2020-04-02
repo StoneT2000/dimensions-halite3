@@ -11,6 +11,7 @@ import { Direction, Location } from './model/Location';
 import { CommandName, CommandTransaction } from './command/CommandTransaction';
 import { Dropoff } from './model/Dropoff';
 import { Energy } from './model/Units';
+import { GameStatistics, PlayerStatistics } from './Statistics';
 
 type haliteState = {
   playerCount: number // should only be 2 or 4
@@ -18,7 +19,7 @@ type haliteState = {
 }
 type Game = {
   map: GameMap
-  game_statistics?: any
+  game_statistics: GameStatistics
   replay?: any
   logs?: any
   store: Store,
@@ -28,11 +29,19 @@ type Game = {
 
 export default class Halite3Design extends Design {
   
+  // this emuluates the initialize_game section in HaliteImpl
   initializeGameState(match: Match, width: number, height: number, numPlayers: number) {
     let map = new GameMap(width, height);
 
     Generator.generateBasic(map, numPlayers);
     let store = new Store();
+    let stats = new GameStatistics();
+    let game = {
+      map: map,
+      turn_number: 0,
+      store: store,
+      game_statistics: stats
+    };
 
     // load map data into store
     for (let row = 0; row < map.height; row++) {
@@ -45,12 +54,16 @@ export default class Halite3Design extends Design {
       let agent = match.agents[i];
       let player = store.player_factory.make_with_id(agent.id, map.factories[i]);
       player.energy = Constants.INITIAL_ENERGY;
+      game.game_statistics.player_statistics.push(new PlayerStatistics(player.id, Math.floor(Math.random() * 1000)));
 
       // TODO: if given a snapshot, update values accordingly
-
+      // if (snapshot.players.find(player.id) != snapshot.players.end()) {
+      // }
       // store player into store
       store.players.set(player.id, player);
     }
+
+    // game.replay.game_statistics = game.game_statistics;
 
     store.players.forEach((player: Player, playerID: PlayerID) => {
       // Zero the energy on factory and mark as owned.
@@ -59,12 +72,7 @@ export default class Halite3Design extends Design {
       factory.energy = 0;
       factory.owner = playerID;
     });
-
-    let game = {
-      map: map,
-      turn_number: 0,
-      store: store
-    };
+    
     
     return game;
   }
@@ -140,15 +148,21 @@ export default class Halite3Design extends Design {
       return MatchStatus.RUNNING;
     }
 
-    // see if players/agents are ready
+
     
+    // Used to track the current turn number inside Event::update_stats
+    game.game_statistics.turn_number = game.turn_number;
     match.log.info(`Starting turn ${game.turn_number}`);
+
+    // see if players/agents are ready
     if (game.turn_number == 0) {
       for (let i = 0; i < commands.length; i++) {
         match.log.info(`Player: ${commands[i].agentID} is ready | Name: ${commands[i].command}`);
       }
       match.log.info(`Player initialization complete`);
     }
+
+    
 
     /** Updating stage. Halite does it by sending updated frame data to each agent, and then processing their commands and advancing the turn. We will process commands first (empty at first), send updated frames return MatchStatus.RUNNING, then back to process commands 
      * 1. Process turn, update match state
@@ -187,8 +201,44 @@ export default class Halite3Design extends Design {
       match.sendAll(`${location.x} ${location.y} ${game.map.atLocation(location).energy}`);
     })
 
+    // instead of a for loop up to max turns, we check if game ended all the time
     if (this.gameEnded(match)) {
       game.turn_number++;
+
+      game.game_statistics.number_turns = game.turn_number;
+
+      // Add state of entities at end of game.
+      // game.replay.full_frames.emplace_back();
+      // update_inspiration();
+      // game.replay.full_frames.back().add_entities(game.store);
+      // update_player_stats();
+      // game.replay.full_frames.back().add_end_state(game.store);
+
+      // rank_players(); // sort by energy, then put firstplace as first, then sort by player id
+      // sort by turns alive first
+      game.game_statistics.player_statistics.sort((a, b) => {
+        if (a.last_turn_alive == b.last_turn_alive) {
+          let turn_to_compare = a.last_turn_alive;
+          while(a.turn_productions[turn_to_compare] == b.turn_productions[turn_to_compare]) {
+            if (--turn_to_compare < 0) {
+              return a.random_id - b.random_id;
+            }
+          }
+          return a.turn_productions[turn_to_compare] - b.turn_productions[turn_to_compare]
+        }
+        else {
+          return a.last_turn_alive - b.last_turn_alive
+        }
+      })
+      game.game_statistics.player_statistics.reverse();
+      game.game_statistics.player_statistics.sort((a, b) => {
+        return a.player_id - b.player_id;
+      })
+      game.game_statistics.player_statistics.forEach((stat, index) => {
+        stat.rank = index + 1;
+      })
+      console.log(game.game_statistics);
+      match.log.info('Game has ended');
       return MatchStatus.FINISHED;
     }
     return MatchStatus.RUNNING;
@@ -402,7 +452,7 @@ export default class Halite3Design extends Design {
   }
   // in addition to halite 3 implementation, add condition for turn number
   gameEnded(match: Match): boolean {
-    if (match.state.game.turn_number >= 100) {
+    if (match.state.game.turn_number >= Constants.MAX_TURNS) {
       return true;
     }
     return false;
