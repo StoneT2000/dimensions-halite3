@@ -4,17 +4,17 @@ import { Location } from "../model/Location";
 export class Generator {
   static generateBasic(map: Map, numPlayers: number) {
 
-    let factory_x = 12;
-    let factory_y = 12;
+    let factory_x = 4;
+    let factory_y = 4;
     // init with 100 energy each
     for (let y = 0; y < map.width; y++) {
       for (let x = 0; x < map.height; x++) {
         map.grid[y][x].energy = 400;
       }
     }
-    let num_tile_cols = 4;
-    let tile_width = 8;
-    let tile_height = 8;
+    let num_tile_cols = 8;
+    let tile_width = 4;
+    let tile_height = 4;
     // place factory for each plaeyr
     for (let player_id = 0; player_id < numPlayers; player_id++) {
       let p_f_x = (player_id % num_tile_cols) * tile_width + factory_x;

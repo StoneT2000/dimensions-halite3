@@ -113,12 +113,12 @@ export class MoveTransaction extends Transaction<MoveCommand> {
         entity.energy -= required;
         // Remove the entity from its source.
         source.entity = null;
-        // console.log(`removing entity ${command.entity} from `,location.x, location.y, 'factory at', player.factory.to_json());
+
 
         // this.map.move_location(location, command.direction); instead we do
         let destLoc = new Location(location.x, location.y);
         this.map.move_location(destLoc, command.direction);
-        // console.log('entity moved to', destLoc.x, destLoc.y, 'factory at', player.factory.to_json());
+
         // Mark it as interested in the destination.
         let arr = [];
         if (destinations.has(location)) {arr = destinations.get(destLoc);}

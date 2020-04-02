@@ -296,7 +296,6 @@ export default class Halite3Design extends Design {
       let replay = game.replay;
       let filename = `replay-${(new Date()).toISOString()}-${replay.map_generator_seed}-${game.map.width}-${game.map.height}.hlt`;
       let replay_directory = match.configs.replayDirectory ? match.configs.replayDirectory : '.';
-      console.log(replay_directory);
       let output_filename = replay_directory + '/' + filename;
       // store replay
       // if (match.state.configs.no_replay) {
@@ -307,7 +306,6 @@ export default class Halite3Design extends Design {
       // log the execution time
       //@ts-ignore
       game.game_statistics.execution_time = new Date() - match.state.startTime;
-      console.log(game.game_statistics);
 
       return MatchStatus.FINISHED;
     }
@@ -416,8 +414,6 @@ export default class Halite3Design extends Design {
 
       if (transaction.check()) {
         transaction.commit();
-        // console.log(' Changed entities', game.store.changed_entities);
-        // console.log('changed cells', game.store.changed_cells);
 
         if (Constants.STRICT_ERRORS) {
           // TODO?
