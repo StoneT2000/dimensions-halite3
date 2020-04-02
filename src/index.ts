@@ -10,6 +10,7 @@ import { Factory, Entity, EntityID } from './model/Entity';
 import { Direction, Location } from './model/Location';
 import { CommandName, CommandTransaction } from './command/CommandTransaction';
 import { Dropoff } from './model/Dropoff';
+import { Energy } from './model/Units';
 
 type haliteState = {
   playerCount: number // should only be 2 or 4
@@ -88,11 +89,16 @@ export default class Halite3Design extends Design {
      *    then row by row the map with halite info
      */
     let numPlayers = match.agents.length;
-    let width = match.configs.initializeConfig.width;
-    let height = match.configs.initializeConfig.height;
-    if (match.configs.initializeConfig.game_seed) {
-      Constants.game_seed = match.configs.initializeConfig.game_seed;
-    }
+    
+    let game_constants = JSON.parse(JSON.stringify(Constants));
+    Object.assign(game_constants, match.configs.initializeConfig);
+    match.configs.game_constants = game_constants;
+    match.log.info('Constants match.configs.game_constants');
+
+    let width = game_constants.width ? game_constants.width : Constants.DEFAULT_MAP_WIDTH;
+    let height = game_constants.height ? game_constants.height : Constants.DEFAULT_MAP_HEIGHT;
+    let seed = game_constants.game_seed ? game_constants.game_seed : Constants.game_seed;
+
     let game = this.initializeGameState(match, width, height, numPlayers);
     let state: haliteState = {
       playerCount: match.agents.length,
@@ -104,11 +110,11 @@ export default class Halite3Design extends Design {
     match.sendAll(JSON.stringify(Constants));
     
     // Send the number of players and player ID
-    state.game.store.players.forEach((player: Player) => {
+    game.store.players.forEach((player: Player) => {
       match.send(`${numPlayers} ${player.id}`, player.id);
     })
     // Send each player's ID and factory location
-    state.game.store.players.forEach((player: Player) => {
+    game.store.players.forEach((player: Player) => {
       match.sendAll(`${player.id} ${player.factory.x} ${player.factory.y}`);
     })
 
@@ -116,7 +122,7 @@ export default class Halite3Design extends Design {
     match.sendAll(`${width} ${height}`);
 
     // now we iterate through each row on the game map and output it all (each cell's energy)
-    state.game.map.grid.forEach((rowOfCells) => {
+    game.map.grid.forEach((rowOfCells) => {
       match.sendAll(rowOfCells.map((cell) => cell.energy).join(' '));
     });
 
@@ -262,10 +268,63 @@ export default class Halite3Design extends Design {
       }
     }
 
+    // Resolve ship mining
+
+    const max_energy = Constants.MAX_ENERGY;
+    const ships_threshold = Constants.SHIPS_ABOVE_FOR_CAPTURE;
+    const bonus_multiplier = Constants.INSPIRED_BONUS_MULTIPLIER;
+    game.store.entities.forEach((entity, entity_id) => {
+      //changed_entities.find(entity_id) == changed_entities.end() is equiv to checking if it exists
+      if (!game.store.changed_entities.has(entity_id) && entity.energy < max_energy) {
+        // Allow this entity to extract
+        const location = game.store.get_player(entity.owner).get_entity_location(entity_id);
+        let cell = game.map.atLocation(location);
+        const ratio = entity.is_inspired ? Constants.INSPIRED_EXTRACT_RATIO : Constants.EXTRACT_RATIO;
+        let extracted: Energy = Math.ceil(cell.energy / ratio);
+        let gained = extracted;
+        // If energy is small, give it all to the entity.
+        if (extracted == 0 && cell.energy > 0) {
+          extracted = cell.energy;
+          gained = cell.energy;
+        }
+        // Don't take more than the entity can hold.
+        if (extracted + entity.energy > max_energy) {
+          extracted = max_energy - entity.energy;
+        }
+
+        // Apply bonus for inspired entities
+        if (entity.is_inspired && bonus_multiplier > 0) {
+          gained += bonus_multiplier * gained;
+        }
+
+        // Do not allow entity to exceed capacity.
+        if (max_energy - entity.energy < gained) {
+          gained = max_energy - entity.energy;
+        }
+
+        // auto player_stats = game.game_statistics.player_statistics.at(entity.owner.value);
+        // player_stats.total_mined += extracted;
+        // player_stats.total_bonus += gained > extracted ? gained - extracted : 0;
+        // if (entity.was_captured) {
+        //     player_stats.total_mined_from_captured += gained;
+        // }
+        entity.energy += gained;
+        cell.energy -= extracted;
+        game.store.map_total_energy -= extracted;
+        game.store.changed_cells.add(location);
+      }
+    });
+
+    // Resolve ship capture
+    if (Constants.CAPTURE_ENABLED) {
+      // not implementing because default constants set this to false anyway
+    }
+
+
   }
   getCommandsMap(match: Match, commands: Array<Command>): Map<PlayerID, Array<HCommand>>  {
     let commandsMap: Map<PlayerID, Array<HCommand>> = new Map();
-    let game = match.state.game;
+    let game: Game = match.state.game;
     game.store.players.forEach((player: Player) => {
       if (!player.terminated) {
         commandsMap.set(player.id, []);
@@ -328,26 +387,89 @@ export default class Halite3Design extends Design {
           default:
             // this agent should be terminated
             match.throw(id, new MatchError(`Player - ${id} sent a erroneous command of ${cmd}. terminating player`));
-            game.store.players.get(id).terminate();
+            this.kill_player(match, id);
             continue loop;
         }
         lastcmds.push(newcmd);
         commandsMap.set(id, lastcmds);
       }
       else {
-        match.throw(id, new MatchError(`ID: ${id} is terminated and not existent anymore`));
+        // this branch occurs if we some how receive commands from an agent we marked as terminated
+        // match.throw(id, new MatchError(`ID: ${id} is terminated and not existent anymore`));
       }
     }
     return commandsMap;
   }
   // in addition to halite 3 implementation, add condition for turn number
   gameEnded(match: Match): boolean {
-    if (match.state.game.turn_number >= 10) {
+    if (match.state.game.turn_number >= 100) {
       return true;
     }
     return false;
   }
-  async getResults(match: Match, config?: any): Promise<any> {
 
+  /**
+   * Kills/Terminates a player from the match
+   * @param match 
+   * @param player_id 
+   */
+  kill_player(match: Match, player_id: PlayerID) {
+    let game: Game = match.state.game;
+    let player = game.store.players.get(player_id)
+    player.terminate();
+    // match.kill(player_id); TODO add this later
+    let entities = player.entities;
+    entities.forEach((location, entity_id) => {
+      let cell = game.map.atLocation(location);
+      cell.entity = null;
+      game.store.delete_entity(entity_id);
+    });
+    player.energy = 0;
+  }
+  async getResults(match: Match, config?: any): Promise<any> {
+    let game: Game = match.state.game;
+    let results = {
+      error_logs: {
+      },
+      execution_time: {
+
+      },
+      final_snapshot: {
+
+      },
+      map_generator: {
+        
+      },
+      map_seed: Constants.game_seed,
+      map_width: game.map.width,
+      map_height: game.map.height,
+      replay: '',
+      stats: {
+
+      },
+      terminated: {
+
+      }
+    }
+    if (match.configs.initializeConfig.game_seed != undefined) {
+      results.map_seed = match.configs.initializeConfig.game_seed;
+    }
+
+    let rankings = [];
+    game.store.players.forEach((player: Player) => {
+      rankings.push({
+        id: player.id,
+        score: player.energy
+      });
+    });
+    rankings.sort((a, b) => a.score - b.score);
+    rankings.forEach((meta: any, index) => {
+      results.stats[meta.id] = {
+        rank: index + 1,
+        score: meta.score
+      }
+    });
+
+    return results;
   }
 }

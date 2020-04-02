@@ -3,6 +3,7 @@ import { Entity, EntityID } from "./Entity";
 import { Energy } from './Units';
 import { Dropoff } from "./Dropoff";
 import { Location } from "./Location";
+import { Match } from "dimensions-ai";
 
 const enum _Player {}
 export type PlayerID = class_id<_Player>;

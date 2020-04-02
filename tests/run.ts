@@ -24,10 +24,10 @@ myDimension.runMatch(
     initializeConfig: {
       width: 32,
       height: 32,
-      seed: 15912302
+      game_seed: 15912302
     },
     loggingLevel: Dimension.Logger.LEVEL.ALL
   }
 ).then((res) => {
-  // console.log(res);
+  console.log(res);
 })

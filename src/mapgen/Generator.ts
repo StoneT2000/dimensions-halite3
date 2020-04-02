@@ -9,7 +9,7 @@ export class Generator {
     // init with 100 energy each
     for (let y = 0; y < map.width; y++) {
       for (let x = 0; x < map.height; x++) {
-        map.grid[y][x].energy = 100;
+        map.grid[y][x].energy = 400;
       }
     }
     // place factory for each plaeyr
