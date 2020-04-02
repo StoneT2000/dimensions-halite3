@@ -157,9 +157,18 @@ export default class Halite3Design extends Design {
 
     // see if players/agents are ready
     if (game.turn_number == 0) {
+      let names = new Map();
       for (let i = 0; i < commands.length; i++) {
-        match.log.info(`Player: ${commands[i].agentID} is ready | Name: ${commands[i].command}`);
+        if (names.has(commands[i].agentID)) {
+          names.set(commands[i].agentID, names.get(commands[i].agentID) + ' ' + commands[i].command);
+        }
+        else {
+          names.set(commands[i].agentID, commands[i].command);
+        }
       }
+      names.forEach((name, key) => {
+        match.log.info(`Player: ${key} is ready | Name: ${name}`);
+      })
       match.log.info(`Player initialization complete`);
     }
 
@@ -229,20 +238,20 @@ export default class Halite3Design extends Design {
         else {
           return a.last_turn_alive - b.last_turn_alive
         }
-      })
+      });
       game.game_statistics.player_statistics.reverse();
-      game.game_statistics.player_statistics.sort((a, b) => {
-        return a.player_id - b.player_id;
-      })
       game.game_statistics.player_statistics.forEach((stat, index) => {
         stat.rank = index + 1;
-      })
-      console.log(game.game_statistics);
+      });
+      game.game_statistics.player_statistics.sort((a, b) => {
+        return a.player_id - b.player_id;
+      });
       match.log.info('Game has ended');
 
       // log the execution time
       //@ts-ignore
       game.game_statistics.execution_time = new Date() - match.state.startTime;
+      console.log(game.game_statistics);
 
       return MatchStatus.FINISHED;
     }
@@ -633,7 +642,8 @@ export default class Halite3Design extends Design {
     });
     player.energy = 0;
   }
-  async getResults(match: Match, config?: any): Promise<any> {
+
+  async getResults(match: Match): Promise<any> {
     let game: Game = match.state.game;
     let results = {
       error_logs: {
@@ -659,27 +669,12 @@ export default class Halite3Design extends Design {
     if (match.configs.initializeConfig.game_seed != undefined) {
       results.map_seed = match.configs.initializeConfig.game_seed;
     }
-    results.stats = game.game_statistics.player_statistics.map((stat) => {
-      return {
+    game.game_statistics.player_statistics.forEach((stat) => {
+      results.stats[stat.player_id] = {
         score: stat.turn_productions[stat.turn_productions.length - 1],
         rank: stat.rank
       }
     })
-
-    let rankings = [];
-    game.store.players.forEach((player: Player) => {
-      rankings.push({
-        id: player.id,
-        score: player.energy
-      });
-    });
-    rankings.sort((a, b) => a.score - b.score);
-    rankings.forEach((meta: any, index) => {
-      results.stats[meta.id] = {
-        rank: index + 1,
-        score: meta.score
-      }
-    });
 
     return results;
   }
