@@ -8,18 +8,15 @@ let halite = new Halite3Design('Domination', {
 let myDimension = Dimension.create(halite, 'Domination', Dimension.Logger.LEVEL.ALL);
 
 let botSources = [];
-let starterBot = './starter-kits/js/starter/MyBot.js';
+let starterBotJS = './starter-kits/js/starter/MyBot.js';
+let starterBotPY = './starter-kits/python/MyBot.py';
 let stoneBot = './bots/stoneBot/MyBot.js';
-// let TeamSchildpad = './bots/TeamSchildpad/MyBot.py';
+let TeamSchildpad = './bots/TeamSchildpad/MyBot.py';
 // botSources.push(stoneBot);
-botSources.push(starterBot);
-botSources.push(starterBot);
-botSources.push(starterBot);
-botSources.push(starterBot);
-
-// let expectedResultMap = [ [ 0, 1, 2, 3 ], [ 3, 3, 3, 3 ], [ -1, -1, -1, -1 ], [ -1, -1, -1, -1 ] ];
-// let expectedScore = 5; 
-
+botSources.push(starterBotJS);
+botSources.push(starterBotPY);
+botSources.push(starterBotPY);
+botSources.push(starterBotJS);
 
 myDimension.runMatch(
   botSources,
