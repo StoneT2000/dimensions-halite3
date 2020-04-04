@@ -1,7 +1,27 @@
 import { Map } from "../model/Map";
 import { Location } from "../model/Location";
+import MersenneTwister from 'mersenne-twister';
+import { BlurTileGenerator } from "./BlurTileGenerator";
 
-export class Generator {
+export enum MapType {
+  Basic,
+  BlurTile,
+  Fractal
+}
+
+export type MapParameters = {
+  type: MapType,
+  seed: number,
+  width: number,
+  height: number,
+  numPlayers: number
+}
+export abstract class GeneratorBase {
+  public rng: MersenneTwister
+  constructor(parameters: MapParameters) {
+    this.rng = new MersenneTwister(parameters.seed);
+  }
+
   static generateBasic(map: Map, numPlayers: number) {
 
     let factory_x = 4;

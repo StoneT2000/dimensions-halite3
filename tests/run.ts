@@ -21,26 +21,28 @@ botSources.push(starterBotPY);
 botSources.push(starterBotPY);
 botSources.push(starterBotJS);
 
-myDimension.runMatch(
-  botSources,
-  {
-    name: 'test-halite-match',
-    timeout: 1000,
-    initializeConfig: {
-      width: 32,
-      height: 32,
-      game_seed: 15912302
-    },
-    loggingLevel: Dimension.Logger.LEVEL.INFO,
-    replayDirectory: './replays'
-  }
-).then((res) => {
-  console.log(res);
-});
+// myDimension.runMatch(
+//   botSources,
+//   {
+//     name: 'test-halite-match',
+//     timeout: 1000,
+//     initializeConfig: {
+//       width: 32,
+//       height: 32,
+//       game_seed: 15912302
+//     },
+//     loggingLevel: Dimension.Logger.LEVEL.INFO,
+//     replayDirectory: './replays'
+//   }
+// ).then((res) => {
+//   console.log(res);
+// });
 botSources = [];
 botSources.push(stoneBot);
 botSources.push(stoneBot);
-myDimension.createMatch(
+botSources.push(stoneBot);
+botSources.push(stoneBot);
+myDimension.runMatch(
   botSources,
   {
     name: 'stone-vs-stone-halite',
@@ -54,5 +56,5 @@ myDimension.createMatch(
     replayDirectory: './replays'
   }
 ).then((res) => {
-  console.log(res);
+  // console.log(res);
 })

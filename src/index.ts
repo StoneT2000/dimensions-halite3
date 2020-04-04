@@ -5,7 +5,8 @@ import { Command as HCommand, MoveCommand, ConstructCommand, SpawnCommand } from
 import { Map as GameMap } from './model/Map';
 import { Store } from './Store';
 import { Player, PlayerID } from './model/Player';
-import { Generator } from './mapgen/Generator';
+import { MapParameters, MapType } from './mapgen/GeneratorBase';
+import { MapGenerator } from './mapgen/MapGenerator';
 import { Factory, Entity, EntityID } from './model/Entity';
 import { Direction, Location } from './model/Location';
 import { CommandName, CommandTransaction } from './command/CommandTransaction';
@@ -33,14 +34,14 @@ type Game = {
 export default class Halite3Design extends Design {
   
   // this emuluates the initialize_game section in HaliteImpl
-  initializeGameState(match: Match, width: number, height: number, numPlayers: number, seed: number) {
-    let map = new GameMap(width, height);
+  initializeGameState(match: Match, map_parameters: MapParameters) {
+    let map = new GameMap(map_parameters.width, map_parameters.height);
 
-    Generator.generateBasic(map, numPlayers);
+    MapGenerator.generateWithParams(map, map_parameters);
     let store = new Store();
     let stats = new GameStatistics();
-    let replay = new Replay(stats, numPlayers, seed, map);
-    match.log.info("Map seed is " + seed);
+    let replay = new Replay(stats, map_parameters.numPlayers, map_parameters.seed, map);
+    match.log.info("Map seed is " + map_parameters.seed + " | Map Type is" + MapType[map_parameters.type]);
     let game = {
       map: map,
       turn_number: 0,
@@ -116,13 +117,20 @@ export default class Halite3Design extends Design {
     let game_constants = JSON.parse(JSON.stringify(Constants));
     Object.assign(game_constants, match.configs.initializeConfig);
     match.configs.game_constants = game_constants;
-    match.log.info('Constants match.configs.game_constants');
 
     let width = game_constants.width ? game_constants.width : Constants.DEFAULT_MAP_WIDTH;
     let height = game_constants.height ? game_constants.height : Constants.DEFAULT_MAP_HEIGHT;
     let seed = game_constants.game_seed ? game_constants.game_seed : Constants.game_seed;
 
-    let game = this.initializeGameState(match, width, height, numPlayers, seed);
+    let map_parameters: MapParameters = {
+      type: MapType.BlurTile,
+      seed: seed,
+      width: width,
+      height: height,
+      numPlayers: numPlayers
+    }
+
+    let game = this.initializeGameState(match, map_parameters);
     let state: haliteState = {
       playerCount: match.agents.length,
       game: game,

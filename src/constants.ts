@@ -22,7 +22,7 @@ export const Constants = {
   "MAX_PLAYERS": 16,
   "MAX_TURNS": 400,
   "MAX_TURN_THRESHOLD": 64,
-  "MIN_CELL_PRODUCTION": 900,
+  "MIN_CELL_PRODUCTION": 0,
   "MIN_TURNS": 400,
   "MIN_TURN_THRESHOLD": 32,
   "MOVE_COST_RATIO": 10,
@@ -30,5 +30,6 @@ export const Constants = {
   "PERSISTENCE": 0.7,
   "SHIPS_ABOVE_FOR_CAPTURE": 3,
   "STRICT_ERRORS": false,
-  "game_seed": 1546875259
+  "game_seed": 1546875259,
+  "BLUR_FACTOR": 0.75
 }
