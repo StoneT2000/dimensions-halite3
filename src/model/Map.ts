@@ -78,8 +78,8 @@ export class Map extends Grid<Cell> {
    */
   constructor(width: number, height: number) {
     super(width, height);
-    for (let i = 0; i < width; i++) {
-      for (let j = 0; j < height; j++) {
+    for (let i = 0; i < height; i++) {
+      for (let j = 0; j < width; j++) {
         this.grid[i][j] = new Cell();
       }
     }

@@ -19,9 +19,9 @@ export class Grid<Entry> {
   constructor(width: number = 0, height: number = 0) {
     this.width = width;
     this.height = height;
-    for (let i = 0; i < width; i++) {
+    for (let i = 0; i < height; i++) {
       let row: any[] = [];
-      row.fill(null, 0, height);
+      row.fill(null, 0, width);
       this.grid.push(row);
     }
   }

@@ -74,6 +74,7 @@ export class TileGenerator extends GeneratorBase {
         const player_factory_x = (player_idx % this.num_tile_cols) * this.tile_width + factory_x;
         const player_factory_y = Math.floor((player_idx / this.num_tile_cols)) * this.tile_height + factory_y;
         // map.at(player_factory_x, player_factory_y).energy = 0;
+        console.log(player_factory_x, player_factory_y);
         map.grid[player_factory_y][player_factory_x].energy = 0;
         map.factories.push(new Location(player_factory_x, player_factory_y))
         // map.factories.emplace_back(player_factory_x, player_factory_y);

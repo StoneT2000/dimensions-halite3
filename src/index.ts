@@ -121,9 +121,10 @@ export default class Halite3Design extends Design {
     let width = game_constants.width ? game_constants.width : Constants.DEFAULT_MAP_WIDTH;
     let height = game_constants.height ? game_constants.height : Constants.DEFAULT_MAP_HEIGHT;
     let seed = game_constants.game_seed ? game_constants.game_seed : Constants.game_seed;
+    let map_type = game_constants.map_type ? game_constants.map_type : MapType.Fractal
 
     let map_parameters: MapParameters = {
-      type: MapType.BlurTile,
+      type: map_type,
       seed: seed,
       width: width,
       height: height,
