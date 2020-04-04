@@ -13,12 +13,15 @@ let myDimension = Dimension.create(halite3Design, {
 
 let botSources = [];
 let starterBotJS = './starter-kits/js/starter/MyBot.js';
+let stillBotJs = './starter-kits/js/starter/StillBot.js';
 let starterBotPY = './starter-kits/python/MyBot.py';
 let stoneBot = './bots/stoneBot/MyBot.js';
 let TeamSchildpad = './bots/TeamSchildpad/MyBot.py';
 // botSources.push(stoneBot);
-botSources.push(starterBotJS);
-botSources.push(starterBotPY);
+botSources.push(stillBotJs);
+botSources.push(stillBotJs);
+// botSources.push(starterBotJS);
+// botSources.push(starterBotPY);
 // botSources.push(starterBotPY);
 // botSources.push(starterBotJS);
 
@@ -28,10 +31,12 @@ myDimension.runMatch(
     name: 'test-halite-match',
     timeout: 1000,
     initializeConfig: {
-      seed: 2,
-      map_type: MapType.Fractal
+      seed: 3,
+      map_type: MapType.Fractal,
+      width: 42,
+      height: 42
     },
-    loggingLevel: Dimension.Logger.LEVEL.INFO,
+    loggingLevel: Dimension.Logger.LEVEL.DETAIL,
     replayDirectory: './replays'
   }
 ).then((res) => {

@@ -145,14 +145,24 @@ export default class Halite3Design extends Design {
       height: height,
       numPlayers: numPlayers
     }
-    match.log.info(`Map Parameters:`, map_parameters)
 
+  
     let game = this.initializeGameState(match, map_parameters);
     let state: haliteState = {
       playerCount: match.agents.length,
       game: game,
       startTime: new Date(),
     }
+    let turns = Constants.MIN_TURNS;
+    const max_dimension = Math.max(game.map.width, game.map.height);
+    if (max_dimension > Constants.MIN_TURN_THRESHOLD) {
+        turns += (((max_dimension - Constants.MIN_TURN_THRESHOLD) / (Constants.MAX_TURN_THRESHOLD - Constants.MIN_TURN_THRESHOLD)) * (Constants.MAX_TURNS - Constants.MIN_TURNS));
+    }
+    match.configs.game_constants.MAX_TURNS = turns;
+
+    match.log.info(`Map Parameters:`, map_parameters)
+    match.log.info(`Game Constants:`, match.configs.game_constants)
+
     // Add a 0 frame so we can record beginning-of-game state
     game.replay.full_frames.push(new Turn());
 
@@ -607,7 +617,7 @@ export default class Halite3Design extends Design {
   }
   // in addition to halite 3 implementation, add condition for turn number
   gameEnded(match: Match): boolean {
-    if (match.state.game.turn_number > Constants.MAX_TURNS) {
+    if (match.state.game.turn_number > match.configs.game_constants.MAX_TURNS) {
       return true;
     }
     else {
