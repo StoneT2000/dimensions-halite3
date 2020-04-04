@@ -30,6 +30,5 @@ export const Constants = {
   "PERSISTENCE": 0.7,
   "SHIPS_ABOVE_FOR_CAPTURE": 3,
   "STRICT_ERRORS": false,
-  "game_seed": 1546875259,
   "BLUR_FACTOR": 0.75
 }

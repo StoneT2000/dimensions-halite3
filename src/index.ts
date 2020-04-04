@@ -16,6 +16,8 @@ import { GameStatistics, PlayerStatistics } from './Statistics';
 import { GameEvent } from './replay/GameEvent';
 import { Replay, Turn } from './replay/Replay';
 
+import MersenneTwister from 'mersenne-twister';
+
 type haliteState = {
   playerCount: number // should only be 2 or 4
   game: Game,
@@ -115,12 +117,25 @@ export default class Halite3Design extends Design {
     let numPlayers = match.agents.length;
     
     let game_constants = JSON.parse(JSON.stringify(Constants));
+
+    // set the random seed
+    let seed = match.configs.initializeConfig.seed ? 
+      match.configs.initializeConfig.seed : Math.floor((new Date).getTime() / 1000);
+    // use the seed to determine default map size
+    let rng = new MersenneTwister(seed);
+    let map_sizes = [32, 40, 48, 56, 64];
+    let base_size = map_sizes[rng.random_int() % map_sizes.length]
+    game_constants.DEFAULT_MAP_HEIGHT = base_size;
+    game_constants.DEFAULT_MAP_WIDTH = base_size;
+
     Object.assign(game_constants, match.configs.initializeConfig);
     match.configs.game_constants = game_constants;
+    match.configs.game_constants.seed = seed;
+
 
     let width = game_constants.width ? game_constants.width : Constants.DEFAULT_MAP_WIDTH;
     let height = game_constants.height ? game_constants.height : Constants.DEFAULT_MAP_HEIGHT;
-    let seed = game_constants.game_seed ? game_constants.game_seed : Constants.game_seed;
+    
     let map_type = game_constants.map_type ? game_constants.map_type : MapType.Fractal
 
     let map_parameters: MapParameters = {
@@ -130,6 +145,7 @@ export default class Halite3Design extends Design {
       height: height,
       numPlayers: numPlayers
     }
+    match.log.info(`Map Parameters:`, map_parameters)
 
     let game = this.initializeGameState(match, map_parameters);
     let state: haliteState = {
@@ -180,7 +196,7 @@ export default class Halite3Design extends Design {
     
     // Used to track the current turn number inside Event::update_stats
     game.game_statistics.turn_number = game.turn_number;
-    match.log.info(`Starting turn ${game.turn_number}`);
+    match.log.detail(`Starting turn ${game.turn_number}`);
 
     // see if players/agents are ready
     if (game.turn_number == 0) {
@@ -756,7 +772,7 @@ export default class Halite3Design extends Design {
       map_generator: {
         
       },
-      map_seed: Constants.game_seed,
+      map_seed: match.configs.game_constants.seed,
       map_width: game.map.width,
       map_height: game.map.height,
       replay: '',
@@ -768,7 +784,7 @@ export default class Halite3Design extends Design {
       }
     }
     if (match.configs.initializeConfig.game_seed != undefined) {
-      results.map_seed = match.configs.initializeConfig.game_seed;
+      results.map_seed = match.configs.game_constants.seed;
     }
     game.game_statistics.player_statistics.forEach((stat) => {
       results.stats[stat.player_id] = {

@@ -28,12 +28,10 @@ myDimension.runMatch(
     name: 'test-halite-match',
     timeout: 1000,
     initializeConfig: {
-      width: 32,
-      height: 32,
-      game_seed: 1546875259,
+      seed: 2,
       map_type: MapType.Fractal
     },
-    loggingLevel: Dimension.Logger.LEVEL.ERROR,
+    loggingLevel: Dimension.Logger.LEVEL.INFO,
     replayDirectory: './replays'
   }
 ).then((res) => {

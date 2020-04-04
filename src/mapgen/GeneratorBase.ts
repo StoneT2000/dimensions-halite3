@@ -20,6 +20,8 @@ export abstract class GeneratorBase {
   public rng: MersenneTwister
   constructor(parameters: MapParameters) {
     this.rng = new MersenneTwister(parameters.seed);
+    // call this first before using it. This is because halite uses the mersenne twister once at main.cpp, but we have two instances of the mersenne twister, here and in the design
+    this.rng.random_int();
   }
 
   static generateBasic(map: Map, numPlayers: number) {
