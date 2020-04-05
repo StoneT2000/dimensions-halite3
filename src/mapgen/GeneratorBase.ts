@@ -4,9 +4,9 @@ import MersenneTwister from 'mersenne-twister';
 import { BlurTileGenerator } from "./BlurTileGenerator";
 
 export enum MapType {
-  Basic,
-  BlurTile,
-  Fractal
+  Basic = 'basic',
+  BlurTile = 'blur',
+  Fractal = 'fractal'
 }
 
 export type MapParameters = {
