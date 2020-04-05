@@ -171,7 +171,7 @@ export default class Halite3Design extends Design {
 
     // TODO, store map width height and constants from map gen
     // send the raw constants
-    match.sendAll(JSON.stringify(Constants));
+    match.sendAll(JSON.stringify(match.configs.game_constants));
     
     // Send the number of players and player ID
     game.store.players.forEach((player: Player) => {

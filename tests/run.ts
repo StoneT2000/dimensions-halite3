@@ -4,7 +4,13 @@ import { MapType } from '../src/mapgen/GeneratorBase';
 
 
 let halite3Design = new Halite3Design('Halite 3 Design', {
-  commandDelimiter: ' '
+  engineOptions: {
+    commandDelimiter: ' ',
+    commandFinishPolicy: Dimension.COMMAND_FINISH_POLICIES.LINE_COUNT,
+    commandLines: {
+      max: 1
+    }
+  }
 });
 let myDimension = Dimension.create(halite3Design, {
   name: 'Halite 3', 
@@ -18,7 +24,7 @@ let starterBotPY = './starter-kits/python/MyBot.py';
 let stoneBot = './bots/stoneBot/MyBot.js';
 let TeamSchildpad = './bots/TeamSchildpad/MyBot.py';
 // botSources.push(stoneBot);
-botSources.push(stillBotJs);
+botSources.push(stoneBot);
 botSources.push(stillBotJs);
 // botSources.push(starterBotJS);
 // botSources.push(starterBotPY);
@@ -33,8 +39,8 @@ myDimension.runMatch(
     initializeConfig: {
       seed: 3,
       map_type: 'fractal',
-      width: 42,
-      height: 42
+      width: 32,
+      height: 32
     },
     loggingLevel: Dimension.Logger.LEVEL.DETAIL,
     replayDirectory: './replays'
