@@ -43,7 +43,7 @@ export default class Halite3Design extends Design {
     let store = new Store();
     let stats = new GameStatistics();
     let replay = new Replay(stats, map_parameters.numPlayers, map_parameters.seed, map);
-    match.log.info("Map seed is " + map_parameters.seed + " | Map Type is" + MapType[map_parameters.type]);
+    match.log.info("Map seed is " + map_parameters.seed + " | Map Type is" + map_parameters.type);
     let game = {
       map: map,
       turn_number: 0,

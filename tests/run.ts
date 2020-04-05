@@ -32,7 +32,7 @@ myDimension.runMatch(
     timeout: 1000,
     initializeConfig: {
       seed: 3,
-      map_type: MapType.Fractal,
+      map_type: 'fractal',
       width: 42,
       height: 42
     },
