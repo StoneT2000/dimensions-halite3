@@ -9,7 +9,7 @@
   "author": "StoneT2000",
   "license": "ISC",
   "dependencies": {
-    "dimensions-ai": "^1.0.17",
+    "dimensions-ai": "^1.0.22",
     "mersenne-twister": "^1.1.0"
   },
   "files": [

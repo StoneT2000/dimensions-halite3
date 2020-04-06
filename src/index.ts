@@ -1,4 +1,4 @@
-import { Design, Match, Command, MatchStatus, Agent, Logger, MatchError } from 'dimensions-ai';
+import { Design, Match, Command, MatchStatus, Agent, Logger, MatchError, DesignOptions, EngineOptions, COMMAND_FINISH_POLICIES } from 'dimensions-ai';
 import { Constants } from './Constants';
 
 import { Command as HCommand, MoveCommand, ConstructCommand, SpawnCommand } from './command/Command';
@@ -17,6 +17,8 @@ import { GameEvent } from './replay/GameEvent';
 import { Replay, Turn } from './replay/Replay';
 
 import MersenneTwister from 'mersenne-twister';
+import { DeepPartial } from 'dimensions-ai/lib/utils/DeepPartial';
+import { deepMerge } from 'dimensions-ai/lib/utils/DeepMerge';
 
 type haliteState = {
   playerCount: number // should only be 2 or 4
@@ -34,7 +36,33 @@ type Game = {
 
 
 export default class Halite3Design extends Design {
-  
+  public DEFAULT_OPTIONS: DeepPartial<DesignOptions> = {
+    engineOptions: {
+      commandDelimiter: ' ',
+      commandFinishPolicy: COMMAND_FINISH_POLICIES.LINE_COUNT,
+      commandLines: {
+        max: 1
+      },
+      timeout: {
+        active: true,
+        max: 2000,
+        timeoutCallback: (agent: Agent, match: Match, engineOptions: EngineOptions) => {
+          // match.kill(agent.id);
+          agent.currentMoveCommands = [];
+          this.kill_player(match, agent.id);
+          let game: Game = match.state.game;
+          let player = game.store.get_player(agent.id);
+          match.log.error(`agent ${agent.id} - '${player.name}' timed out after ${engineOptions.timeout.max} ms`);
+        }
+      }
+    }
+  }
+  constructor(name: string, options: DeepPartial<DesignOptions> = {}) {
+    super(name, options);
+    let overriden_defaults = {...this.DEFAULT_OPTIONS};
+    deepMerge(this.designOptions, overriden_defaults); 
+    deepMerge(this.designOptions, options);
+  }
   // this emuluates the initialize_game section in HaliteImpl
   initializeGameState(match: Match, map_parameters: MapParameters) {
     let map = new GameMap(map_parameters.width, map_parameters.height);
@@ -132,6 +160,9 @@ export default class Halite3Design extends Design {
     match.configs.game_constants = game_constants;
     match.configs.game_constants.seed = seed;
 
+    // set some defaults
+    match.configs.no_replay = false;
+
 
     let width = game_constants.width ? game_constants.width : Constants.DEFAULT_MAP_WIDTH;
     let height = game_constants.height ? game_constants.height : Constants.DEFAULT_MAP_HEIGHT;
@@ -196,7 +227,6 @@ export default class Halite3Design extends Design {
   async update(match: Match, commands: Array<Command>): Promise<MatchStatus> {
  
     let game: Game = match.state.game;
-
     // essentially keep skipping the actual running of the match until we receive commands
     if (game.turn_number == 0 && commands.length == 0) {
       return MatchStatus.RUNNING;
@@ -333,10 +363,9 @@ export default class Halite3Design extends Design {
       let replay_directory = match.configs.replayDirectory ? match.configs.replayDirectory : '.';
       let output_filename = replay_directory + '/' + filename;
       // store replay
-      // if (match.state.configs.no_replay) {
+      if (!match.configs.no_replay) {
         replay.output(output_filename, enable_compression);
-
-      // }
+      }
 
       // log the execution time
       //@ts-ignore
@@ -627,7 +656,6 @@ export default class Halite3Design extends Design {
       if (game.store.map_total_energy == 0) {
         // check if map is empty of energy
         let unplayable = true;
-        mapLoop:
         game.store.entities.forEach((entity) =>{
           if (unplayable && entity.energy != 0) {
             unplayable = false;
@@ -760,13 +788,16 @@ export default class Halite3Design extends Design {
     let game: Game = match.state.game;
     let player = game.store.players.get(player_id)
     player.terminate();
-    // match.kill(player_id); TODO add this later
+    match.kill(player_id);
     let entities = player.entities;
     entities.forEach((location, entity_id) => {
+
       let cell = game.map.atLocation(location);
       cell.entity = null;
       game.store.delete_entity(entity_id);
+      entities.delete(entity_id);
     });
+    player.entities = new Map();
     player.energy = 0;
   }
 
@@ -785,7 +816,7 @@ export default class Halite3Design extends Design {
       map_seed: match.configs.game_constants.seed,
       map_width: game.map.width,
       map_height: game.map.height,
-      replay: '',
+      replay: match.configs.replayDirectory,
       stats: {
 
       },
@@ -805,4 +836,8 @@ export default class Halite3Design extends Design {
 
     return results;
   }
+}
+
+class TestDesign extends Halite3Design {
+  public defaultOptions = {}
 }
