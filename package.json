@@ -4,12 +4,14 @@
   "description": "Halite 3 Design implemented using the Dimensions framework",
   "main": "lib/index.js",
   "scripts": {
+    "prepare": "npm run build",
+    "build": "tsc",
     "test": "ts-node tests/run.ts"
   },
   "author": "StoneT2000",
   "license": "ISC",
   "dependencies": {
-    "dimensions-ai": "^1.0.22",
+    "dimensions-ai": "^1.0.24",
     "mersenne-twister": "^1.1.0"
   },
   "files": [
