@@ -127,8 +127,6 @@ export default class Halite3Design extends Design {
      * TODOS: Relevant things not implemented yet. same comment as comment in relevant code in HaliteImpl.cpp
      * Load the map from the snapshot (if provided in configs or cli)
      */
-
-     // change timeout options of engine after "turn 0" as initialization bots have 10 seconds
     
     let numPlayers = match.agents.length;
     
@@ -221,8 +219,6 @@ export default class Halite3Design extends Design {
     if (game.turn_number == 0 && commands.length == 0) {
       return MatchStatus.RUNNING;
     }
-
-
     
     // Used to track the current turn number inside Event::update_stats
     game.game_statistics.turn_number = game.turn_number;
@@ -249,6 +245,8 @@ export default class Halite3Design extends Design {
         game.replay.players.set(player_id, player);
       })
       match.log.info(`Player initialization complete`);
+
+      // change timeout options of engine after "turn 0" as initialization bots have 10 seconds
       match.matchEngine.setEngineOptions({
         timeout: {
           max: 2000
