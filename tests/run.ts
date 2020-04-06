@@ -5,20 +5,9 @@ import Halite3Design from '../src/index';
 let halite3Design = new Halite3Design('Halite 3 Design');
 let halite3League = Dimension.create(halite3Design, {
   name: 'Halite 3', 
-  loggingLevel: Dimension.Logger.LEVEL.ALL
+  loggingLevel: Dimension.Logger.LEVEL.DETAIL
 });
 
-let halite3Design100ms = new Halite3Design('Halite 3 Design - 100ms Timeout', {
-  engineOptions: {
-    timeout: {
-      max: 100
-    }
-  }
-});
-let halite3League100ms = Dimension.create(halite3Design100ms, {
-  name: 'Halite 3', 
-  loggingLevel: Dimension.Logger.LEVEL.ALL
-});
 
 let botSources = [];
 let starterBotJS = './starter-kits/js/starter/MyBot.js';
@@ -38,14 +27,6 @@ halite3League.runMatch(
   botSources,
   {
     name: 'test-halite-match',
-    timeout: 1000,
-    initializeConfig: {
-      seed: 123233,
-      map_type: 'fractal',
-      width: 32,
-      height: 32
-    },
-    loggingLevel: Dimension.Logger.LEVEL.DETAIL,
     replayDirectory: './replays'
   }
 ).then((res) => {
@@ -56,7 +37,6 @@ halite3League.createMatch(
   botSources,
   {
     name: 'test-engine-change-match',
-    timeout: 1000,
     initializeConfig: {
       seed: 123233,
       map_type: 'fractal',
@@ -75,6 +55,18 @@ halite3League.createMatch(
   console.log(res);
 });
 
+
+let halite3Design100ms = new Halite3Design('Halite 3 Design - 100ms Timeout', {
+  engineOptions: {
+    timeout: {
+      max: 100
+    }
+  }
+});
+let halite3League100ms = Dimension.create(halite3Design100ms, {
+  name: 'Halite 3', 
+  loggingLevel: Dimension.Logger.LEVEL.ALL
+});
 botSources = [];
 botSources.push(stoneBot);
 botSources.push(stoneBot);
@@ -84,7 +76,6 @@ halite3League100ms.createMatch(
   botSources,
   {
     name: 'stone-vs-stone-halite',
-    timeout: 1000,
     initializeConfig: {
       seed: 15912392
     },
