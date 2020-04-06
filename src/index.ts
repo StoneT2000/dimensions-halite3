@@ -129,7 +129,11 @@ export default class Halite3Design extends Design {
      */
 
      // change timeout options of engine after "turn 0" as initialization bots have 10 seconds
-    match.engineOptions.timeout.max = 2000;
+    match.matchEngine.setEngineOptions({
+      timeout: {
+        max: 2000
+      }
+    })
     
     let numPlayers = match.agents.length;
     
