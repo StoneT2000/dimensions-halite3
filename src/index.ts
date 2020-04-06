@@ -45,7 +45,7 @@ export default class Halite3Design extends Design {
       },
       timeout: {
         active: true,
-        max: 2000,
+        max: 10000,
         timeoutCallback: (agent: Agent, match: Match, engineOptions: EngineOptions) => {
           // match.kill(agent.id);
           agent.currentMoveCommands = [];
@@ -125,26 +125,17 @@ export default class Halite3Design extends Design {
   async initialize(match: Match) {
     /**
      * TODOS: Relevant things not implemented yet. same comment as comment in relevant code in HaliteImpl.cpp
-     * Update max turn # by map size (300 @ 32x32 to 500 at 80x80)
-     * 
-     * 
-     * 
      * Load the map from the snapshot (if provided in configs or cli)
      */
 
+     // change timeout options of engine after "turn 0" as initialization bots have 10 seconds
+    match.configs.engineOptions.timeout.max = 2000;
     
-    
-    /**
-     * 0. NOTE, delimiter is commonly a ' ' (space)
-     * 1. sendall raw constants √
-     * 2. send number of players and the agent's ID √
-     * 3. send all players each agent's id, then starting shipyard location √
-     * 4. Send all players width height
-     *    then row by row the map with halite info
-     */
     let numPlayers = match.agents.length;
     
     let game_constants = JSON.parse(JSON.stringify(Constants));
+    
+    
 
     // set the random seed
     let seed = match.configs.initializeConfig.seed ? 
