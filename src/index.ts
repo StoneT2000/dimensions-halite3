@@ -152,8 +152,8 @@ export default class Halite3Design extends Design {
     match.configs.no_replay = false;
 
 
-    let width = game_constants.width ? game_constants.width : Constants.DEFAULT_MAP_WIDTH;
-    let height = game_constants.height ? game_constants.height : Constants.DEFAULT_MAP_HEIGHT;
+    let width = game_constants.width ? game_constants.width : game_constants.DEFAULT_MAP_WIDTH;
+    let height = game_constants.height ? game_constants.height : game_constants.DEFAULT_MAP_HEIGHT;
     
     let map_type = game_constants.map_type ? game_constants.map_type : MapType.Fractal
 
