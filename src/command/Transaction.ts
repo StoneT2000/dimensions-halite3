@@ -154,7 +154,7 @@ export class MoveTransaction extends Transaction<MoveCommand> {
           let entity = this.store.get_entity(entity_id);
           collision_ids.push(entity_id);
 
-          // self_collisions[entity.owner].emplace_back(entity_id);
+          // self_collisions[entity.owner].emplace_back(entity_id); vvv is js version
           let arr1 = [];
           if (self_collisions.has(entity.owner)) {arr1 = self_collisions.get(entity.owner);}
           arr1.push(entity_id);
@@ -162,7 +162,7 @@ export class MoveTransaction extends Transaction<MoveCommand> {
 
           if (causes.has(entity_id)) {
             let cause = causes.get(entity_id);
-            // self_collision_commands[entity.owner].emplace_back(cause->second);
+            // self_collision_commands[entity.owner].emplace_back(cause->second); vvv is js version
             let arr2 = [];
             if (self_collision_commands.has(entity.owner)) {arr2 = self_collision_commands.get(entity.owner);}
             arr2.push(cause);
@@ -265,7 +265,7 @@ export class SpawnTransaction extends Transaction<SpawnCommand> {
               // error_generated<SelfCollisionError<SpawnCommand>>(player_id, spawn, ErrorContext(), player.factory,
               //                                                   std::vector<Entity::id_type>{cell.entity, entity.id},
               //                                                   !Constants::get().STRICT_ERRORS);
-              this.match.throw(player_id, new MatchError(`Player ${player_id} - Entities ${existing_entity.id} self collided with ${cell.entity} at player factory: (${player.factory.toString()})`));
+              this.match.throw(player_id, new MatchError(`Player ${player_id} - Entities ${entity.id} self collided with ${cell.entity} at player factory: (${player.factory.toString()})`));
           }
           // event_generated<CollisionEvent>(owner.factory, std::vector<Entity::id_type>{cell.entity, entity.id});
           this.event_generated(new CollisionEvent(owner.factory, [cell.entity, entity.id]))
