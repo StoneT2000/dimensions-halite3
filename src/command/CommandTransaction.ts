@@ -51,6 +51,12 @@ export class CommandTransaction {
       this.construct_transaction, 
       this.move_transaction, 
       this.spawn_transaction);
+    
+    // initialize some maps. Not in original implementation because cpp std has emplace_back or something
+    store.players.forEach((_, player_id) => {
+      this.move_ownership_faulty.set(player_id, []);
+      this.construct_ownership_faulty.set(player_id, []);
+    })
   }
   /**
    * Check that a command operates on an entity owned by the player.
@@ -110,6 +116,7 @@ export class CommandTransaction {
     
     let newAmount = expenses_entry.energy += amount;
     if (newAmount > player.energy) {
+      // TODO!:
       // if (auto [_, inserted] = expenses_first_faulty.emplace(player.id, command); !inserted) {
       //   // This one is context
       //   // expenses_entry.second.emplace_back(command);
