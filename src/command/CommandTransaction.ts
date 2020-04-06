@@ -53,10 +53,10 @@ export class CommandTransaction {
       this.spawn_transaction);
     
     // initialize some maps. Not in original implementation because cpp std has emplace_back or something
-    store.players.forEach((_, player_id) => {
-      this.move_ownership_faulty.set(player_id, []);
-      this.construct_ownership_faulty.set(player_id, []);
-    })
+    // store.players.forEach((_, player_id) => {
+    //   this.move_ownership_faulty.set(player_id, []);
+    //   this.construct_ownership_faulty.set(player_id, []);
+    // })
   }
   /**
    * Check that a command operates on an entity owned by the player.
