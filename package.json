@@ -1,6 +1,6 @@
 {
   "name": "@dimensions-ai/designs-halite3",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Halite 3 Design implemented using the Dimensions framework",
   "main": "lib/index.js",
   "scripts": {
