@@ -9,3 +9,4 @@ This will simulate the original halite 3 game quite closely, including features 
 There are only a few features left out (that I know of at least). Error logs are not saved anywhere at this time, they are only printed to console if you set logging to a level of `Logger.LEVEL.WARN` or higher
 
 Replays are automatically saved to the `./replays` folder. To watch them, you can upload them to the online Halite 3 client at [https://2018.halite.io/watch-games](https://2018.halite.io/watch-games)
+
