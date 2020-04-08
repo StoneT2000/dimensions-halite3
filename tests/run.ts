@@ -40,11 +40,6 @@ let halite3League = halite3Dimension.createTournament([starterBotJS, stillBotJs,
   defaultMatchConfigs: {
     replayDirectory: './replays',
     loggingLevel: Logger.LEVEL.ERROR,
-    engineOptions: {
-      timeout: {
-        max: 5000
-      }
-    }
   },
   agentsPerMatch: [2, 4],
   resultHandler: Halite3Design.trueskillResultHandler

@@ -158,8 +158,11 @@ export default class Halite3Design extends Design {
     
 
     // set the random seed
-    let seed = match.configs.initializeConfig.seed ? 
-      match.configs.initializeConfig.seed : Math.floor((new Date).getTime() / 1000);
+    let seed = Math.floor((new Date).getTime() / 1000);
+    if (match.configs.initializeConfig) {
+      seed = match.configs.initializeConfig.seed ? 
+      match.configs.initializeConfig.seed : seed;
+    }
     // use the seed to determine default map size
     let rng = new MersenneTwister(seed);
     let map_sizes = [32, 40, 48, 56, 64];
@@ -840,7 +843,7 @@ export default class Halite3Design extends Design {
 
       }
     }
-    if (match.configs.initializeConfig.game_seed != undefined) {
+    if (match.configs.initializeConfig && match.configs.initializeConfig.seed != undefined) {
       results.map_seed = match.configs.game_constants.seed;
     }
     game.game_statistics.player_statistics.forEach((stat) => {
