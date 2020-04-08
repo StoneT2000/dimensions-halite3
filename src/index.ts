@@ -1,5 +1,10 @@
-import { Design, Match, Command, MatchStatus, Agent, Logger, MatchError, DesignOptions, EngineOptions, COMMAND_FINISH_POLICIES } from 'dimensions-ai';
+import { Design, Match, Agent, MatchError, DesignOptions, MatchEngine, Tournament} from 'dimensions-ai';
 import { Constants } from './Constants';
+
+import EngineOptions = MatchEngine.EngineOptions;
+import COMMAND_FINISH_POLICIES = MatchEngine.COMMAND_FINISH_POLICIES;
+import COMMAND_STREAM_TYPE = MatchEngine.COMMAND_STREAM_TYPE;
+import Command = MatchEngine.Command;
 
 import { Command as HCommand, MoveCommand, ConstructCommand, SpawnCommand } from './command/Command';
 import { Map as GameMap } from './model/Map';
@@ -230,12 +235,12 @@ export default class Halite3Design extends Design {
 
     match.state = state;
   }
-  async update(match: Match, commands: Array<Command>): Promise<MatchStatus> {
+  async update(match: Match, commands: Array<Command>): Promise<Match.Status> {
  
     let game: Game = match.state.game;
     // essentially keep skipping the actual running of the match until we receive commands
     if (game.turn_number == 0 && commands.length == 0) {
-      return MatchStatus.RUNNING;
+      return Match.Status.RUNNING;
     }
     
     // Used to track the current turn number inside Event::update_stats
@@ -382,9 +387,9 @@ export default class Halite3Design extends Design {
       //@ts-ignore
       game.game_statistics.execution_time = new Date() - match.state.startTime;
 
-      return MatchStatus.FINISHED;
+      return Match.Status.FINISHED;
     }
-    return MatchStatus.RUNNING;
+    return Match.Status.RUNNING;
 
     
   }
@@ -847,7 +852,7 @@ export default class Halite3Design extends Design {
 
     return results;
   }
-  static winLossResultHandler(results: HaliteResults) {
+  static winLossResultHandler(results: HaliteResults): Tournament.RANK_SYSTEM.WINS.Results {
     let winners = [];
     let losers =[];
     let ties = [];
@@ -860,5 +865,12 @@ export default class Halite3Design extends Design {
       }
     }
     return {winners: winners, losers: losers, ties: ties};
+  }
+  static trueskillResultHandler(results: HaliteResults): Tournament.RANK_SYSTEM.TRUESKILL.Results {
+    let rankings = [];
+    for (let player_id in results.stats) {
+      rankings.push({rank: results.stats[player_id].rank, agentID: parseInt(player_id)});
+    }
+    return {ranks: rankings}
   }
 }

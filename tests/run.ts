@@ -1,6 +1,6 @@
 import * as Dimension from 'dimensions-ai';
 import Halite3Design from '../src/index';
-import { Tournament, LoggerLEVEL } from 'dimensions-ai';
+import { Tournament, Logger } from 'dimensions-ai';
 
 
 let halite3Design = new Halite3Design('Halite 3 Design');
@@ -34,19 +34,20 @@ botSources.push(starterBotJS);
 //   console.log(res);
 // });
 let halite3League = halite3Dimension.createTournament([starterBotJS, stillBotJs, stillBotJs, starterBotPY], {
-  type: Tournament.TOURNAMENT_TYPE.ROUND_ROBIN,
-  rankSystem: Tournament.RANK_SYSTEM.WINS,
-  loggingLevel: LoggerLEVEL.DETAIL,
+  type: Tournament.TOURNAMENT_TYPE.LADDER,
+  rankSystem: Tournament.RANK_SYSTEM.TRUESKILL,
+  loggingLevel: Logger.LEVEL.INFO,
   defaultMatchConfigs: {
     replayDirectory: './replays',
-    loggingLevel: LoggerLEVEL.INFO,
+    loggingLevel: Logger.LEVEL.ERROR,
     engineOptions: {
       timeout: {
         max: 5000
       }
     }
   },
-  resultHandler: Halite3Design.winLossResultHandler
+  agentsPerMatch: [2, 4],
+  resultHandler: Halite3Design.trueskillResultHandler
 });
 halite3League.run().then((res) => {
   console.log(res);

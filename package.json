@@ -11,7 +11,7 @@
   "author": "StoneT2000",
   "license": "ISC",
   "dependencies": {
-    "dimensions-ai": "^1.0.30",
+    "dimensions-ai": "^1.0.31",
     "mersenne-twister": "^1.1.0"
   },
   "files": [
