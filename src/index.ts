@@ -20,18 +20,35 @@ import MersenneTwister from 'mersenne-twister';
 import { DeepPartial } from 'dimensions-ai/lib/utils/DeepPartial';
 import { deepMerge } from 'dimensions-ai/lib/utils/DeepMerge';
 
-type haliteState = {
+interface haliteState {
   playerCount: number // should only be 2 or 4
   game: Game,
   startTime?: any
 }
-type Game = {
+interface Game {
   map: GameMap
   game_statistics: GameStatistics
   replay: Replay
   logs?: any
   store: Store,
   turn_number: number,
+}
+interface HaliteResults {
+  error_logs: any
+  execution_time: number
+  final_snapshot: any
+  map_generator: any
+  map_seed: number
+  map_width: number
+  map_height: number
+  replay: string
+  stats: {
+    [K in string]: {
+      score: number
+      rank: number
+    }
+  }
+  terminated: any
 }
 
 
@@ -58,6 +75,7 @@ export default class Halite3Design extends Design {
     }
   }
   constructor(name: string, options: DeepPartial<DesignOptions> = {}) {
+
     super(name, options);
     let overriden_defaults = {...this.DEFAULT_OPTIONS};
     deepMerge(this.designOptions, overriden_defaults); 
@@ -179,8 +197,8 @@ export default class Halite3Design extends Design {
     }
     match.configs.game_constants.MAX_TURNS = turns;
 
-    match.log.info(`Map Parameters:`, map_parameters)
-    match.log.info(`Game Constants:`, match.configs.game_constants)
+    match.log.detail(`Map Parameters:`, map_parameters)
+    match.log.detail(`Game Constants:`, match.configs.game_constants)
 
     // Add a 0 frame so we can record beginning-of-game state
     game.replay.full_frames.push(new Turn());
@@ -794,7 +812,7 @@ export default class Halite3Design extends Design {
     player.energy = 0;
   }
 
-  async getResults(match: Match): Promise<any> {
+  async getResults(match: Match): Promise<HaliteResults> {
     let game: Game = match.state.game;
     let results = {
       error_logs: {
@@ -829,8 +847,18 @@ export default class Halite3Design extends Design {
 
     return results;
   }
-}
-
-class TestDesign extends Halite3Design {
-  public defaultOptions = {}
+  static winLossResultHandler(results: HaliteResults) {
+    let winners = [];
+    let losers =[];
+    let ties = [];
+    for (let player_id in results.stats) {
+      if (results.stats[player_id].rank != 1) {
+        losers.push(parseInt(player_id));
+      }
+      else {
+        winners.push(parseInt(player_id));
+      }
+    }
+    return {winners: winners, losers: losers, ties: ties};
+  }
 }

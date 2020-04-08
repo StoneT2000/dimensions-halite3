@@ -1,11 +1,12 @@
 import * as Dimension from 'dimensions-ai';
 import Halite3Design from '../src/index';
+import { Tournament, LoggerLEVEL } from 'dimensions-ai';
 
 
 let halite3Design = new Halite3Design('Halite 3 Design');
-let halite3League = Dimension.create(halite3Design, {
+let halite3Dimension = Dimension.create(halite3Design, {
   name: 'Halite 3', 
-  loggingLevel: Dimension.Logger.LEVEL.DETAIL
+  loggingLevel: Dimension.Logger.LEVEL.ALL
 });
 
 
@@ -23,16 +24,33 @@ botSources.push(starterBotJS);
 // botSources.push(starterBotPY);
 // botSources.push(starterBotJS);
 
-halite3League.runMatch(
-  botSources,
-  {
-    name: 'test-halite-match',
-    replayDirectory: './replays'
-  }
-).then((res) => {
-  console.log(res);
+// halite3Dimension.runMatch(
+//   botSources,
+//   {
+//     name: 'test-halite-match',
+//     replayDirectory: './replays'
+//   }
+// ).then((res) => {
+//   console.log(res);
+// });
+let halite3League = halite3Dimension.createTournament([starterBotJS, stillBotJs, stillBotJs, starterBotPY], {
+  type: Tournament.TOURNAMENT_TYPE.ROUND_ROBIN,
+  rankSystem: Tournament.RANK_SYSTEM.WINS,
+  loggingLevel: LoggerLEVEL.DETAIL,
+  defaultMatchConfigs: {
+    replayDirectory: './replays',
+    loggingLevel: LoggerLEVEL.INFO,
+    engineOptions: {
+      timeout: {
+        max: 5000
+      }
+    }
+  },
+  resultHandler: Halite3Design.winLossResultHandler
 });
-
+halite3League.run().then((res) => {
+  console.log(res);
+})
 // halite3League.createMatch(
 //   botSources,
 //   {
@@ -56,22 +74,22 @@ halite3League.runMatch(
 // });
 
 
-let halite3Design100ms = new Halite3Design('Halite 3 Design - 100ms Timeout', {
-  engineOptions: {
-    timeout: {
-      max: 100
-    }
-  }
-});
-let halite3League100ms = Dimension.create(halite3Design100ms, {
-  name: 'Halite 3', 
-  loggingLevel: Dimension.Logger.LEVEL.ALL
-});
-botSources = [];
-botSources.push(stoneBot);
-botSources.push(stoneBot);
-botSources.push(stoneBot);
-botSources.push(stoneBot);
+// let halite3Design100ms = new Halite3Design('Halite 3 Design - 100ms Timeout', {
+//   engineOptions: {
+//     timeout: {
+//       max: 100
+//     }
+//   }
+// });
+// let halite3League100ms = Dimension.create(halite3Design100ms, {
+//   name: 'Halite 3', 
+//   loggingLevel: Dimension.Logger.LEVEL.ALL
+// });
+// botSources = [];
+// botSources.push(stoneBot);
+// botSources.push(stoneBot);
+// botSources.push(stoneBot);
+// botSources.push(stoneBot);
 // halite3League100ms.createMatch(
 //   botSources,
 //   {
