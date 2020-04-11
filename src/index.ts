@@ -855,7 +855,7 @@ export default class Halite3Design extends Design {
 
     return results;
   }
-  static winLossResultHandler(results: HaliteResults): Tournament.RANK_SYSTEM.WINS.Results {
+  static winsResultHandler(results: HaliteResults): Tournament.RANK_SYSTEM.WINS.Results {
     let winners = [];
     let losers =[];
     let ties = [];
