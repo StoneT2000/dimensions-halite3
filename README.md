@@ -20,30 +20,40 @@ let halite3Dimension = Dimension.create(halite3Design, {
   name: 'Halite 3', 
   loggingLevel: Dimension.Logger.LEVEL.DETAIL
 });
+
+let results = await halite3Dimension.runMatch(
+  ["pathToMyBot.js", "pathToMyOtherBot.go"],
+  {
+    name: 'my-halite-match',
+    loggingLevel: Dimension.Logger.LEVEL.INFO,
+    replayDirectory: './replays',
+  }
+);
 ```
 
 To run a trueskill ranked leaderboard like tournament, akin to the actual Halite 3 tournament, run
 
 
 ```js
+let Tournament = Dimension.Tournament;
 let simpleBots = ["pathToBot.js", "pathToSomeOtherBot.java", "anotherBot.cpp", "anotherOne.py"];
 let halite3League = halite3Dimension.createTournament(simpleBots, {
-  type: Tournament.TOURNAMENT_TYPE.LADDER,
-  rankSystem: Tournament.RANK_SYSTEM.TRUESKILL,
+  type: Tournament.TOURNAMENT_TYPE.LADDER, // specify ladder/leaderboard tournament
+  rankSystem: Tournament.RANK_SYSTEM.TRUESKILL, // specify to use trueskill for ranking
   loggingLevel: LoggerLEVEL.INFO,
   defaultMatchConfigs: {
     replayDirectory: './replays',
     loggingLevel: LoggerLEVEL.ERROR,
   },
-  agentsPerMatch: [2, 4],
-  resultHandler: Halite3Design.trueskillResultHandler
+  agentsPerMatch: [2, 4], // specify that only 2 or 4 players can compete at the same time
+  resultHandler: Halite3Design.trueskillResultHandler // use the trueskill result handler
 });
 ```
 
 
 For full details on how to run custom matches and tournaments, make sure to check out https://github.com/stonet2000/dimensions for details on how to run them.
 
-Replays are automatically saved to the `./replays` folder. Make sure to create the `./replays` folder first. To watch them, you can upload them to the online Halite 3 client at [https://2018.halite.io/watch-games](https://2018.halite.io/watch-games)
+Replays are automatically saved to the root folder. You can specify the `replayDirectory` field to give a directory to store replays in. To watch them, you can upload them to the online Halite 3 client at [https://2018.halite.io/watch-games](https://2018.halite.io/watch-games)
 
 There are only a few features left out (that I know of at least). Error logs are not saved anywhere at this time, they are only printed to console if you set logging to a level of `Logger.LEVEL.WARN` or higher
 
