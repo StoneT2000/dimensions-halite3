@@ -2,7 +2,7 @@
 
 This is a typescript implementation of the [Halite 3 AI competition](https://halite.io) using the [Dimensions AI competition framework](https://github.com/stonet2000/dimensions). This simulates the original Halite 3 game quite closely, including features such as inspiration, mining, dropoffs and more!
 
-You can run any bot that adheres to the starter-kits provided or use almost any bot from the actual halite 3 competition.
+You can run most bots that adhere to the Halite 3 starter kits. At the moment, C++, C bots don't really work due to no support for CMake at the moment.
 
 To start, first install it
 ```
@@ -21,14 +21,16 @@ let halite3Dimension = Dimension.create(halite3Design, {
   loggingLevel: Dimension.Logger.LEVEL.DETAIL
 });
 
-let results = await halite3Dimension.runMatch(
+halite3Dimension.runMatch(
   ["pathToMyBot.js", "pathToMyOtherBot.go"],
   {
     name: 'my-halite-match',
     loggingLevel: Dimension.Logger.LEVEL.INFO,
     replayDirectory: './replays',
   }
-);
+).then((res) => {
+  console.log(res);
+});
 ```
 
 To run a trueskill ranked leaderboard like tournament, akin to the actual Halite 3 tournament, run
@@ -40,16 +42,16 @@ let simpleBots = ["pathToBot.js", "pathToSomeOtherBot.java", "anotherBot.cpp", "
 let halite3League = halite3Dimension.createTournament(simpleBots, {
   type: Tournament.TOURNAMENT_TYPE.LADDER, // specify ladder/leaderboard tournament
   rankSystem: Tournament.RANK_SYSTEM.TRUESKILL, // specify to use trueskill for ranking
-  loggingLevel: LoggerLEVEL.INFO,
+  loggingLevel: Dimension.Logger.LEVEL.INFO,
   defaultMatchConfigs: {
     replayDirectory: './replays',
-    loggingLevel: LoggerLEVEL.ERROR,
+    loggingLevel: Dimension.Logger.LEVEL.ERROR,
   },
   agentsPerMatch: [2, 4], // specify that only 2 or 4 players can compete at the same time
   resultHandler: Halite3Design.trueskillResultHandler // use the trueskill result handler
 });
+halite3League.run();
 ```
-
 
 For full details on how to run custom matches and tournaments, make sure to check out https://github.com/stonet2000/dimensions for details on how to run them.
 
