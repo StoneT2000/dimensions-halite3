@@ -129,7 +129,7 @@ export class FractalValueNoiseTileGenerator extends SymmetricalTile {
     // const energy_type MAX_CELL_PRODUCTION =
             // rng() % (1 + Constants::get().MAX_CELL_PRODUCTION - Constants::get().MIN_CELL_PRODUCTION) +
             // Constants::get().MIN_CELL_PRODUCTION;
-    const MAX_CELL_PRODUCTION = this.rng.random_int() % (1 + Constants.MAX_CELL_PRODUCTION - Constants.MIN_CELL_PRODUCTION + Constants.MIN_CELL_PRODUCTION);
+    const MAX_CELL_PRODUCTION = this.rng.random_int() % (1 + Constants.MAX_CELL_PRODUCTION - Constants.MIN_CELL_PRODUCTION) + Constants.MIN_CELL_PRODUCTION;
     for (let y = 0; y < this.tile_height; y++) {
       for (let x = 0; x < this.tile_width; x++) {
         region[y][x] *= Math.floor(MAX_CELL_PRODUCTION / max_value);
@@ -139,7 +139,6 @@ export class FractalValueNoiseTileGenerator extends SymmetricalTile {
 
     const factory_pos_x = Math.floor((this.rng.random_int() % this.tile_width));
     const factory_pos_y = Math.floor((this.rng.random_int() % this.tile_height));
-    // console.log(tile.grid);
     // Use superclass function to copy the tile over the entire map, including placing all factories
     this.tile_map(map, factory_pos_y, factory_pos_x, tile);
   }

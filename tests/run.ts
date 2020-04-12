@@ -17,36 +17,40 @@ let starterBotPY = './starter-kits/python/MyBot.py';
 let stoneBot = './bots/stoneBot/MyBot.js';
 
 // botSources.push(stoneBot);
-botSources.push(stoneBot);
+botSources.push(stillBotJs);
 // botSources.push(TeamSchildpad);
-botSources.push(starterBotJS);
+botSources.push(stillBotJs);
 // botSources.push(starterBotPY);
 // botSources.push(starterBotPY);
 // botSources.push(starterBotJS);
 
-// halite3Dimension.runMatch(
-//   botSources,
-//   {
-//     name: 'test-halite-match',
-//     replayDirectory: './replays'
-//   }
-// ).then((res) => {
-//   console.log(res);
-// });
-let halite3League = halite3Dimension.createTournament([starterBotJS, stillBotJs, stillBotJs, starterBotPY], {
-  type: Tournament.TOURNAMENT_TYPE.LADDER,
-  rankSystem: Tournament.RANK_SYSTEM.TRUESKILL,
-  loggingLevel: Logger.LEVEL.INFO,
-  defaultMatchConfigs: {
+halite3Dimension.runMatch(
+  botSources,
+  {
+    name: 'test-halite-match',
     replayDirectory: './replays',
-    loggingLevel: Logger.LEVEL.ERROR,
-  },
-  agentsPerMatch: [2, 4],
-  resultHandler: Halite3Design.trueskillResultHandler
-});
-halite3League.run().then((res) => {
+    loggingLevel: Dimension.Logger.LEVEL.INFO,
+    initializeConfig: {
+      seed: 3
+    }
+  }
+).then((res) => {
   console.log(res);
-})
+});
+// let halite3League = halite3Dimension.createTournament([starterBotJS, stillBotJs, stillBotJs, starterBotPY], {
+//   type: Tournament.TOURNAMENT_TYPE.LADDER,
+//   rankSystem: Tournament.RANK_SYSTEM.TRUESKILL,
+//   loggingLevel: Logger.LEVEL.INFO,
+//   defaultMatchConfigs: {
+//     replayDirectory: './replays',
+//     loggingLevel: Logger.LEVEL.ERROR,
+//   },
+//   agentsPerMatch: [2, 4],
+//   resultHandler: Halite3Design.trueskillResultHandler
+// });
+// halite3League.run().then((res) => {
+//   console.log(res);
+// })
 // halite3League.createMatch(
 //   botSources,
 //   {
