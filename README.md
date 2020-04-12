@@ -2,7 +2,7 @@
 
 This is a typescript implementation of the [Halite 3 AI competition](https://halite.io) using the [Dimensions AI competition framework](https://github.com/stonet2000/dimensions). This simulates the original Halite 3 game quite closely, including features such as inspiration, mining, dropoffs and more!
 
-You can run most bots that adhere to the Halite 3 starter kits. At the moment, C++, C bots don't really work due to no support for CMake and Make at the moment. Out of the box, Java, Python, Javascript / Typescript, PHP, Go should work. More will be added as Dimensions supports more options.
+You can run most bots that adhere to the [Halite 3 starter kits](https://github.com/HaliteChallenge/Halite-III/tree/master/starter_kits). At the moment, C++, C bots don't really work due to no support for CMake and Make at the moment. Out of the box, Java, Python, Javascript / Typescript, PHP, Go should work, as long as a `install.sh` file isn't used. More will be added as Dimensions supports more options.
 
 To start, first install it
 ```
