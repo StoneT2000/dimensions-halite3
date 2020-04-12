@@ -22,7 +22,7 @@ let halite3Dimension = Dimension.create(halite3Design, {
 });
 
 let starterBotJS = './starter-kits/js/MyBot.js';
-let starterBotPY = './starter-kits/py/MyBot.py';
+let starterBotPY = './starter-kits/python/MyBot.py';
 halite3Dimension.runMatch(
   [starterBotJS, starterBotPY],
   {
