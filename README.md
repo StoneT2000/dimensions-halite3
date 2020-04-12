@@ -21,8 +21,10 @@ let halite3Dimension = Dimension.create(halite3Design, {
   loggingLevel: Dimension.Logger.LEVEL.DETAIL
 });
 
+let starterBotJS = './starter-kits/js/MyBot.js';
+let starterBotPY = './starter-kits/py/MyBot.py';
 halite3Dimension.runMatch(
-  ["pathToMyBot.js", "pathToMyOtherBot.go"],
+  [starterBotJS, starterBotPY],
   {
     name: 'my-halite-match',
     loggingLevel: Dimension.Logger.LEVEL.INFO,
