@@ -76,6 +76,17 @@ export default class Halite3Design extends Design {
           let player = game.store.get_player(agent.id);
           match.log.error(`agent ${agent.id} - '${player.name}' timed out after ${engineOptions.timeout.max} ms`);
         }
+      },
+      memory: {
+        active: true,
+        memoryCallback: (agent: Agent, match: Match, engineOptions: EngineOptions) => {
+          // match.kill(agent.id);
+          agent.currentMoveCommands = [];
+          this.kill_player(match, agent.id);
+          let game: Game = match.state.game;
+          let player = game.store.get_player(agent.id);
+          match.log.error(`agent ${agent.id} - '${player.name}' maxed out of memory after ${engineOptions.memory.limit/ 1000000} MB`);
+        }
       }
     }
   }
@@ -237,6 +248,7 @@ export default class Halite3Design extends Design {
 
 
     match.state = state;
+
   }
   async update(match: Match, commands: Array<Command>): Promise<Match.Status> {
  
