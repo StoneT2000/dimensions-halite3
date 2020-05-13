@@ -1,6 +1,6 @@
 {
   "name": "@dimensions-ai/designs-halite3",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Halite 3 Design implemented using the Dimensions framework",
   "main": "lib/index.js",
   "scripts": {
@@ -11,7 +11,7 @@
   "author": "StoneT2000",
   "license": "ISC",
   "dependencies": {
-    "dimensions-ai": "^2.0.1",
+    "dimensions-ai": "^2.1.0",
     "mersenne-twister": "^1.1.0"
   },
   "files": [

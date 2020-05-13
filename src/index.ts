@@ -867,7 +867,7 @@ export default class Halite3Design extends Design {
 
     return results;
   }
-  static winsResultHandler(results: HaliteResults): Tournament.RANK_SYSTEM.WINS.Results {
+  static winsResultHandler(results: HaliteResults): Tournament.RankSystem.WINS.Results {
     let winners = [];
     let losers =[];
     let ties = [];
@@ -881,7 +881,7 @@ export default class Halite3Design extends Design {
     }
     return {winners: winners, losers: losers, ties: ties};
   }
-  static trueskillResultHandler(results: HaliteResults): Tournament.RANK_SYSTEM.TRUESKILL.Results {
+  static trueskillResultHandler(results: HaliteResults): Tournament.RankSystem.TRUESKILL.Results {
     let rankings = [];
     for (let player_id in results.stats) {
       rankings.push({rank: results.stats[player_id].rank, agentID: parseInt(player_id)});

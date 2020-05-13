@@ -42,8 +42,8 @@ To run a trueskill ranked leaderboard like tournament, akin to the actual Halite
 let Tournament = Dimension.Tournament;
 let simpleBots = ["pathToBot.js", "pathToSomeOtherBot.java", "anotherBot.cpp", "anotherOne.py"];
 let halite3League = halite3Dimension.createTournament(simpleBots, {
-  type: Tournament.TOURNAMENT_TYPE.LADDER, // specify ladder/leaderboard tournament
-  rankSystem: Tournament.RANK_SYSTEM.TRUESKILL, // specify to use trueskill for ranking
+  type: Tournament.Type.LADDER, // specify ladder/leaderboard tournament
+  rankSystem: Tournament.RankSystem.TRUESKILL, // specify to use trueskill for ranking
   loggingLevel: Dimension.Logger.LEVEL.INFO,
   defaultMatchConfigs: {
     replayDirectory: './replays',
